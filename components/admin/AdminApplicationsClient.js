@@ -61,7 +61,7 @@ export default function AdminApplicationsClient() {
             </div>
             {app.team_name && (
               <div style={{ marginTop: '16px', padding: '16px', background: 'var(--paper-soft)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--line)' }}>
-                <strong style={{ fontSize: '0.95rem', color: 'var(--gold)', display: 'block', marginBottom: '4px' }}>Team: {app.team_name}</strong>
+                <strong style={{ fontSize: '0.95rem', color: 'var(--brand-red)', display: 'block', marginBottom: '4px' }}>Team: {app.team_name}</strong>
                 <p style={{ margin: 0, fontSize: '0.9rem' }}><strong>Members:</strong> {app.team_members}</p>
               </div>
             )}

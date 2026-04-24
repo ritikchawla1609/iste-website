@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import AdminShell from "@/components/AdminShell";
 import AdminPastEventsClient from "@/components/admin/AdminPastEventsClient";
-import { verifySession } from "@/lib/auth";
+import { getCurrentAdmin } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -10,9 +11,8 @@ export const metadata = {
 };
 
 export default async function AdminPastEventsPage() {
-  try {
-    await verifySession();
-  } catch (error) {
+  const cookieStore = await cookies();
+  if (!(await getCurrentAdmin(cookieStore))) {
     redirect("/");
   }
 

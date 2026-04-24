@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { verifySession } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { jsonError } from "@/lib/http";
 
@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 export async function GET(request) {
   try {
-    await verifySession(request);
+    await requireAdmin(request.cookies);
     const database = await getDb();
     
     const applications = await database.many(`
@@ -32,7 +32,7 @@ export async function GET(request) {
 
 export async function DELETE(request) {
   try {
-    await verifySession(request);
+    await requireAdmin(request.cookies);
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 

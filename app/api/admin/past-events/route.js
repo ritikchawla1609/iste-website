@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { verifySession } from "@/lib/auth";
+import { requireAdmin } from "@/lib/auth";
 import { 
   getAdminPastEventsData, 
   createPastEvent, 
@@ -12,7 +12,7 @@ export const runtime = "nodejs";
 
 export async function GET(request) {
   try {
-    await verifySession(request);
+    await requireAdmin(request.cookies);
     const data = await getAdminPastEventsData();
     return NextResponse.json(data);
   } catch (error) {
@@ -22,9 +22,9 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
-    const session = await verifySession(request);
+    const admin = await requireAdmin(request.cookies);
     const payload = await readJson(request);
-    const data = await createPastEvent(payload, session.admin_id);
+    const data = await createPastEvent(payload, admin.id);
     return NextResponse.json(data);
   } catch (error) {
     return jsonError(error);
@@ -33,11 +33,11 @@ export async function POST(request) {
 
 export async function PUT(request) {
   try {
-    const session = await verifySession(request);
+    const admin = await requireAdmin(request.cookies);
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
     const payload = await readJson(request);
-    const data = await updatePastEvent(id, payload, session.admin_id);
+    const data = await updatePastEvent(id, payload, admin.id);
     return NextResponse.json(data);
   } catch (error) {
     return jsonError(error);
@@ -46,10 +46,10 @@ export async function PUT(request) {
 
 export async function DELETE(request) {
   try {
-    const session = await verifySession(request);
+    const admin = await requireAdmin(request.cookies);
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
-    await deletePastEvent(id, session.admin_id);
+    await deletePastEvent(id, admin.id);
     return NextResponse.json({ success: true });
   } catch (error) {
     return jsonError(error);

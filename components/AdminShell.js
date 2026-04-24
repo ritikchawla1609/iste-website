@@ -27,70 +27,64 @@ export default function AdminShell({
                 <img src="/brand/iste-logo.jpg" alt="ISTE Logo" />
               </span>
               <span className="brand-copy">
-                <small>Indian Society for Technical Education</small>
-                <strong>ISTE Author Panel</strong>
+                <strong>ISTE AUTHOR PANEL</strong>
                 <span>{brandSubtitle}</span>
               </span>
             </Link>
 
             <div className="header-actions header-actions-admin">
-              <Link className="utility-link" href={utilityHref}>
-                <span className="btn-icon">📊</span> {utilityLabel}
+              <Link className="public-link" href={utilityHref} style={{ marginRight: '16px' }}>
+                {utilityLabel}
               </Link>
               <LogoutButton />
             </div>
           </div>
-        </header>
 
-        <nav className="site-nav" style={{ marginBottom: '0', borderRadius: '12px 12px 0 0', borderBottom: '0' }}>
-          {ADMIN_NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={activePath === item.href ? "is-active" : ""}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+          <nav className="site-nav-row">
+            <div className="nav-container">
+              {ADMIN_NAV.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={activePath === item.href ? "is-active" : ""}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </header>
 
         {children}
 
         <footer className="site-footer">
           <div className="footer-container">
             <div className="footer-brand">
-              <strong>ISTE Author Panel</strong>
-              <p>
-                Professional content management system for the official ISTE Student Chapter website
-                at Chandigarh University.
+              <div className="footer-brand-header">
+                <img src="/brand/iste-logo.jpg" alt="ISTE Logo" className="footer-logo" />
+                <strong style={{ color: 'var(--brand-red)' }}>ISTE AUTHOR PANEL</strong>
+              </div>
+              <span className="brand-tagline">OFFICIAL MANAGEMENT</span>
+              <p style={{ color: '#94a3b8', fontSize: '0.95rem', marginTop: '20px' }}>
+                Professional content management system for the official ISTE Student Chapter website.
               </p>
             </div>
+            
             <div className="footer-links">
-              <h4>Management</h4>
-              {ADMIN_NAV.map((item) => (
-                <Link key={item.href} href={item.href}>{item.label}</Link>
-              ))}
-            </div>
-            <div className="footer-links">
-              <h4>Public View</h4>
-              <Link href="/">Homepage</Link>
-              <Link href="/about">About Us</Link>
-              <Link href="/past-events">Previous Events</Link>
-            </div>
-            <div className="footer-links">
-              <h4>Help & Support</h4>
-              <a href="mailto:admin@iste.org">📧 Admin Support</a>
-              <span>Documentation</span>
-            </div>
-            <div className="footer-bottom">
-              <div className="footer-bottom-inner">
-                <p className="footer-credit">© {new Date().getFullYear()} ISTE Author Dashboard. Authorized Access Only.</p>
-                <div className="footer-actions">
-                  <Link className="footer-login-btn" href={footerHref}>
-                    🌐 {footerLabel}
-                  </Link>
-                </div>
+              <h4 style={{ color: 'var(--brand-red)' }}>Shortcuts</h4>
+              <div className="footer-links-grid">
+                <Link href="/author-dashboard" style={{ color: '#94a3b8' }}>Dashboard</Link>
+                <Link href="/" style={{ color: '#94a3b8' }}>Public Site</Link>
+                <a href="mailto:iste@cuchd.in" style={{ color: '#94a3b8' }}>Support</a>
               </div>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <div className="footer-bottom-inner">
+              <p className="footer-credit" style={{ color: '#64748b' }}>
+                © {new Date().getFullYear()} <span style={{ color: 'var(--brand-red)' }}>ISTE SOCIETY</span> Authorized Access Only.
+              </p>
             </div>
           </div>
         </footer>
