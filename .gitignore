@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+
+data/
+backups/
+uploads/
+node_modules/
+.next/
+out/
+.env.local
+.env.*.local
+
+.DS_Store
