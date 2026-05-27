@@ -21,12 +21,7 @@ export default async function AboutPage() {
             <p className="hero-kicker">About Us</p>
             <h1 className="subpage-premium-title">{about.heroTitle}</h1>
             <p className="subpage-premium-desc">
-<<<<<<< HEAD
               ISTE at Chandigarh University is a student-driven technical society empowering innovators, coders, creators, and future leaders through technology, creativity, and endless opportunities.
-=======
-              A student-led technical society shaped around practical learning, leadership,
-              chapter experiences, and professional growth.
->>>>>>> c274e0549f87ad71c8601a2492797f6c0e7757ea
             </p>
           </div>
           <div className="subpage-hero-stat-stack" aria-label="Chapter highlights">
