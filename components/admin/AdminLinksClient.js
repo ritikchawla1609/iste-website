@@ -58,15 +58,29 @@ export default function AdminLinksClient({ initialEvents, initialRecruitments })
 
       <div className="admin-grid admin-grid-single">
         <article className="admin-card">
-          <h3>Event Registration Links</h3>
+          <h3 style={{ marginBottom: '24px', fontSize: '1.4rem', borderBottom: '1px solid rgba(0, 0, 0, 0.05)', paddingBottom: '12px' }}>Event Registration Links</h3>
           <div className="admin-managed-list">
             {events.length ? (
               events.map((event) => (
-                <div className="admin-record-card" key={event.id} style={{ display: 'block' }}>
-                  <div className="admin-record-copy">
-                    <strong>{event.name}</strong>
-                    <span style={{ fontSize: '0.85em', opacity: 0.8 }}>
-                      {formatDate(event.eventDate)} | {event.venue}
+                <div 
+                  className="admin-record-card" 
+                  key={event.id} 
+                  style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'stretch', 
+                    gap: '20px', 
+                    padding: '24px',
+                    borderRadius: '16px',
+                    border: '1px solid var(--line)',
+                    background: '#f8fafc',
+                    marginBottom: '24px'
+                  }}
+                >
+                  <div className="admin-record-copy" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.05)', paddingBottom: '12px' }}>
+                    <strong style={{ fontSize: '1.15rem', color: 'var(--navy-900)', display: 'block', marginBottom: '4px' }}>{event.name}</strong>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-soft)' }}>
+                      📅 {formatDate(event.eventDate)} | 📍 {event.venue}
                     </span>
                   </div>
                   <form 
@@ -79,33 +93,46 @@ export default function AdminLinksClient({ initialEvents, initialRecruitments })
                         e.target.elements.googleFormLink.value
                       );
                     }}
-                    style={{ marginTop: '10px', display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: '16px', alignItems: 'flex-end' }}
+                    style={{ 
+                      display: 'grid', 
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+                      gap: '16px', 
+                      alignItems: 'end' 
+                    }}
                   >
-                    <label style={{ marginBottom: 0 }}>
+                    <label style={{ margin: 0, textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 800, color: 'var(--text-soft)' }}>
                       Registration Link (Optional)
                       <input 
                         type="url" 
                         name="registrationLink" 
                         defaultValue={event.registrationLink || ""} 
                         placeholder="https://..." 
+                        style={{ marginTop: '6px' }}
                       />
                     </label>
-                    <label style={{ marginBottom: 0 }}>
+                    <label style={{ margin: 0, textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 800, color: 'var(--text-soft)' }}>
                       Google Form Link (Optional)
                       <input 
                         type="url" 
                         name="googleFormLink" 
                         defaultValue={event.googleFormLink || ""} 
                         placeholder="https://forms.gle/..." 
+                        style={{ marginTop: '6px' }}
                       />
                     </label>
                     <button 
                       className="admin-submit" 
                       type="submit" 
                       disabled={pending === `event-${event.id}`}
-                      style={{ padding: '12px 20px', fontSize: '0.9em', height: '46px' }}
+                      style={{ 
+                        padding: '12px 24px', 
+                        fontSize: '0.85rem', 
+                        height: '46px', 
+                        gridColumn: '1 / -1',
+                        marginTop: '8px'
+                      }}
                     >
-                      {pending === `event-${event.id}` ? "Saving..." : "Update Links"}
+                      {pending === `event-${event.id}` ? "Saving..." : "Update Event Links"}
                     </button>
                   </form>
                 </div>
@@ -117,15 +144,29 @@ export default function AdminLinksClient({ initialEvents, initialRecruitments })
         </article>
 
         <article className="admin-card">
-          <h3>Recruitment Application Links</h3>
+          <h3 style={{ marginBottom: '24px', fontSize: '1.4rem', borderBottom: '1px solid rgba(0, 0, 0, 0.05)', paddingBottom: '12px' }}>Recruitment Application Links</h3>
           <div className="admin-managed-list">
             {recruitments.length ? (
               recruitments.map((rec) => (
-                <div className="admin-record-card" key={rec.id} style={{ display: 'block' }}>
-                  <div className="admin-record-copy">
-                    <strong>{rec.title}</strong>
-                    <span style={{ fontSize: '0.85em', opacity: 0.8 }}>
-                      {rec.organization} | Deadline: {formatDate(rec.deadline)}
+                <div 
+                  className="admin-record-card" 
+                  key={rec.id} 
+                  style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'stretch', 
+                    gap: '20px', 
+                    padding: '24px',
+                    borderRadius: '16px',
+                    border: '1px solid var(--line)',
+                    background: '#f8fafc',
+                    marginBottom: '24px'
+                  }}
+                >
+                  <div className="admin-record-copy" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.05)', paddingBottom: '12px' }}>
+                    <strong style={{ fontSize: '1.15rem', color: 'var(--navy-900)', display: 'block', marginBottom: '4px' }}>{rec.title}</strong>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-soft)' }}>
+                      💼 {rec.organization} | ⌛ Deadline: {formatDate(rec.deadline)}
                     </span>
                   </div>
                   <form 
@@ -134,9 +175,13 @@ export default function AdminLinksClient({ initialEvents, initialRecruitments })
                       e.preventDefault();
                       handleUpdateRecruitmentLink(rec.id, e.target.elements.link.value);
                     }}
-                    style={{ marginTop: '10px', display: 'flex', gap: '10px', alignItems: 'flex-end' }}
+                    style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      gap: '16px' 
+                    }}
                   >
-                    <label style={{ flex: 1, marginBottom: 0 }}>
+                    <label style={{ margin: 0, textTransform: 'uppercase', fontSize: '0.75rem', fontWeight: 800, color: 'var(--text-soft)' }}>
                       Google Form / Application Link
                       <input 
                         type="url" 
@@ -144,15 +189,21 @@ export default function AdminLinksClient({ initialEvents, initialRecruitments })
                         defaultValue={rec.applicationLink} 
                         placeholder="https://forms.gle/..." 
                         required 
+                        style={{ marginTop: '6px' }}
                       />
                     </label>
                     <button 
                       className="admin-submit" 
                       type="submit" 
                       disabled={pending === `recruitment-${rec.id}`}
-                      style={{ padding: '8px 16px', fontSize: '0.9em' }}
+                      style={{ 
+                        padding: '12px 24px', 
+                        fontSize: '0.85rem', 
+                        height: '46px',
+                        marginTop: '8px'
+                      }}
                     >
-                      {pending === `recruitment-${rec.id}` ? "Saving..." : "Update Link"}
+                      {pending === `recruitment-${rec.id}` ? "Saving..." : "Update Recruitment Link"}
                     </button>
                   </form>
                 </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function GoogleFormModal({ open, onClose, formUrl, eventName }) {
+export default function GoogleFormModal({ open, onClose, formUrl, eventName, title = "Event Registration" }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function GoogleFormModal({ open, onClose, formUrl, eventName }) {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-            <span style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--brand-red)", fontWeight: 700 }}>Event Registration</span>
+            <span style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--brand-red)", fontWeight: 700 }}>{title}</span>
             <h3 style={{ margin: 0, fontSize: "1.3rem", color: "#ffffff", fontWeight: 800 }}>{eventName}</h3>
           </div>
           <button 

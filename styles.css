@@ -404,6 +404,8 @@ body {
 
 .event-actions {
   display: flex;
+  gap: 12px;
+  width: 100%;
 }
 
 .primary-btn {
@@ -425,6 +427,33 @@ body {
   background: var(--brand-red);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2);
+}
+
+.secondary-btn {
+  width: 100%;
+  text-align: center;
+  padding: 14px 24px;
+  background: transparent;
+  color: var(--navy-900);
+  border: 2px solid var(--navy-900);
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color var(--motion-medium) var(--ease-formal), transform var(--motion-medium) var(--ease-formal), box-shadow var(--motion-medium) var(--ease-formal), border-color var(--motion-medium) var(--ease-formal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondary-btn:hover {
+  background: var(--navy-900);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(30, 41, 59, 0.15);
 }
 
 .timeline-poster {
@@ -1380,6 +1409,14 @@ body {
   border: 2px solid var(--line) !important;
   font-size: 0.95rem !important;
   background: #fdfdfd !important;
+  transition: all var(--motion-fast) var(--ease-formal) !important;
+}
+
+.admin-form input:focus, .admin-form textarea:focus, .admin-form select:focus {
+  border-color: var(--brand-red) !important;
+  box-shadow: 0 0 0 3.5px rgba(220, 38, 38, 0.12) !important;
+  outline: none !important;
+  background: #ffffff !important;
 }
 
 .admin-submit {
@@ -1394,7 +1431,7 @@ body {
 }
 
 .admin-record-card {
-  padding: 20px !important;
+  padding: 24px !important;
   background: #f8fafc !important;
   border-radius: 12px !important;
   border: 1px solid var(--line) !important;
@@ -1402,6 +1439,14 @@ body {
   justify-content: space-between !important;
   align-items: center !important;
   margin-bottom: 16px !important;
+  transition: all 0.3s var(--ease-formal) !important;
+}
+
+.admin-record-card:hover {
+  background: #ffffff !important;
+  border-color: var(--brand-red) !important;
+  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.05) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* Admin Dashboard Enhancements */
@@ -2919,6 +2964,9 @@ textarea {
 
 .whats-new-copy {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .whats-new-copy .section-kicker {
@@ -3341,7 +3389,7 @@ textarea {
 .whats-new-hero-card {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .whats-new-heading {
@@ -3354,43 +3402,46 @@ textarea {
 }
 
 .featured-event-title {
-  font-size: 1.35rem !important;
-  font-weight: 800 !important;
+  font-size: 1.5rem !important;
+  font-weight: 850 !important;
   color: var(--navy-900);
-  margin: 18px 0 8px !important;
-  line-height: 1.25;
+  margin: 0 !important;
+  line-height: 1.2;
 }
 
 .featured-event-desc {
-  font-size: 0.92rem !important;
+  font-size: 0.95rem !important;
   color: var(--text-soft) !important;
-  line-height: 1.6 !important;
-  margin-bottom: 20px !important;
+  line-height: 1.7 !important;
+  margin: 0 !important;
 }
 
 /* Premium metadata grid and pills */
 .featured-event-meta-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 18px;
+  gap: 16px;
+  margin: 0 !important;
 }
 
 .event-meta-pill {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
-  padding: 12px 14px;
+  gap: 6px;
+  padding: 14px;
   background: var(--paper-soft);
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid var(--line);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01);
+  transition: all 0.3s var(--ease-formal);
 }
 
 .event-meta-pill:hover {
   background: #ffffff;
   border-color: var(--brand-red);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.05);
 }
 
 .meta-pill-label {
@@ -3402,7 +3453,7 @@ textarea {
 }
 
 .meta-pill-value {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--navy-900);
   font-weight: 700;
   word-break: break-word;
@@ -3420,8 +3471,8 @@ textarea {
 .featured-event-actions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .btn-register-primary {
@@ -3656,11 +3707,12 @@ textarea {
 
 /* Right Hero Interactive Inquiry Form Card */
 .inquiry-card {
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
-  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  padding: 32px;
   position: relative;
   overflow: hidden;
 }
@@ -3670,6 +3722,8 @@ textarea {
   position: absolute;
   top: 0; left: 0; right: 0; height: 5px;
   background: linear-gradient(90deg, var(--brand-red) 0%, #b91c1c 100%);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 }
 
 .inquiry-card-header {
@@ -5096,7 +5150,7 @@ textarea {
 .inquiry-card {
   width: 100%;
   align-self: center;
-  padding: 34px 28px;
+  padding: 36px 32px !important;
 }
 
 .whats-new-hero-card {
@@ -5279,7 +5333,7 @@ textarea {
   }
 
   .inquiry-card {
-    padding: 28px 20px;
+    padding: 28px 32px !important;
   }
 
   .whats-new-hero-card {
@@ -5992,7 +6046,7 @@ body {
 }
 
 .inquiry-card {
-  padding: 28px;
+  padding: 32px !important;
   transform: perspective(1100px) rotateY(-5deg);
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -6923,6 +6977,18 @@ body {
   .recruitment-slot-premium:hover .recruitment-active-badge {
     transform: translate3d(0, 0, 32px);
     transition: transform 0.2s ease;
+  }
+}
+
+/* Custom premium overrides for What's New / Spotlight Card UI Spacing & Border Radius */
+@media (hover: hover) and (min-width: 981px) {
+  .inquiry-card {
+    padding: 12px !important; /* perfectly aligns with inset: 12px of inquiry-card::after */
+  }
+
+  .whats-new-hero-card {
+    padding: 24px 28px 28px !important; /* luxurious internal padding inside the 3D-tilting border box */
+    border-radius: 12px !important; /* matches outer card's border radius offset by padding */
   }
 }
 
@@ -8401,7 +8467,7 @@ body {
 }
 
 .calendar-integration-box {
-  margin-top: 16px;
+  margin: 0 !important;
   display: flex;
   align-items: center;
   gap: 12px;

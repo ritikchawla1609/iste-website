@@ -16,6 +16,35 @@ export default function PublicShell({
   const [loginOpen, setLoginOpen] = useState(false);
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
+  const [latestEventNotice, setLatestEventNotice] = useState(null);
+
+  useEffect(() => {
+    async function fetchNotice() {
+      try {
+        const res = await fetch("/api/public/site-data");
+        const data = await res.json();
+        if (data && data.events && data.events.length > 0) {
+          const now = new Date();
+          const upcoming = data.events.find(e => {
+            const evDate = new Date(`${e.eventDate}T${e.startTime || '00:00'}:00`);
+            return evDate >= now;
+          }) || data.events[0];
+          
+          if (upcoming) {
+            const eventDateFormatted = new Date(upcoming.eventDate).toLocaleDateString('en-IN', {
+              day: 'numeric',
+              month: 'short',
+              year: 'numeric'
+            });
+            setLatestEventNotice(`Upcoming Event: ${upcoming.name} on ${eventDateFormatted} at ${upcoming.venue}!`);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load site data in shell:", err);
+      }
+    }
+    fetchNotice();
+  }, []);
 
   useEffect(() => {
     const shouldSkipMotion =
@@ -119,7 +148,13 @@ export default function PublicShell({
           <div className="notice-strip" aria-label="Chapter notice and contact links">
             <div className="notice-strip-track">
               <span className="notice-label">Notice</span>
-              <strong>{FIXED_NOTICE_BANNER}</strong>
+              {latestEventNotice ? (
+                <Link href="/events" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  <strong>{latestEventNotice}</strong>
+                </Link>
+              ) : (
+                <strong>{FIXED_NOTICE_BANNER}</strong>
+              )}
             </div>
             <div className="notice-strip-links">
               <a href="mailto:iste@cumail.in">Email Support</a>

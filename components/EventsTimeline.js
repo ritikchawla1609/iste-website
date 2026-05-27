@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import GoogleFormModal from "./GoogleFormModal";
 import { safeUrl } from "@/lib/presentation";
 
 function formatCalendarDates(dateStr) {
@@ -61,14 +60,6 @@ function EventCountdown({ deadlineStr }) {
 }
 
 export default function EventsTimeline({ events }) {
-  const [selectedEvent, setSelectedEvent] = useState(null);
-
-  function handleRegisterClick(e, event) {
-    if (event.googleFormLink) {
-      e.preventDefault();
-      setSelectedEvent(event);
-    }
-  }
 
   return (
     <>
@@ -149,31 +140,42 @@ export default function EventsTimeline({ events }) {
                         <button 
                           disabled 
                           className="primary-btn disabled-btn"
-                          style={{ cursor: 'not-allowed', opacity: 0.5 }}
+                          style={{ cursor: 'not-allowed', opacity: 0.5, flex: 1 }}
                         >
                           Registration Closed
                         </button>
                       ) : (
-                        event.googleFormLink ? (
-                          <button 
-                            onClick={(e) => handleRegisterClick(e, event)} 
+                        event.registrationLink ? (
+                          <a 
+                            href={safeUrl(event.registrationLink)} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
                             className="primary-btn"
-                            style={{ cursor: 'pointer', border: 'none', font: 'inherit' }}
+                            style={{ flex: 1 }}
                           >
-                            Secure Your Spot
-                          </button>
+                            Apply Now
+                          </a>
                         ) : (
-                          event.registrationLink && (
-                            <a 
-                              href={safeUrl(event.registrationLink)} 
-                              target="_blank" 
-                              rel="noreferrer" 
-                              className="primary-btn"
-                            >
-                              Secure Your Spot
-                            </a>
-                          )
+                          <button 
+                            disabled 
+                            className="primary-btn disabled-btn"
+                            style={{ cursor: 'not-allowed', opacity: 0.5, flex: 1 }}
+                          >
+                            Apply
+                          </button>
                         )
+                      )}
+
+                      {event.googleFormLink && (
+                        <a 
+                          href={safeUrl(event.googleFormLink)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="secondary-btn"
+                          style={{ flex: 1 }}
+                        >
+                          Feedback Form
+                        </a>
                       )}
                     </div>
                   </div>
@@ -199,12 +201,7 @@ export default function EventsTimeline({ events }) {
         </div>
       </section>
 
-      <GoogleFormModal 
-        open={Boolean(selectedEvent)} 
-        onClose={() => setSelectedEvent(null)} 
-        formUrl={selectedEvent?.googleFormLink} 
-        eventName={selectedEvent?.name} 
-      />
+
     </>
   );
 }
