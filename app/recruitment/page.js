@@ -190,7 +190,7 @@ export default function RecruitmentPage() {
  
             <div className="recruitment-footer-note">
               <p>
-                Not sure where you fit? Reach out to us at <span>official@istecu.org</span>
+                Not sure where you fit? Reach out to us at <a href="mailto:iste@cumail.in" style={{ textDecoration: 'none' }}><span style={{ color: '#d71920' }}>iste@cumail.in</span></a>
               </p>
             </div>
           </article>

@@ -93,11 +93,11 @@ export default function TeamPage() {
             <span className="section-kicker">The Faces of ISTE</span>
           </div>
           <h1 className="hero-title">Our <span className="brand-text">Dedicated Team</span></h1>
+          <div className="title-accent-line" style={{ margin: '20px auto 30px' }}></div>
           <p className="hero-description">
             Meet the passionate individuals who work behind the scenes to make the ISTE Student Chapter 
             at Chandigarh University a beacon of technical excellence.
           </p>
-          <div className="title-accent-line"></div>
         </section>
 
         <section className="about-team-section">

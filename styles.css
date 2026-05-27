@@ -977,7 +977,7 @@ body {
 .footer-nav-list a:hover { color: #fff; transform: translateX(5px); }
 
 .contact-info-list { display: flex; flex-direction: column; gap: 18px; }
-.contact-item { display: flex; align-items: flex-start; gap: 14px; color: #94a3b8; font-size: 0.95rem; }
+.contact-item { display: flex; align-items: center; gap: 14px; color: #94a3b8; font-size: 0.95rem; }
 .contact-icon { color: var(--brand-red); font-size: 1.1rem; }
 
 .footer-bottom { background: #000; padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -4205,7 +4205,8 @@ textarea {
 
 /* Premium Button System */
 .btn-premium-primary,
-.btn-premium-secondary {
+.btn-premium-secondary,
+.btn-premium-dark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -5891,14 +5892,14 @@ body {
   color: #ffffff;
 }
 
-.hero-kicker {
+.home-hero-grid .hero-kicker {
   color: #fecaca;
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.16);
   box-shadow: none;
 }
 
-.hero-title {
+.home-hero-grid .hero-title {
   max-width: 680px;
   color: #ffffff;
   font-size: clamp(2.4rem, 4.4vw, 4.35rem) !important;
@@ -5906,16 +5907,16 @@ body {
   margin-bottom: 20px;
 }
 
-.hero-title .hero-accent {
+.home-hero-grid .hero-title .hero-accent {
   color: #ff3338;
   text-shadow: 0 18px 34px rgba(239, 43, 47, 0.32);
 }
 
-.hero-title .hero-accent::after {
+.home-hero-grid .hero-title .hero-accent::after {
   background: rgba(255, 255, 255, 0.13);
 }
 
-.hero-desc {
+.home-hero-grid .hero-desc {
   max-width: 640px;
   color: #cbd5e1 !important;
   font-size: clamp(1rem, 1.15vw, 1.12rem) !important;
@@ -7298,7 +7299,7 @@ body {
   margin: 0;
 }
 
-.past-event-topline span {
+.past-event-topline > span {
   width: 46px;
   height: 46px;
   display: grid;
