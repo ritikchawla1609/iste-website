@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/lib/auth";
 import { deleteRecruitment, updateRecruitment } from "@/lib/site";
@@ -13,6 +14,10 @@ export async function PUT(request, context) {
     const { id } = await context.params;
     const recruitmentId = parseRouteId(id, "Recruitment id");
     const recruitment = await updateRecruitment(recruitmentId, payload, admin.id);
+
+    revalidatePath("/recruitment");
+    revalidatePath("/");
+
     return NextResponse.json({ recruitment });
   } catch (error) {
     return jsonError(error);
@@ -25,6 +30,10 @@ export async function DELETE(request, context) {
     const { id } = await context.params;
     const recruitmentId = parseRouteId(id, "Recruitment id");
     await deleteRecruitment(recruitmentId, admin.id);
+
+    revalidatePath("/recruitment");
+    revalidatePath("/");
+
     return NextResponse.json({ deleted: true });
   } catch (error) {
     return jsonError(error);

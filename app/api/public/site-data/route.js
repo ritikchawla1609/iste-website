@@ -3,6 +3,7 @@ import { getPublicSiteData } from "@/lib/site";
 import { jsonError } from "@/lib/http";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/lib/auth";
 import { updateNoticeContent } from "@/lib/site";
@@ -11,6 +12,9 @@ export async function PUT(request) {
     const admin = await requireAdmin(request.cookies);
     const payload = await readJson(request);
     const notice = await updateNoticeContent(payload, admin.id);
+
+    revalidatePath("/");
+
     return NextResponse.json({ notice });
   } catch (error) {
     return jsonError(error);

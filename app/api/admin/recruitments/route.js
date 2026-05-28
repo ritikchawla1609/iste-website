@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/lib/auth";
 import { createRecruitment, getAdminRecruitmentsData } from "@/lib/site";
@@ -20,6 +21,10 @@ export async function POST(request) {
     const admin = await requireAdmin(request.cookies);
     const payload = await readJson(request);
     const recruitment = await createRecruitment(payload, admin.id);
+
+    revalidatePath("/recruitment");
+    revalidatePath("/");
+
     return NextResponse.json({ recruitment }, { status: 201 });
   } catch (error) {
     return jsonError(error);

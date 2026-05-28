@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/lib/auth";
 import { createEvent, getAdminEventsData } from "@/lib/site";
@@ -20,6 +21,10 @@ export async function POST(request) {
     const admin = await requireAdmin(request.cookies);
     const payload = await readJson(request);
     const event = await createEvent(payload, admin.id);
+
+    revalidatePath("/events");
+    revalidatePath("/");
+
     return NextResponse.json({ event }, { status: 201 });
   } catch (error) {
     return jsonError(error);
