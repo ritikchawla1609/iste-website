@@ -4434,6 +4434,45 @@ textarea {
   box-shadow: 0 10px 24px rgba(30, 41, 59, 0.25);
 }
 
+.about-visionaries-btn.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  padding: 18px 40px;
+  font-weight: 800;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border-radius: 14px;
+  
+  /* Glassmorphism with Red Background & White Text */
+  background: rgba(220, 38, 38, 0.9) !important;
+  backdrop-filter: blur(12px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 8px 32px 0 rgba(220, 38, 38, 0.25) !important;
+  
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer;
+}
+
+.about-visionaries-btn.glass-btn:hover {
+  background: var(--navy-900) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 14px 40px 0 rgba(30, 41, 59, 0.35) !important;
+}
+
+@media (max-width: 768px) {
+  .about-visionaries-btn.glass-btn {
+    width: 80% !important;
+  }
+}
+
 .btn-premium-secondary {
   background: transparent;
   color: var(--navy-900);
