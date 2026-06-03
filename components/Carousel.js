@@ -7,31 +7,31 @@ const carouselItems = [
     id: 1,
     image: "/team/carousel/c1.jpeg",
     title: "Innovation & Excellence",
-    description: "Empowering students through technical education and professional growth."
+    description: "Empowering students through technical leadership and professional growth."
   },
   {
     id: 2,
-    image: "/team/carousel/c2.jpeg",
+    image: "/team/carousel/c4.jpeg",
     title: "Collaborative Learning",
-    description: "Join a vibrant community of passionate learners, developers, and innovators."
+    description: "Building a vibrant community of active learners, developers, and future leaders."
   },
   {
     id: 3,
-    image: "/team/carousel/c3.jpeg",
-    title: "Technical Workshops",
-    description: "Gain hands-on experience through expert-led seminars and industry bootcamps."
+    image: "/team/carousel/c2.jpeg",
+    title: "Hackathons & Competitions",
+    description: "Fostering competitive spirit and problem-solving through hands-on technical contests."
   },
   {
     id: 4,
-    image: "/team/carousel/c4.jpeg",
+    image: "/team/carousel/c5.jpeg",
     title: "Interactive Sessions",
-    description: "Interact with senior members, mentors, and industry professionals in key domains."
+    description: "Presenting ideas, demonstrating projects, and getting mentored by industry experts."
   },
   {
     id: 5,
-    image: "/team/carousel/c5.jpeg",
+    image: "/team/carousel/c3.jpeg",
     title: "Chapter Milestones",
-    description: "Building a culture of academic and practical excellence across campus."
+    description: "Organizing major seminars, official events, and national chapter programs."
   }
 ];
 
