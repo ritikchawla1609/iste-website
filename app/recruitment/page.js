@@ -12,11 +12,12 @@ export default function RecruitmentPage() {
   const [currentMember, setCurrentMember] = useState(null);
   const [recruitments, setRecruitments] = useState([]);
   const [domainStatus, setDomainStatus] = useState({
-    "01": "active",
-    "02": "active",
-    "03": "active",
-    "04": "active",
-    "05": "active"
+    "01": "closed",
+    "02": "closed",
+    "03": "closed",
+    "04": "closed",
+    "05": "closed",
+    "06": "closed"
   });
 
   useEffect(() => {
@@ -26,18 +27,16 @@ export default function RecruitmentPage() {
         if (session.authenticated && session.role === "member") {
           setCurrentMember(session.uid);
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     async function loadSiteData() {
       try {
         const response = await apiRequest("/api/public/site-data");
-        if (response.domainStatus) {
-          setDomainStatus(response.domainStatus);
-        }
+        // domainStatus is managed locally — not overridden from API
         if (response.recruitments) {
           setRecruitments(response.recruitments);
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     checkMember();
     loadSiteData();
@@ -73,6 +72,13 @@ export default function RecruitmentPage() {
       name: "Design Team",
       accent: "var(--navy-900)",
       brief: "The creative visionaries. We synthesize aesthetics with functionality to create professional branding, UI/UX, and visual assets for all projects."
+    },
+    {
+      id: "06",
+      name: "Sponsorship",
+      accent: "#f59e0b",
+      brief: "Partner with ISTE to gain unparalleled visibility among the next generation of engineers and innovators. Fuel our events, workshops, and community initiatives.",
+      sponsor: true
     }
   ].map((domain) => {
     const team = RECRUITMENT_TEAMS.find((entry) => entry.id === domain.id);
@@ -86,18 +92,11 @@ export default function RecruitmentPage() {
           <aside className="recruitment-member-drawer">
             <span className="recruitment-drawer-glow glow-one" aria-hidden="true" />
             <span className="recruitment-drawer-glow glow-two" aria-hidden="true" />
-            <p className="hero-kicker">How To Register In ISTE?</p>
+            <p className="hero-kicker drawer-kicker-cta">REGISTER NOW !!</p>
             <h1 className="title-hero-premium">Become an ISTE Member</h1>
-            <p className="recruitment-award-line">Best Professional Society Award</p>
             <p className="hero-desc">
               Students can register through the official ISTE Student Chapter process and become part of a community built around technical learning, leadership, and innovation.
             </p>
-
-            <div className="recruitment-signal-row" aria-label="ISTE membership highlights">
-              <span>5 Domain Teams</span>
-              <span>Live Status</span>
-              <span>Member Access</span>
-            </div>
 
             <div className="recruitment-action-row">
               <button
@@ -141,6 +140,7 @@ export default function RecruitmentPage() {
                   const applyUrl = resolveTeamApplyUrl(recruitments, domain);
                   const canApply = isActive && Boolean(applyUrl);
 
+
                   return (
                     <div
                       key={domain.id}
@@ -179,6 +179,7 @@ export default function RecruitmentPage() {
                     </div>
                   );
                 })}
+
               </div>
             </article>
           )}

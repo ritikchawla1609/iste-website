@@ -9084,8 +9084,7 @@ body {
   z-index: -2;
   border-radius: inherit;
   background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.12), transparent 34%),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 42px);
+    linear-gradient(120deg, rgba(255, 255, 255, 0.1), transparent 34%);
   opacity: 0.7;
 }
 
@@ -9124,10 +9123,10 @@ body {
 
 .recruitment-member-drawer .hero-desc {
   max-width: 560px;
-  margin: 18px 0 0 !important;
-  color: #dbeafe !important;
-  font-size: 0.94rem !important;
-  line-height: 1.52 !important;
+  margin: 14px 0 0 !important;
+  color: rgba(219, 234, 254, 0.85) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
 }
 
 .recruitment-member-drawer .recruitment-award-line {
@@ -9160,32 +9159,57 @@ body {
 }
 
 .recruitment-member-drawer .recruitment-action-row {
-  justify-content: flex-start;
-  gap: 12px;
-  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+  width: 100%;
 }
 
 .recruitment-member-drawer .btn-premium-dark,
 .recruitment-member-drawer .btn-premium-primary,
 .recruitment-member-drawer .member-pill {
-  min-height: 46px;
+  width: 100%;
+  min-height: 48px;
   padding-inline: 20px;
   font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
   white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 160ms var(--ease-formal);
 }
 
 .recruitment-member-drawer button.btn-premium-dark {
   border: 0;
   cursor: pointer;
-  background:
-    linear-gradient(135deg, #ffffff, #ffe4e6) !important;
+  background: linear-gradient(135deg, #ffffff, #ffe4e6) !important;
   color: #111827 !important;
-  box-shadow: 0 18px 36px rgba(239, 43, 47, 0.28) !important;
+  box-shadow: 0 10px 28px rgba(239, 43, 47, 0.26) !important;
 }
 
 .recruitment-member-drawer button.btn-premium-dark:hover {
   translate: 0 -2px;
-  box-shadow: 0 24px 48px rgba(239, 43, 47, 0.36) !important;
+  box-shadow: 0 16px 36px rgba(239, 43, 47, 0.36) !important;
+}
+
+.recruitment-member-drawer .btn-premium-primary {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: none !important;
+}
+
+.recruitment-member-drawer .btn-premium-primary:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  translate: 0 -1px;
 }
 
 .recruitment-drawer-layout:not(.is-team-open) .recruitment-member-drawer {
@@ -9210,8 +9234,7 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(239, 43, 47, 0.12), transparent 28%),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 34px);
+    linear-gradient(90deg, rgba(239, 43, 47, 0.1), transparent 28%);
 }
 
 .recruitment-drawer-layout.is-team-open .recruitment-openings-panel {
@@ -9239,9 +9262,11 @@ body {
 
 .recruitment-page .recruitment-slot-premium {
   min-height: 0;
-  padding: 12px !important;
-  border-radius: 12px !important;
-  border-color: color-mix(in srgb, var(--team-accent) 44%, rgba(255, 255, 255, 0.1)) !important;
+  padding: 16px !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.28) !important;
   animation: teamCardPop 260ms var(--ease-formal) both;
   animation-delay: calc(var(--card-index) * 45ms);
 }
@@ -9253,9 +9278,8 @@ body {
   border-radius: inherit;
   pointer-events: none;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--team-accent) 25%, transparent), transparent 42%),
-    radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--team-accent) 42%, transparent), transparent 34%);
-  opacity: 0.85;
+    radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--team-accent) 30%, transparent), transparent 50%);
+  opacity: 0.7;
 }
 
 .team-card-number {
@@ -9271,11 +9295,13 @@ body {
 .recruitment-page .recruitment-slot-premium h3 {
   margin: 7px 0 5px !important;
   font-size: 0.94rem !important;
+  color: #ffffff !important;
 }
 
 .recruitment-page .recruitment-slot-premium p {
-  font-size: 0.7rem !important;
-  line-height: 1.32 !important;
+  font-size: 0.72rem !important;
+  line-height: 1.42 !important;
+  color: #cbd5e1 !important;
 }
 
 .recruitment-page .recruitment-active-badge {
@@ -9300,8 +9326,80 @@ body {
 
 .recruitment-page .recruitment-slot-premium:hover {
   transform: translateY(-5px) scale(1.015) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
   border-color: color-mix(in srgb, var(--team-accent) 72%, #ffffff) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(239, 43, 47, 0.2) !important;
 }
+
+/* Ensure heading text is white inside the dark openings panel */
+.recruitment-page .recruitment-openings-panel .hero-kicker {
+  color: rgba(255, 255, 255, 0.7) !important;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.recruitment-team-heading .team-count-pill {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* "REGISTER NOW !!" kicker — bold, no lines, eye-catching */
+.recruitment-member-drawer .drawer-kicker-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(239, 43, 47, 0.22), rgba(239, 43, 47, 0.10));
+  border: 1px solid rgba(239, 43, 47, 0.42);
+  color: #fca5a5 !important;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: none;
+  box-shadow: 0 0 16px rgba(239, 43, 47, 0.18);
+  animation: registerPulse 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes registerPulse {
+  from { box-shadow: 0 0 10px rgba(239, 43, 47, 0.18); }
+  to   { box-shadow: 0 0 22px rgba(239, 43, 47, 0.38); }
+}
+
+/* Sponsorship card — golden accent, spans full row on small grids */
+.recruitment-sponsorship-card {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.10) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+  border: 1px solid rgba(251, 191, 36, 0.28) !important;
+  box-shadow: 0 4px 28px rgba(251, 191, 36, 0.12), 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.recruitment-sponsorship-card:hover {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+  border-color: rgba(251, 191, 36, 0.55) !important;
+  box-shadow: 0 12px 40px rgba(251, 191, 36, 0.22), 0 0 20px rgba(251, 191, 36, 0.15) !important;
+}
+
+.recruitment-sponsorship-card h3 {
+  color: #fde68a !important;
+}
+
+.recruitment-sponsor-btn {
+  background: rgba(251, 191, 36, 0.14) !important;
+  border: 1px solid rgba(251, 191, 36, 0.36) !important;
+  color: #fde68a !important;
+}
+
+.recruitment-sponsor-btn:hover {
+  background: #f59e0b !important;
+  border-color: #f59e0b !important;
+  color: #1a1a1a !important;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4) !important;
+}
+
+
 
 @media (max-width: 1120px) {
   .recruitment-drawer-layout,
