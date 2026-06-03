@@ -967,19 +967,19 @@ body {
 }
 
 @media (min-width: 769px) {
-  .team-grid {
+  .team-grid.team-grid-featured {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 32px;
   }
   
-  .team-member-card {
+  .team-grid-featured .team-member-card {
     width: 20vw !important;
     height: 35vh !important;
   }
   
-  .member-photo {
+  .team-grid-featured .member-photo {
     flex: 1;
     min-height: 0;
     aspect-ratio: auto !important;
