@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import PublicShell from "@/components/PublicShell";
 import MemberLoginModal from "@/components/MemberLoginModal";
 import { apiRequest } from "@/lib/client-api";
-import { safeUrl } from "@/lib/presentation";
+import { RECRUITMENT_TEAMS, resolveTeamApplyUrl } from "@/lib/presentation";
 
 export default function RecruitmentPage() {
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
@@ -74,7 +74,10 @@ export default function RecruitmentPage() {
       accent: "var(--navy-900)",
       brief: "The creative visionaries. We synthesize aesthetics with functionality to create professional branding, UI/UX, and visual assets for all projects."
     }
-  ];
+  ].map((domain) => {
+    const team = RECRUITMENT_TEAMS.find((entry) => entry.id === domain.id);
+    return team ? { ...domain, keywords: team.keywords } : domain;
+  });
 
   return (
     <PublicShell activePath="/recruitment" noticeHref="/" noticeLabel="Return Home">
@@ -135,10 +138,7 @@ export default function RecruitmentPage() {
               <div className="recruitment-openings-grid">
                 {domains.map((domain, index) => {
                   const isActive = domainStatus[domain.id] === "active";
-                  const matchingRec = recruitments.find(r =>
-                    r.domain.toLowerCase().includes(domain.name.split(' ')[0].toLowerCase())
-                  );
-                  const applyUrl = safeUrl(matchingRec?.applicationLink);
+                  const applyUrl = resolveTeamApplyUrl(recruitments, domain);
                   const canApply = isActive && Boolean(applyUrl);
 
                   return (

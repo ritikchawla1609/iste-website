@@ -44,6 +44,16 @@ const nextConfig = {
         permanent: true
       },
       {
+        source: "/admin-links",
+        destination: "/admin-recruitment",
+        permanent: true
+      },
+      {
+        source: "/admin-links.html",
+        destination: "/admin-recruitment",
+        permanent: true
+      },
+      {
         source: "/admin-notice.html",
         destination: "/admin-notice",
         permanent: true

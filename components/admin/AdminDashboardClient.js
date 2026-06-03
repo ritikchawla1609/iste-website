@@ -119,10 +119,6 @@ export default function AdminDashboardClient({
                   <strong>Recruitment</strong>
                   <span>Manage vacancies</span>
                 </Link>
-                <Link className="admin-nav-tile" href="/admin-links">
-                  <strong>Link Adder</strong>
-                  <span>Update form links</span>
-                </Link>
                 <Link className="admin-nav-tile" href="/admin-past-events">
                   <strong>History</strong>
                   <span>Gallery & Winners</span>

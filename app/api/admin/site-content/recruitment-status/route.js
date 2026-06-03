@@ -4,22 +4,15 @@ import { revalidatePath } from "next/cache";
 import { requireAdmin } from "@/lib/auth";
 import { getDb, getSiteContentRecord, setSiteContentRecord, createAuditLog } from "@/lib/db";
 import { jsonError, readJson } from "@/lib/http";
+import { DEFAULT_RECRUITMENT_STATUS } from "@/lib/presentation";
 
 export const runtime = "nodejs";
-
-const DEFAULT_STATUS = {
-  "01": "active",
-  "02": "active",
-  "03": "active",
-  "04": "active",
-  "05": "active"
-};
 
 export async function GET(request) {
   try {
     await requireAdmin(request.cookies);
     const database = await getDb();
-    const domainStatus = await getSiteContentRecord(database, "recruitment_status", DEFAULT_STATUS);
+    const domainStatus = await getSiteContentRecord(database, "recruitment_status", DEFAULT_RECRUITMENT_STATUS);
     return NextResponse.json({ domainStatus });
   } catch (error) {
     return jsonError(error);
