@@ -123,7 +123,6 @@ export default function TeamPage() {
             {/* Faculty Advisors Section */}
             <div className="team-group">
               <div className="team-group-header">
-                <p className="section-kicker">Guidance</p>
                 <h2>Faculty Advisors</h2>
               </div>
               <div className="team-grid team-grid-featured">
@@ -136,12 +135,11 @@ export default function TeamPage() {
             {/* Office Bearers Section */}
             <div className="team-group">
               <div className="team-group-header">
-                <p className="section-kicker">Leadership</p>
                 <h2>Office Bearers</h2>
               </div>
               <div className="team-grid team-grid-featured">
                 {OFFICE_BEARERS.map((member) => (
-                  <TeamCard key={member.name} member={member} isLead={true} />
+                  <TeamCard key={member.name} member={member} isLead={true} photoOnly={true} />
                 ))}
               </div>
             </div>
@@ -149,7 +147,6 @@ export default function TeamPage() {
             {/* Joint Secretary Section */}
             <div className="team-group">
               <div className="team-group-header">
-                <p className="section-kicker">Administrative Support</p>
                 <h2>Joint Secretary</h2>
               </div>
               <div className="team-grid">
@@ -163,7 +160,6 @@ export default function TeamPage() {
             {DOMAIN_TEAMS.map((group) => (
               <div key={group.domain} className="team-group" style={{ marginTop: '60px' }}>
                 <div className="team-group-header" style={{ borderBottom: `2px solid ${group.color}`, paddingBottom: '16px', marginBottom: '32px' }}>
-                  <p className="section-kicker" style={{ color: group.color }}>Domain</p>
                   <h2 style={{ color: 'var(--navy-900)' }}>{group.domain}</h2>
                 </div>
                 
@@ -198,7 +194,7 @@ export default function TeamPage() {
   );
 }
 
-function TeamCard({ member, isLead = false, isSmall = false, accentColor = 'var(--brand-red)' }) {
+function TeamCard({ member, isLead = false, isSmall = false, accentColor = 'var(--brand-red)', photoOnly = false }) {
   const avatarUrl = member.image && !member.image.includes("member-placeholder")
     ? member.image
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=0f172a&color=fff&size=256`;
@@ -208,7 +204,7 @@ function TeamCard({ member, isLead = false, isSmall = false, accentColor = 'var(
       className={`team-member-card ${isSmall ? 'is-small' : ''}`} 
       style={{ borderTop: isLead ? `4px solid ${accentColor}` : undefined }}
     >
-      <div className="member-photo">
+      <div className="member-photo" style={photoOnly ? { marginBottom: 0 } : undefined}>
         <img 
           src={avatarUrl} 
           alt={member.name} 
@@ -216,10 +212,12 @@ function TeamCard({ member, isLead = false, isSmall = false, accentColor = 'var(
           decoding="async"
         />
       </div>
-      <div className="member-info">
-        <h3 style={{ fontSize: isSmall ? '1rem' : '1.2rem' }}>{member.name}</h3>
-        <p className="member-role" style={{ fontSize: isSmall ? '0.75rem' : '0.85rem' }}>{member.role}</p>
-      </div>
+      {!photoOnly && (
+        <div className="member-info">
+          <h3 style={{ fontSize: isSmall ? '1rem' : '1.2rem' }}>{member.name}</h3>
+          <p className="member-role" style={{ fontSize: isSmall ? '0.75rem' : '0.85rem' }}>{member.role}</p>
+        </div>
+      )}
     </div>
   );
 }
