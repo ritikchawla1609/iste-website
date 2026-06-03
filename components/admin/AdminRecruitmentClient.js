@@ -6,7 +6,7 @@ import { apiRequest } from "@/lib/client-api";
 import { formatDate, getStatusActionLabel, getStatusBadgeLabel, RECRUITMENT_TEAMS } from "@/lib/presentation";
 
 function setRecruitmentValues(form, values) {
-  form.elements.status.value = values.status || "draft";
+  form.elements.status.value = values.status || "published";
   form.elements.title.value = values.title || "";
   form.elements.organization.value = values.organization || "";
   form.elements.domain.value = values.domain || "";
@@ -66,7 +66,7 @@ export default function AdminRecruitmentClient({
     }
 
     form.reset();
-    form.elements.status.value = "draft";
+    form.elements.status.value = "published";
     setEditingId(null);
     setStatus({ type: "", message: "" });
   }
@@ -84,7 +84,7 @@ export default function AdminRecruitmentClient({
 
     const formData = new FormData(form);
     const payload = {
-      status: String(formData.get("status") || "draft"),
+      status: String(formData.get("status") || "published"),
       title: String(formData.get("title") || ""),
       organization: String(formData.get("organization") || ""),
       domain: String(formData.get("domain") || ""),
@@ -198,9 +198,9 @@ export default function AdminRecruitmentClient({
           <form ref={formRef} className="admin-form" onSubmit={handleSubmit}>
             <label>
               Status
-              <select name="status" required defaultValue="draft">
-                <option value="draft">Draft</option>
+              <select name="status" required defaultValue="published">
                 <option value="published">Published</option>
+                <option value="draft">Draft</option>
               </select>
             </label>
             <label>
