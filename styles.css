@@ -9296,7 +9296,7 @@ body {
 
 .recruitment-page .recruitment-openings-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 20px;
 }
 
 .recruitment-page .recruitment-slot-premium {
@@ -9453,7 +9453,7 @@ body {
 
   .recruitment-page .recruitment-openings-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 18px;
   }
 }
 
@@ -9538,7 +9538,7 @@ body {
 
   .recruitment-page .recruitment-openings-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px;
+    gap: 17px;
   }
 
   .recruitment-page .recruitment-openings-panel {
@@ -9604,7 +9604,7 @@ body {
 
   .recruitment-page .recruitment-openings-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 16px;
   }
 
   .recruitment-team-heading {
@@ -9681,7 +9681,7 @@ body {
 
   .recruitment-page .recruitment-openings-grid {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 14px;
   }
 
   .recruitment-page .recruitment-slot-premium {
