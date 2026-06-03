@@ -188,12 +188,7 @@ export default function PastEventsClient({ events }) {
                   </>
                 )}
               </div>
-            ) : (
-              <div className="modal-no-images-banner">
-                <div className="modal-no-images-banner-overlay" />
-                <span>{selectedEvent.name}</span>
-              </div>
-            )}
+            ) : null}
 
             {/* Modal Body Contents */}
             <div className="event-modal-body">
