@@ -1140,69 +1140,104 @@ body.no-scroll {
   flex-shrink: 0;
 }
 
-/* Responsive grid */
+/* Responsive grid overrides to prevent cards and photos from becoming too small */
 @media (max-width: 860px) {
-  .team-grid {
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 16px;
-  }
-  
+  .team-grid,
   .team-grid-featured {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-  
-  .team-grid-featured .team-member-card {
-    width: auto !important;
-    max-width: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 16px !important;
   }
 
-  /* Keep mobile size hierarchy balanced */
+  /* Maintain readable sizing hierarchy on mobile without squishing */
   .team-member-card.is-faculty {
-    width: auto !important;
-    max-width: 240px !important;
+    width: 250px !important;
+    max-width: 250px !important;
   }
   .team-grid-featured .team-member-card:not(.is-faculty) {
-    width: auto !important;
-    max-width: 210px !important;
+    width: 220px !important;
+    max-width: 220px !important;
   }
   .team-domain-lead-col .team-member-card {
-    width: auto !important;
-    max-width: 185px !important;
+    width: 200px !important;
+    max-width: 200px !important;
   }
   .team-member-card.is-small {
-    width: auto !important;
-    max-width: 160px !important;
+    width: 150px !important;
+    max-width: 150px !important;
+  }
+
+  /* Show designation (role) by default on mobile devices and remove hover slide effect */
+  .team-member-card .tmc-role {
+    opacity: 1 !important;
+    max-height: 24px !important;
+    transform: translateY(0) !important;
+    margin-top: 4px !important;
+    color: #ef2b2f !important;
+  }
+
+  /* Disable zoom and hover scale effects on mobile */
+  .team-member-card .tmc-photo {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  
+  .team-member-card:hover .tmc-photo {
+    transform: none !important;
+  }
+  
+  .team-member-card:hover .tmc-name {
+    font-size: inherit !important;
   }
 }
 
 @media (max-width: 600px) {
-  .team-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 12px;
+  .team-grid,
+  .team-grid-featured {
+    gap: 12px !important;
   }
   
-  .team-grid-featured {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
+  .team-member-card.is-faculty {
+    width: 240px !important;
+    max-width: 240px !important;
   }
-
-  .tmc-title {
-    font-size: 0.72rem;
+  .team-grid-featured .team-member-card:not(.is-faculty) {
+    width: 210px !important;
+    max-width: 210px !important;
   }
-
-  .tmc-title span {
-    font-size: 0.68em;
+  .team-domain-lead-col .team-member-card {
+    width: 190px !important;
+    max-width: 190px !important;
+  }
+  .team-member-card.is-small {
+    width: 140px !important;
+    max-width: 140px !important;
   }
 }
 
 @media (max-width: 420px) {
+  /* On very small phones, keep cards at maximum possible size to keep photos clear */
   .team-grid,
   .team-grid-featured {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px !important;
+  }
+
+  .team-member-card.is-faculty {
+    width: 230px !important;
+    max-width: 230px !important;
+  }
+  .team-grid-featured .team-member-card:not(.is-faculty) {
+    width: 200px !important;
+    max-width: 200px !important;
+  }
+  .team-domain-lead-col .team-member-card {
+    width: 180px !important;
+    max-width: 180px !important;
+  }
+  .team-member-card.is-small {
+    width: 135px !important;
+    max-width: 135px !important;
   }
 }
 
@@ -4913,8 +4948,10 @@ textarea {
   }
 
   .team-members-subgrid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 16px !important;
   }
 
   .team-member-card.is-small .member-photo {
