@@ -961,9 +961,30 @@ body {
   color: #94a3b8;
   font-weight: 500;
   font-size: 0.8rem;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+  }
+  
+  .team-member-card {
+    width: 20vw !important;
+    height: 35vh !important;
+  }
+  
+  .member-photo {
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: auto !important;
+    margin-bottom: 12px;
+  }
 }
 
 .member-team-tag {
