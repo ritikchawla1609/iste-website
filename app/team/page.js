@@ -46,8 +46,9 @@ const DOMAIN_TEAMS = [
   {
     domain: "Design Team",
     color: "var(--navy-900)",
-    lead: { name: "Akshat", role: "Design Lead", image: "/team/member-placeholder.jpg" },
+    lead: { name: "Ridhima", role: "Design Lead", image: "/team/member-placeholder.jpg" },
     members: [
+      { name: "Akshat", role: "Team Member" },
       { name: "Garvita", role: "Team Member" },
       { name: "Pratishtha", role: "Team Member" }
     ]
