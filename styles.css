@@ -8655,14 +8655,14 @@ body {
 }
 
 .calendar-link.ocal {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #cbd5e1;
+  background: rgba(0, 120, 212, 0.1);
+  border: 1px solid rgba(0, 120, 212, 0.25);
+  color: #0078d4;
 }
 .calendar-link.ocal:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #0078d4;
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: #0078d4;
 }
 
 /* Countdown, maps, calendar styles (Events Timeline) */
@@ -8726,14 +8726,14 @@ body {
   border-color: #ef2b2f;
 }
 .timeline-calendar-buttons .cal-btn.ocal {
-  background: rgba(15, 23, 42, 0.03);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  color: #1e293b;
+  background: rgba(0, 120, 212, 0.08);
+  border: 1px solid rgba(0, 120, 212, 0.2);
+  color: #0078d4;
 }
 .timeline-calendar-buttons .cal-btn.ocal:hover {
-  background: #1e293b;
+  background: #0078d4;
   color: #ffffff;
-  border-color: #1e293b;
+  border-color: #0078d4;
 }
 
 /* Unified Glass Theme for Kicker Badges (Opportunities, Pillars, etc.) */
