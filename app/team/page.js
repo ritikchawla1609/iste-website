@@ -37,9 +37,10 @@ const DOMAIN_TEAMS = [
     color: "var(--navy-700)",
     lead: { name: "Tanisha Goyal", role: "Tech Lead", image: "/team/tanisha-goyal.png" },
     members: [
-      { name: "Aditya", role: "Team Member" },
-      { name: "Mehak", role: "Team Member" },
-      { name: "Kabir", role: "Team Member" }
+      { name: "Satvik", role: "Team Member" },
+      { name: "Kunal", role: "Team Member" },
+      { name: "Shubham", role: "Team Member" },
+      { name: "Sharik", role: "Team Member" }
     ]
   },
   {
@@ -55,11 +56,14 @@ const DOMAIN_TEAMS = [
   {
     domain: "Media Team",
     color: "var(--green)",
-    lead: { name: "Rohan", role: "Media Lead", image: "/team/member-placeholder.jpg" },
+    lead: { name: "Areeb", role: "Media Lead", image: "/team/member-placeholder.jpg" },
     members: [
-      { name: "Tanya", role: "Team Member" },
-      { name: "Yash", role: "Team Member" },
-      { name: "Anika", role: "Team Member" }
+      { name: "Mehul", role: "Team Member" },
+      { name: "Swayam", role: "Team Member" },
+      { name: "Aarit", role: "Team Member" },
+      { name: "Rimil", role: "Team Member" },
+      { name: "Saweta", role: "Team Member" },
+      { name: "Ruhani", role: "Team Member" }
     ]
   },
   {
@@ -67,9 +71,16 @@ const DOMAIN_TEAMS = [
     color: "var(--maroon)",
     lead: { name: "Sneha Yadav", role: "Event Lead", image: "/team/sneha-yadav.png" },
     members: [
-      { name: "Aarav", role: "Team Member" },
-      { name: "Sia", role: "Team Member" },
-      { name: "Pranav", role: "Team Member" }
+      { name: "Arnav", role: "Team Member" },
+      { name: "Dewanshu", role: "Team Member" },
+      { name: "Harsh", role: "Team Member" },
+      { name: "Maanas", role: "Team Member" },
+      { name: "Nitika", role: "Team Member" },
+      { name: "Prayag", role: "Team Member" },
+      { name: "Ritish", role: "Team Member" },
+      { name: "Shatrupa", role: "Team Member" },
+      { name: "Vaani", role: "Team Member" },
+      { name: "Dibyashree", role: "Team Member" }
     ]
   },
   {
@@ -77,9 +88,15 @@ const DOMAIN_TEAMS = [
     color: "var(--navy-800)",
     lead: { name: "Ritik Chawla", role: "Operational Lead", image: "/team/member-placeholder.jpg" },
     members: [
-      { name: "Ishani", role: "Team Member" },
+      { name: "Divyans Verma", role: "Team Member" },
       { name: "Varun", role: "Team Member" },
-      { name: "Zara", role: "Team Member" }
+      { name: "Aryan Ray", role: "Team Member" },
+      { name: "Aditya Kushwaha", role: "Team Member" },
+      { name: "Aditya Jamwal", role: "Team Member" },
+      { name: "Prabal Pratap", role: "Team Member" },
+      { name: "Anay Singh", role: "Team Member" },
+      { name: "Milin Sharma", role: "Team Member" },
+      { name: "Bhavishay", role: "Team Member" }
     ]
   }
 ];
