@@ -191,7 +191,7 @@ export default function PastEventsClient({ events }) {
             ) : null}
 
             {/* Modal Body Contents */}
-            <div className="event-modal-body">
+            <div className="event-modal-body" style={{ paddingTop: (!selectedEvent.imagePaths || selectedEvent.imagePaths.length === 0) ? '48px' : undefined }}>
               <header className="event-modal-header">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
                   <span className="event-modal-date-badge">{formatDate(selectedEvent.eventDate)}</span>
