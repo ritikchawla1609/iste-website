@@ -8968,6 +8968,17 @@ body {
     width: 100% !important;
     text-align: center !important;
   }
+
+  /* Fix for Calendar Buttons Wrapping */
+  .calendar-integration-box,
+  .timeline-calendar-box {
+    flex-wrap: wrap !important;
+  }
+  
+  .calendar-link,
+  .timeline-calendar-buttons .cal-btn {
+    white-space: nowrap !important;
+  }
 }
 
 @media (max-width: 480px) {
