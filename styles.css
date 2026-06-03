@@ -8969,6 +8969,18 @@ body {
     text-align: center !important;
   }
 
+  /* Reset container widths and margins on mobile to prevent horizontal overflow */
+  .home-hero-grid .whats-new-section,
+  .whats-new-section,
+  .inquiry-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    justify-self: center !important;
+    transform: none !important;
+    box-sizing: border-box !important;
+  }
+
   /* Fix for Calendar Buttons Wrapping */
   .calendar-integration-box,
   .timeline-calendar-box {
