@@ -184,7 +184,13 @@ export default function EventsTimeline({ events }) {
                   <div className="timeline-poster">
                     <div className="poster-wrapper">
                       <img
-                        src={event.posterPath ? `/${event.posterPath}` : '/brand/iste-logo.jpg'}
+                        src={
+                          event.posterPath
+                            ? event.posterPath.startsWith("http")
+                              ? event.posterPath
+                              : `/${event.posterPath}`
+                            : "/brand/iste-logo.jpg"
+                        }
                         alt={event.name}
                         loading="lazy"
                         decoding="async"

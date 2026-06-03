@@ -33,7 +33,7 @@ async function seed() {
   // Seed Recruitments
   const rec1 = await db.execute(`
     INSERT INTO recruitments (title, organization, domain, mode, location, deadline, application_link, description, contact_name, contact_email, status, created_at, updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `, [
     "Technical Lead", "ISTE Society", "Technology", "In-person", "University Campus", "2026-05-01", "#", 
     "We are looking for a visionary Technical Lead to manage our club's development projects and mentor junior members.", 
@@ -42,7 +42,7 @@ async function seed() {
 
   const rec2 = await db.execute(`
     INSERT INTO recruitments (title, organization, domain, mode, location, deadline, application_link, description, contact_name, contact_email, status, created_at, updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `, [
     "Graphic Designer", "ISTE Design Wing", "Creative", "Remote", "Online", "2026-05-10", "#", 
     "Join our creative team! We need a talented designer to create visually stunning assets for our events and social media.", 

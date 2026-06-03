@@ -232,7 +232,7 @@ export default function AdminRecruitmentClient({ initialRecruitments, initialDom
             </label>
             <label>
               Application Link
-              <input type="url" name="applicationLink" placeholder="Enter application URL" required />
+              <input type="text" name="applicationLink" placeholder="Enter application URL or # for placeholder" required />
             </label>
             <label>
               Contact Person
