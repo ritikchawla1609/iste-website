@@ -14,7 +14,7 @@ export default async function EventsPage() {
       <main className="subpage-main">
         <section className="subpage-premium-hero events-hero-panel">
           <div className="subpage-hero-copy">
-            <span className="hero-kicker">Professional Excellence</span>
+            <h3 className="section-kicker-heading">Professional Excellence</h3>
             <h1 className="subpage-premium-title">Upcoming <span>Chapter Events</span></h1>
             <p className="subpage-premium-desc">
               Explore high-impact workshops, competitive hackathons, and technical seminars

@@ -3336,6 +3336,24 @@ textarea {
   margin-bottom: 24px;
 }
 
+/* Section Kicker Heading (Proper Heading for Pillars, Achievement, Opportunities) */
+.section-kicker-heading {
+  display: inline-block;
+  color: var(--brand-red, #dc2626) !important;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin-top: 0;
+  margin-bottom: 12px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 /* Premium Typography for Hero Title */
 .hero-title {
   font-size: clamp(1.75rem, 3.2vw, 2.5rem) !important;

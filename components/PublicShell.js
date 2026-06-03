@@ -147,9 +147,6 @@ export default function PublicShell({
         <header className="site-header" id="home">
           <div className="notice-strip" aria-label="Chapter notice and contact links">
             <div className="notice-strip-track">
-              <span className="notice-label">
-                {latestEventNotice ? "Upcoming event" : "Notice"}
-              </span>
               {latestEventNotice ? (
                 <div className="notice-flow-container">
                   <Link href="/events" className="notice-flow-link">

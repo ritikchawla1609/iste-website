@@ -28,7 +28,7 @@ export default async function HomePage() {
         <section className="portal-notice-banner home-hero-grid">
           {/* Left Column: Modern Sleek Hero Introduction */}
           <div className="intro-copy">
-            <span className="hero-kicker">Innovation Starts Here</span>
+            <h3 className="section-kicker-heading">Innovation Starts Here</h3>
             <h1 className="hero-title">
               Build, lead, and innovate with the <span className="hero-accent">ISTE Student Chapter</span>.
             </h1>
@@ -79,7 +79,7 @@ export default async function HomePage() {
         {about?.focusCards && about.focusCards.length > 0 && (
           <section className="home-focus-section">
             <div className="section-header-centered">
-              <span className="hero-kicker">Core Pillars</span>
+              <h3 className="section-kicker-heading">Core Pillars</h3>
               <h2 className="section-title-premium">What We Stand For</h2>
               <p className="section-subtitle-premium">
                 Bridging academic knowledge with real-world exposure through three focus pillars.
@@ -112,7 +112,7 @@ export default async function HomePage() {
             <div className="vision-container">
               {/* Left Column: Impressive Visual Shield */}
               <div className="vision-visual-column">
-                <span className="hero-kicker" style={{ alignSelf: 'center' }}>Achievement</span>
+                <h3 className="section-kicker-heading" style={{ alignSelf: 'center' }}>Achievement</h3>
                 <div className="award-photo-card">
                   <img
                     src="/achievements/best-professional-society-award.jpg"
@@ -131,7 +131,7 @@ export default async function HomePage() {
 
               {/* Right Column: Why Join List */}
               <div className="vision-content-column">
-                <span className="hero-kicker" style={{ alignSelf: 'center' }}>Opportunities</span>
+                <h3 className="section-kicker-heading" style={{ alignSelf: 'center' }}>Opportunities</h3>
                 <h2 className="vision-section-title">{about.visionTitle || "Why Join ISTE?"}</h2>
                 <ul className="vision-premium-list">
                   {about.visionItems.map((item, idx) => {
