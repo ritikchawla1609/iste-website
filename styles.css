@@ -8881,37 +8881,35 @@ body {
     gap: 24px !important;
   }
   
-  /* Timeline Resets */
+  /* Timeline Resets for Centered Layout on Mobile */
   .timeline-item, 
   .timeline-item.right {
     flex-direction: column !important;
-    align-items: flex-start !important;
+    align-items: center !important;
+    text-align: center !important;
     margin-bottom: 60px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   
   .timeline-info, 
   .timeline-poster {
     width: 100% !important;
+    max-width: 100% !important;
   }
   
   .timeline-poster {
     margin-top: 24px !important;
   }
   
-  .timeline-line {
-    left: 24px !important;
-  }
-  
+  .timeline-line,
   .timeline-dot {
-    left: 24px !important;
-  }
-  
-  .timeline-item {
-    padding-left: 60px !important;
+    display: none !important;
   }
   
   .timeline-info {
     padding: 32px 24px !important;
+    align-items: center !important;
   }
   
   /* Hero & Typography Overrides */
