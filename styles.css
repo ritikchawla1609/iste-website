@@ -9003,6 +9003,12 @@ body {
     display: none !important;
   }
 
+  /* Allow giant text to wrap instead of cutting off */
+  .hero-title .hero-accent {
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
   /* Fix for Calendar Buttons Wrapping */
   .calendar-integration-box,
   .timeline-calendar-box {
