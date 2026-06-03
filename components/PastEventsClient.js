@@ -191,7 +191,7 @@ export default function PastEventsClient({ events }) {
             ) : (
               <div className="modal-no-images-banner">
                 <div className="modal-no-images-banner-overlay" />
-                <span>ISTE CHAPTER EXCELLENCE</span>
+                <span>{selectedEvent.name}</span>
               </div>
             )}
 
