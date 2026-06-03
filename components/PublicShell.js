@@ -196,7 +196,7 @@ export default function PublicShell({
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-expanded={menuOpen}
               >
-                {menuOpen ? "Close Menu" : "Menu"}
+                {menuOpen ? "Close" : "Menu"}
               </button>
             </div>
           </div>

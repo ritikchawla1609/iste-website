@@ -1237,21 +1237,20 @@ body {
   .brand-mark { width: 44px; height: 44px; flex: 0 0 44px; }
   .brand-copy strong { font-size: 1rem; }
   .brand-copy small { font-size: 0.7rem; }
-  .nav-toggle { display: inline-flex; margin-top: 0; padding: 8px 16px; }
+  .nav-toggle { display: inline-flex; margin-top: 0; padding: 6px 12px; font-size: 0.75rem; white-space: nowrap; align-items: center; justify-content: center; }
   .site-nav-row {
       display: none;
       flex-direction: column;
-      padding: 24px;
-      position: fixed;
-      top: 36px;
+      padding: 32px 24px;
+      position: absolute;
+      top: 100%;
       left: 0;
       right: 0;
-      bottom: 0;
       z-index: 1100;
       background: var(--navy-900);
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      height: calc(100vh - 36px);
+      height: 100vh;
     }  .site-nav-row.is-open { display: flex; }
   .nav-container { flex-direction: column; width: 100%; gap: 32px; text-align: center; }
   .site-nav-row a { font-size: 1.3rem; color: #fff; }
