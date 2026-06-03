@@ -31,54 +31,18 @@ export default async function AboutPage() {
                 <p>{about.heroText}</p>
               </div>
             </div>
-            
-            <div className="about-section-block">
-              <h3>{about.visionTitle}</h3>
-              <ul className="detail-list">
-                {about.visionItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
 
-            <div className="about-section-block">
-              <h3>{about.focusTitle}</h3>
-              <div className="focus-grid">
-                {about.focusCards.map((card, index) => (
-                  <div className="focus-card" key={card.title}>
-                    <span className="focus-card-index">{String(index + 1).padStart(2, "0")}</span>
-                    <h4>{card.title}</h4>
-                    <p>{card.text}</p>
-                  </div>
-                ))}
-              </div>
+            <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'flex-start' }}>
+              <Link 
+                href="/team" 
+                className="btn-premium-primary"
+              >
+                Meet the Visionaries
+              </Link>
             </div>
           </div>
         </section>
-
-        <section className="about-team-section">
-          <div className="team-container">
-
-            <div className="team-group">
-              <div className="about-team-cta-banner">
-                <p className="hero-kicker">Our Team</p>
-                <h2>Meet the Visionaries</h2>
-                <p>
-                  Our chapter is powered by a dedicated team of faculty advisors, office bearers, and domain leads 
-                  who work tirelessly to foster technical growth and innovation.
-                </p>
-                <Link 
-                  href="/team" 
-                  className="btn-premium-primary"
-                >
-                  View Full Team Structure
-                </Link>
-              </div>
-            </div>
-
-          </div>
-        </section>
-            </main>
+      </main>
             </PublicShell>
             );
             }
