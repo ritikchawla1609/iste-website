@@ -5,21 +5,33 @@ import { useState, useEffect } from "react";
 const carouselItems = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop",
+    image: "/team/carousel/c1.jpeg",
     title: "Innovation & Excellence",
-    description: "Empowering students through technical education."
+    description: "Empowering students through technical education and professional growth."
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop",
+    image: "/team/carousel/c2.jpeg",
     title: "Collaborative Learning",
-    description: "Join a community of passionate learners and innovators."
+    description: "Join a vibrant community of passionate learners, developers, and innovators."
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2070&auto=format&fit=crop",
+    image: "/team/carousel/c3.jpeg",
     title: "Technical Workshops",
-    description: "Hands-on experience with the latest technologies."
+    description: "Gain hands-on experience through expert-led seminars and industry bootcamps."
+  },
+  {
+    id: 4,
+    image: "/team/carousel/c4.jpeg",
+    title: "Interactive Sessions",
+    description: "Interact with senior members, mentors, and industry professionals in key domains."
+  },
+  {
+    id: 5,
+    image: "/team/carousel/c5.jpeg",
+    title: "Chapter Milestones",
+    description: "Building a culture of academic and practical excellence across campus."
   }
 ];
 
