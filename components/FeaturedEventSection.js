@@ -58,6 +58,7 @@ function useCountdown(deadlineStr) {
 export default function FeaturedEventSection({ featuredEvent }) {
   const [showModal, setShowModal] = useState(false);
   const { timeLeft, isExpired } = useCountdown(featuredEvent?.deadline);
+  const registrationUrl = safeUrl(featuredEvent?.registrationLink);
 
   function handleRegisterClick(e) {
     if (featuredEvent.googleFormLink) {
@@ -150,9 +151,9 @@ export default function FeaturedEventSection({ featuredEvent }) {
                   Register Now
                 </button>
               ) : (
-                featuredEvent.registrationLink && (
+                registrationUrl && (
                   <a 
-                    href={safeUrl(featuredEvent.registrationLink)} 
+                    href={registrationUrl} 
                     target="_blank" 
                     rel="noreferrer" 
                     className="btn-register-primary"

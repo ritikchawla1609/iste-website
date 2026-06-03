@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import PublicShell from "@/components/PublicShell";
 import MemberLoginModal from "@/components/MemberLoginModal";
 import { apiRequest } from "@/lib/client-api";
+import { safeUrl } from "@/lib/presentation";
 
 export default function RecruitmentPage() {
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
@@ -137,7 +138,8 @@ export default function RecruitmentPage() {
                   const matchingRec = recruitments.find(r =>
                     r.domain.toLowerCase().includes(domain.name.split(' ')[0].toLowerCase())
                   );
-                  const applyUrl = matchingRec?.applicationLink || "https://forms.gle/your-external-link-here";
+                  const applyUrl = safeUrl(matchingRec?.applicationLink);
+                  const canApply = isActive && Boolean(applyUrl);
 
                   return (
                     <div
@@ -156,7 +158,7 @@ export default function RecruitmentPage() {
                         <p>{domain.brief}</p>
                       </div>
 
-                      {isActive ? (
+                      {canApply ? (
                         <a
                           href={applyUrl}
                           target="_blank"
@@ -171,7 +173,7 @@ export default function RecruitmentPage() {
                           className="btn-premium-dark"
                           style={{ opacity: 0.5, cursor: "not-allowed", border: "1px solid rgba(255, 255, 255, 0.05)" }}
                         >
-                          CLOSED
+                          {isActive ? "LINK PENDING" : "CLOSED"}
                         </button>
                       )}
                     </div>

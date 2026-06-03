@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
+
 import { requireAdmin } from "@/lib/auth";
 import { 
   getAdminPastEventsData, 
@@ -25,6 +27,9 @@ export async function POST(request) {
     const admin = await requireAdmin(request.cookies);
     const payload = await readJson(request);
     const data = await createPastEvent(payload, admin.id);
+
+    revalidatePath("/past-events");
+
     return NextResponse.json(data);
   } catch (error) {
     return jsonError(error);
@@ -38,6 +43,9 @@ export async function PUT(request) {
     const id = searchParams.get("id");
     const payload = await readJson(request);
     const data = await updatePastEvent(id, payload, admin.id);
+
+    revalidatePath("/past-events");
+
     return NextResponse.json(data);
   } catch (error) {
     return jsonError(error);
@@ -50,6 +58,9 @@ export async function DELETE(request) {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
     await deletePastEvent(id, admin.id);
+
+    revalidatePath("/past-events");
+
     return NextResponse.json({ success: true });
   } catch (error) {
     return jsonError(error);

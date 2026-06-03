@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/lib/auth";
 import { updateEventLink } from "@/lib/site";
@@ -13,6 +14,10 @@ export async function POST(request, context) {
     const { id } = await context.params;
     const eventId = parseRouteId(id, "Event id");
     const event = await updateEventLink(eventId, registrationLink, googleFormLink, admin.id);
+
+    revalidatePath("/events");
+    revalidatePath("/");
+
     return NextResponse.json({ event });
   } catch (error) {
     return jsonError(error);
