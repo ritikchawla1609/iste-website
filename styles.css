@@ -9440,10 +9440,29 @@ body {
 
 
 
+/* =============================================
+   RECRUITMENT PAGE — FULL RESPONSIVE STACK
+   ============================================= */
+
+/* Tablet wide: tighten the two-column side-by-side */
+@media (max-width: 1240px) {
+  .recruitment-drawer-layout.is-team-open {
+    grid-template-columns: minmax(260px, 0.78fr) minmax(580px, 1.6fr);
+    gap: 14px;
+  }
+
+  .recruitment-page .recruitment-openings-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+/* Collapsed to single column — sidebar moves above grid */
 @media (max-width: 1120px) {
   .recruitment-drawer-layout,
   .recruitment-drawer-layout.is-team-open {
     grid-template-columns: 1fr;
+    gap: 16px;
     min-height: 0;
   }
 
@@ -9451,39 +9470,244 @@ body {
     position: relative;
     top: auto;
     min-height: 0;
+    padding: 36px 32px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .recruitment-drawer-layout:not(.is-team-open) .recruitment-member-drawer,
+  .recruitment-drawer-layout.is-team-open .recruitment-member-drawer {
+    text-align: center;
+    align-items: center;
+  }
+
+  .recruitment-member-drawer .title-hero-premium {
+    font-size: clamp(2rem, 5vw, 3rem) !important;
+  }
+
+  .recruitment-member-drawer .recruitment-action-row {
+    align-items: center;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .recruitment-member-drawer .drawer-kicker-cta {
+    align-self: center;
+  }
+
+  .recruitment-page .recruitment-openings-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 1240px) {
-  .recruitment-drawer-layout.is-team-open {
-    grid-template-columns: minmax(280px, 0.8fr) minmax(620px, 1.6fr);
+/* Tablet portrait */
+@media (max-width: 860px) {
+  .recruitment-page.subpage-main {
+    width: calc(100% - 32px);
+    padding-top: 20px;
+    padding-bottom: 24px;
+  }
+
+  .recruitment-member-drawer {
+    padding: 28px 24px;
+    border-radius: 16px !important;
+  }
+
+  .recruitment-member-drawer .title-hero-premium {
+    font-size: clamp(1.8rem, 6vw, 2.6rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  .recruitment-member-drawer .hero-desc {
+    font-size: 0.88rem !important;
+    margin-top: 12px !important;
+  }
+
+  .recruitment-member-drawer .drawer-kicker-cta {
+    font-size: 0.72rem;
+    padding: 5px 14px;
+    margin-bottom: 14px;
+  }
+
+  .recruitment-member-drawer .btn-premium-dark,
+  .recruitment-member-drawer .btn-premium-primary {
+    min-height: 44px;
+    font-size: 0.78rem;
   }
 
   .recruitment-page .recruitment-openings-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .recruitment-page .recruitment-openings-panel {
+    padding: 14px !important;
+  }
+
+  .recruitment-team-heading {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .recruitment-team-heading .title-section-premium {
+    font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
+  }
+
+  .recruitment-page .recruitment-slot-premium {
+    padding: 14px !important;
+  }
+
+  .recruitment-page .recruitment-slot-premium h3 {
+    font-size: 0.88rem !important;
+  }
+
+  .recruitment-page .recruitment-slot-premium p {
+    font-size: 0.68rem !important;
   }
 }
 
-@media (max-width: 680px) {
+/* Phablet / large phone */
+@media (max-width: 600px) {
   .recruitment-page.subpage-main {
-    width: calc(100% - 28px);
-    padding-top: 22px;
+    width: calc(100% - 24px);
+    padding-top: 16px;
+    padding-bottom: 20px;
+  }
+
+  .recruitment-drawer-layout,
+  .recruitment-drawer-layout.is-team-open {
+    gap: 12px;
+  }
+
+  .recruitment-member-drawer {
+    padding: 24px 20px;
+    border-radius: 14px !important;
+    min-height: 0;
+  }
+
+  .recruitment-member-drawer .title-hero-premium {
+    font-size: clamp(1.6rem, 8vw, 2.2rem) !important;
+  }
+
+  .recruitment-member-drawer .hero-desc {
+    font-size: 0.84rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .recruitment-member-drawer .recruitment-action-row {
+    margin-top: 18px;
+    gap: 9px;
+    max-width: 100%;
+  }
+
+  .recruitment-page .recruitment-openings-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .recruitment-team-heading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .recruitment-team-heading .hero-kicker {
+    font-size: 0.6rem !important;
+  }
+
+  .recruitment-team-heading .title-section-premium {
+    font-size: 1.2rem !important;
+    margin-top: 2px !important;
+  }
+
+  .team-count-pill {
+    font-size: 0.6rem !important;
+    min-height: 24px;
+    padding: 0 8px;
+  }
+
+  .recruitment-page .recruitment-slot-premium {
+    padding: 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .recruitment-page .recruitment-slot-premium h3 {
+    font-size: 0.82rem !important;
+    margin: 5px 0 4px !important;
+  }
+
+  .recruitment-page .recruitment-slot-premium p {
+    font-size: 0.64rem !important;
+    line-height: 1.36 !important;
+  }
+
+  .recruitment-page .recruitment-slot-premium .btn-premium-dark {
+    font-size: 0.54rem !important;
+    min-height: 28px !important;
+    padding: 0 6px !important;
+  }
+
+  .team-card-number {
+    font-size: 1.4rem;
+    right: 8px;
+    top: 7px;
+  }
+
+  .recruitment-page .recruitment-active-badge {
+    font-size: 0.55rem !important;
+    padding: 3px 6px !important;
+  }
+}
+
+/* Small phones (≤420px) — single column everything */
+@media (max-width: 420px) {
+  .recruitment-page.subpage-main {
+    width: calc(100% - 16px);
+    padding-top: 12px;
+  }
+
+  .recruitment-member-drawer {
+    padding: 20px 16px;
+    border-radius: 12px !important;
+  }
+
+  .recruitment-member-drawer .title-hero-premium {
+    font-size: clamp(1.45rem, 9vw, 2rem) !important;
   }
 
   .recruitment-page .recruitment-openings-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .recruitment-team-heading {
-    display: block;
+  .recruitment-page .recruitment-slot-premium {
+    padding: 14px !important;
   }
 
-  .recruitment-member-drawer .recruitment-action-row a,
-  .recruitment-member-drawer .recruitment-action-row button,
-  .recruitment-member-drawer .member-pill {
-    width: 100%;
+  .recruitment-page .recruitment-slot-premium h3 {
+    font-size: 0.9rem !important;
+  }
+
+  .recruitment-page .recruitment-slot-premium p {
+    font-size: 0.7rem !important;
+    line-height: 1.44 !important;
+  }
+
+  .recruitment-page .recruitment-slot-premium .btn-premium-dark {
+    font-size: 0.6rem !important;
+    min-height: 32px !important;
+  }
+
+  .recruitment-drawer-glow {
+    width: 140px;
+    height: 140px;
   }
 }
+
 
 @keyframes recruitmentTeamsIn {
   from {
