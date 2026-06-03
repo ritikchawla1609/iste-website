@@ -102,13 +102,13 @@ export default function TeamPage() {
   return (
     <PublicShell activePath="/team">
       <main className="subpage-main">
-        <section className="subpage-hero" style={{ padding: '80px 0 40px' }}>
+        <section className="subpage-hero" style={{ padding: '35px 0 15px' }}>
           <div className="hero-context">
             <span className="section-kicker">The Faces of ISTE</span>
           </div>
           <h1 className="hero-title">Our <span className="brand-text">Dedicated Team</span></h1>
-          <div className="title-accent-line" style={{ margin: '20px auto 30px' }}></div>
-          <p className="hero-description">
+          <div className="title-accent-line" style={{ margin: '10px auto 15px' }}></div>
+          <p className="hero-description" style={{ marginBottom: '0px' }}>
             Meet the passionate individuals who work behind the scenes to make the ISTE Student Chapter 
             at Chandigarh University a beacon of technical excellence.
           </p>
@@ -124,7 +124,7 @@ export default function TeamPage() {
               </div>
               <div className="team-grid team-grid-featured">
                 {FACULTY_ADVISORS.map((member) => (
-                  <TeamCard key={member.name} member={member} isLead={true} />
+                  <TeamCard key={member.name} member={member} isLead={true} isFaculty={true} />
                 ))}
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function TeamPage() {
               </div>
               <div className="team-grid team-grid-featured">
                 {OFFICE_BEARERS.map((member) => (
-                  <TeamCard key={member.name} member={member} isLead={true} photoOnly={true} />
+                  <TeamCard key={member.name} member={member} isLead={true} />
                 ))}
               </div>
             </div>
@@ -181,30 +181,36 @@ export default function TeamPage() {
   );
 }
 
-function TeamCard({ member, isLead = false, isSmall = false, accentColor = 'var(--brand-red)', photoOnly = false }) {
-  const avatarUrl = member.image && !member.image.includes("member-placeholder")
+function TeamCard({ member, isLead = false, isSmall = false, accentColor = 'var(--brand-red)', photoOnly = false, isFaculty = false }) {
+  const hasPhoto = member.image && !member.image.includes("member-placeholder");
+  const avatarUrl = hasPhoto
     ? member.image
-    : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=0f172a&color=fff&size=256`;
-  
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=1e293b&color=ef2b2f&bold=true&size=256`;
+
   return (
-    <div 
-      className={`team-member-card ${isSmall ? 'is-small' : ''}`} 
-      style={{ borderTop: isLead ? `4px solid ${accentColor}` : undefined }}
-    >
-      <div className="member-photo" style={photoOnly ? { marginBottom: 0 } : undefined}>
-        <img 
-          src={avatarUrl} 
-          alt={member.name} 
+    <div className={`team-member-card ${isSmall ? 'is-small' : ''} ${isLead ? 'is-lead' : ''} ${photoOnly ? 'is-photo-only' : ''} ${isFaculty ? 'is-faculty' : ''}`}>
+      {/* gradient glow border */}
+      <span className="tmc-glow" aria-hidden="true" />
+      {/* dark inset */}
+      <b className="tmc-inset" aria-hidden="true" />
+
+      <div className="tmc-photo-wrapper">
+        <img
+          className="tmc-photo"
+          src={avatarUrl}
+          alt={member.name}
           loading="lazy"
           decoding="async"
         />
       </div>
+
       {!photoOnly && (
-        <div className="member-info">
-          <h3 style={{ fontSize: isSmall ? '1rem' : '1.2rem' }}>{member.name}</h3>
-          <p className="member-role" style={{ fontSize: isSmall ? '0.75rem' : '0.85rem' }}>{member.role}</p>
+        <div className="tmc-content">
+          <h3 className="tmc-name">{member.name}</h3>
+          <span className="tmc-role">{member.role}</span>
         </div>
       )}
     </div>
   );
 }
+

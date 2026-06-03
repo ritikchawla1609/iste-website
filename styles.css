@@ -862,9 +862,9 @@ body.no-scroll {
 
 /* About Us Team Styles */
 .about-team-section {
-  padding: 40px 0;
+  padding: 10px 0 40px;
   background: transparent;
-  margin: 24px calc(var(--container) * -0.5) 0;
+  margin: 10px calc(var(--container) * -0.5) 0;
   width: 100vw;
   position: relative;
   left: 50%;
@@ -917,84 +917,336 @@ body.no-scroll {
   justify-content: center;
 }
 
-/* Updated Team Member Card */
+/* =========================================
+   TEAM MEMBER CARD — Uiverse hover-reveal style
+   Gradient: ISTE red → navy dark
+   ========================================= */
+
 .team-member-card {
-  background: var(--navy-900);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform var(--motion-medium) var(--ease-formal), box-shadow var(--motion-medium) var(--ease-formal), border-color var(--motion-medium) var(--ease-formal), background-color var(--motion-medium) var(--ease-formal);
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+  aspect-ratio: 3 / 4;
+  background: #0f172a;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  border: none !important;
+  box-shadow: none;
+  transition: box-shadow 0.4s ease;
+}
+
+/* gradient border layer */
+.tmc-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(315deg, #ef2b2f, #1e3a5f);
+  z-index: 0;
+}
+
+/* blurred ambient glow behind the card */
+.team-member-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(315deg, #ef2b2f, #1e3a5f);
+  filter: blur(28px);
+  opacity: 0;
+  z-index: -1;
+  border-radius: 12px;
+  transition: opacity 0.4s ease;
+}
+
+.team-member-card:hover::after {
+  opacity: 0.85;
 }
 
 .team-member-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--brand-red);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 48px rgba(239, 43, 47, 0.28), 0 8px 20px rgba(15, 23, 42, 0.5);
 }
 
-.member-photo {
-  width: 75%;
-  max-width: 200px;
-  aspect-ratio: 1 / 1;
+/* dark inset panel */
+.tmc-inset {
+  position: absolute;
+  inset: 5px;
+  background: rgba(10, 15, 28, 0.94);
+  z-index: 1;
   border-radius: 8px;
-  margin: 0 auto 16px;
-  overflow: hidden;
-  border: none;
-  box-shadow: none;
+  display: block;
 }
 
-.member-photo img {
+/* photo wrapper to contain the zoom effect within borders */
+.tmc-photo-wrapper {
+  position: absolute;
+  z-index: 2;
+  top: 6%;
+  left: 6%;
+  width: 88%;
+  height: 66%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tmc-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 4px;
+  object-position: top center;
+  opacity: 0.95;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
 }
 
-.member-info h3 {
-  font-size: 1.15rem;
+/* Full photo layout for photoOnly cards */
+.team-member-card.is-photo-only .tmc-photo-wrapper {
+  top: 6px;
+  left: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+}
+
+.team-member-card:hover .tmc-photo {
+  transform: scale(1.12);
+  opacity: 1;
+}
+
+/* name + role container (always visible) */
+.tmc-content {
+  position: absolute;
+  z-index: 3;
+  bottom: 5%;
+  left: 6%;
+  width: 88%;
+  height: 22%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 4px;
+}
+
+.tmc-name {
+  color: #ffffff;
   font-weight: 700;
-  color: var(--brand-red);
-  margin-bottom: 6px;
-}
-
-.member-role {
-  color: #94a3b8;
-  font-weight: 500;
-  font-size: 0.8rem;
-  text-transform: uppercase;
+  font-size: 0.85rem;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.25;
   margin: 0;
+  transition: font-size 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-@media (min-width: 769px) {
-  .team-grid.team-grid-featured {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px;
+.tmc-role {
+  display: block;
+  font-weight: 600;
+  font-size: 0.7em;
+  color: #94a3b8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 0;
+  
+  /* Hidden by default, slides up on hover */
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.team-member-card:hover .tmc-name {
+  font-size: 0.92rem;
+  color: #ffffff;
+}
+
+.team-member-card:hover .tmc-role {
+  opacity: 1;
+  max-height: 24px;
+  transform: translateY(0);
+  margin-top: 4px;
+  color: #ef2b2f;
+}
+
+/* Lead card: stronger gradient accent top border */
+.team-member-card.is-lead .tmc-glow {
+  background: linear-gradient(315deg, #ef2b2f 0%, #7c1114 40%, #1e3a5f 100%);
+}
+
+/* Small cards (team members) */
+.team-member-card.is-small {
+  aspect-ratio: 3 / 4;
+}
+
+.team-member-card.is-small .tmc-photo-wrapper {
+  height: 62%;
+}
+
+.team-member-card.is-small .tmc-content {
+  height: 26%;
+}
+
+.team-member-card.is-small .tmc-name {
+  font-size: 0.78rem;
+}
+
+.team-member-card.is-small:hover .tmc-name {
+  font-size: 0.84rem;
+}
+
+/* Grid layouts */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px;
+}
+
+/* Featured grid (Faculty Advisors and Office Bearers) - flex container to center on desktop */
+.team-grid-featured {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+
+/* 1. FACULTY ADVISORS / COORDINATORS (Largest: 365px) */
+.team-member-card.is-faculty {
+  width: 365px !important;
+  max-width: 365px !important;
+  flex-shrink: 0;
+}
+
+/* 2. OFFICE BEARERS (Second Largest: 330px) */
+.team-grid-featured .team-member-card:not(.is-faculty) {
+  width: 330px !important;
+  max-width: 330px !important;
+  flex-shrink: 0;
+}
+
+/* 3. DOMAIN LEADS (Third Largest: 295px) */
+.team-domain-lead-col .team-member-card {
+  width: 295px !important;
+  max-width: 295px !important;
+  flex-shrink: 0;
+}
+
+/* 4. DOMAIN MEMBERS (Smallest: 245px) */
+.team-member-card.is-small {
+  width: 245px !important;
+  max-width: 245px !important;
+  flex-shrink: 0;
+}
+
+/* Responsive grid overrides to prevent cards and photos from becoming too small */
+@media (max-width: 860px) {
+  .team-grid,
+  .team-grid-featured {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 16px !important;
+  }
+
+  /* Maintain readable sizing hierarchy on mobile without squishing */
+  .team-member-card.is-faculty {
+    width: 275px !important;
+    max-width: 275px !important;
+  }
+  .team-grid-featured .team-member-card:not(.is-faculty) {
+    width: 245px !important;
+    max-width: 245px !important;
+  }
+  .team-domain-lead-col .team-member-card {
+    width: 215px !important;
+    max-width: 215px !important;
+  }
+  .team-member-card.is-small {
+    width: 185px !important;
+    max-width: 185px !important;
+  }
+}
+  }
+
+  /* Show designation (role) by default on mobile devices and remove hover slide effect */
+  .team-member-card .tmc-role {
+    opacity: 1 !important;
+    max-height: 24px !important;
+    transform: translateY(0) !important;
+    margin-top: 4px !important;
+    color: #ef2b2f !important;
+  }
+
+  /* Disable zoom and hover scale effects on mobile */
+  .team-member-card .tmc-photo {
+    transform: none !important;
+    opacity: 1 !important;
   }
   
-  .team-grid-featured .team-member-card {
-    width: 20vw !important;
-    height: 35vh !important;
+  .team-member-card:hover .tmc-photo {
+    transform: none !important;
   }
   
-  .team-grid-featured .member-photo {
-    flex: 1;
-    min-height: 0;
-    aspect-ratio: auto !important;
-    margin-bottom: 12px;
+  .team-member-card:hover .tmc-name {
+    font-size: inherit !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-grid,
+  .team-grid-featured {
+    gap: 12px !important;
+  }
+  
+  .team-member-card.is-faculty {
+    width: 240px !important;
+    max-width: 240px !important;
+  }
+  .team-grid-featured .team-member-card:not(.is-faculty) {
+    width: 210px !important;
+    max-width: 210px !important;
+  }
+  .team-domain-lead-col .team-member-card {
+    width: 190px !important;
+    max-width: 190px !important;
+  }
+  .team-member-card.is-small {
+    width: 140px !important;
+    max-width: 140px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  /* On very small phones, keep cards at maximum possible size to keep photos clear */
+  .team-grid,
+  .team-grid-featured {
+    gap: 8px !important;
+  }
+
+  .team-member-card.is-faculty {
+    width: 230px !important;
+    max-width: 230px !important;
+  }
+  .team-grid-featured .team-member-card:not(.is-faculty) {
+    width: 200px !important;
+    max-width: 200px !important;
+  }
+  .team-domain-lead-col .team-member-card {
+    width: 180px !important;
+    max-width: 180px !important;
+  }
+  .team-member-card.is-small {
+    width: 135px !important;
+    max-width: 135px !important;
   }
 }
 
 .member-team-tag {
   display: none;
 }
+
 
 /* Footer Modernization - Professional Layout */
 .site-footer { 
@@ -4579,6 +4831,10 @@ textarea {
 
 .team-domain-lead-col {
   grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .team-domain-members-col {
@@ -4587,7 +4843,7 @@ textarea {
 
 .team-members-subgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
   max-height: 640px;
   overflow-y: auto;
@@ -4694,8 +4950,10 @@ textarea {
   }
 
   .team-members-subgrid {
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 16px;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 16px !important;
   }
 
   .team-member-card.is-small .member-photo {
@@ -10163,6 +10421,7 @@ body {
 .stats-logo-circle img {
   object-position: 54% 55% !important;
 }
+
 
 
 
