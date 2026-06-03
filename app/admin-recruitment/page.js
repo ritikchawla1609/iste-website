@@ -6,6 +6,7 @@ import AdminShell from "@/components/AdminShell";
 import { getCurrentAdmin } from "@/lib/auth";
 import { getAdminRecruitmentsData } from "@/lib/site";
 import { getDb, getSiteContentRecord } from "@/lib/db";
+import { DEFAULT_RECRUITMENT_STATUS } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
@@ -17,13 +18,7 @@ export default async function AdminRecruitmentPage() {
 
   const recruitments = await getAdminRecruitmentsData();
   const database = await getDb();
-  const domainStatus = await getSiteContentRecord(database, "recruitment_status", {
-    "01": "active",
-    "02": "active",
-    "03": "active",
-    "04": "active",
-    "05": "active"
-  });
+  const domainStatus = await getSiteContentRecord(database, "recruitment_status", DEFAULT_RECRUITMENT_STATUS);
 
   return (
     <AdminShell
@@ -44,10 +39,7 @@ export default async function AdminRecruitmentPage() {
           </p>
         </section>
 
-        <AdminRecruitmentClient 
-          initialRecruitments={recruitments} 
-          initialDomainStatus={domainStatus} 
-        />
+        <AdminRecruitmentClient initialRecruitments={recruitments} initialDomainStatus={domainStatus} />
       </main>
     </AdminShell>
   );

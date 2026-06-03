@@ -22,14 +22,7 @@ export default async function EventsPage() {
             </p>
           </div>
           <div className="subpage-hero-stat-stack" aria-label="Event highlights">
-            <div className="subpage-stat-card">
-              <span>{events.length || "0"}</span>
-              <strong>Active Listings</strong>
-            </div>
-            <div className="subpage-stat-card">
-              <span>ISTE</span>
-              <strong>Curated Programs</strong>
-            </div>
+            
           </div>
         </section>
 

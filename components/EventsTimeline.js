@@ -157,14 +157,34 @@ export default function EventsTimeline({ events }) {
                             Apply Now
                           </a>
                         ) : (
-                          <button 
-                            disabled 
-                            className="primary-btn disabled-btn"
-                            style={{ cursor: 'not-allowed', opacity: 0.5, flex: 1 }}
-                          >
-                            Link Pending
-                          </button>
-                        )
+  <div style={{ display: 'flex', gap: '15px', width: '100%' }}>
+    <button
+      className="primary-btn"
+      style={{
+        flex: 1,
+        background: '#9098a5',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer'
+      }}
+    >
+      Details
+    </button>
+
+    <button
+      className="primary-btn"
+      style={{
+        flex: 1,
+        background: '#e51c23',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer'
+      }}
+    >
+      Registration
+    </button>
+  </div>
+)
                       )}
 
                       {event.googleFormLink && (
@@ -184,7 +204,13 @@ export default function EventsTimeline({ events }) {
                   <div className="timeline-poster">
                     <div className="poster-wrapper">
                       <img
-                        src={event.posterPath ? `/${event.posterPath}` : '/brand/iste-logo.jpg'}
+                        src={
+                          event.posterPath
+                            ? event.posterPath.startsWith("http")
+                              ? event.posterPath
+                              : `/${event.posterPath}`
+                            : "/brand/iste-logo.jpg"
+                        }
                         alt={event.name}
                         loading="lazy"
                         decoding="async"

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { apiRequest } from "@/lib/client-api";
-import { formatDate, getStatusActionLabel, getStatusBadgeLabel } from "@/lib/presentation";
+import { formatDate, getStatusActionLabel, getStatusBadgeLabel, RECRUITMENT_TEAMS } from "@/lib/presentation";
 
 function setRecruitmentValues(form, values) {
   form.elements.status.value = values.status || "draft";
@@ -19,7 +19,10 @@ function setRecruitmentValues(form, values) {
   form.elements.description.value = values.description || "";
 }
 
-export default function AdminRecruitmentClient({ initialRecruitments, initialDomainStatus }) {
+export default function AdminRecruitmentClient({
+  initialRecruitments,
+  initialDomainStatus
+}) {
   const formRef = useRef(null);
   const [recruitments, setRecruitments] = useState(initialRecruitments);
   const [domainStatus, setDomainStatus] = useState(initialDomainStatus || {
@@ -30,13 +33,7 @@ export default function AdminRecruitmentClient({ initialRecruitments, initialDom
     "05": "active"
   });
 
-  const domainsConfig = [
-    { id: "01", name: "Tech Team" },
-    { id: "02", name: "Event Team" },
-    { id: "03", name: "Operational Team" },
-    { id: "04", name: "Media Team" },
-    { id: "05", name: "Design Team" }
-  ];
+  const domainsConfig = RECRUITMENT_TEAMS;
 
   async function handleToggleDomainStatus(domainId) {
     const nextStatus = domainStatus[domainId] === "active" ? "inactive" : "active";
@@ -215,8 +212,17 @@ export default function AdminRecruitmentClient({ initialRecruitments, initialDom
               <input type="text" name="organization" placeholder="Enter organization or team name" required />
             </label>
             <label>
-              Domain
-              <input type="text" name="domain" placeholder="Enter domain" required />
+              Domain / Team
+              <select name="domain" required defaultValue="">
+                <option value="" disabled>
+                  Select a team
+                </option>
+                {domainsConfig.map((dom) => (
+                  <option key={dom.id} value={dom.name}>
+                    {dom.name}
+                  </option>
+                ))}
+              </select>
             </label>
             <label>
               Mode
@@ -232,7 +238,7 @@ export default function AdminRecruitmentClient({ initialRecruitments, initialDom
             </label>
             <label>
               Application Link
-              <input type="url" name="applicationLink" placeholder="Enter application URL" required />
+              <input type="text" name="applicationLink" placeholder="Enter application URL or # for placeholder" required />
             </label>
             <label>
               Contact Person
@@ -313,22 +319,22 @@ export default function AdminRecruitmentClient({ initialRecruitments, initialDom
         <article className="admin-card">
           <h3>Domain Recruitment Toggles</h3>
           <p style={{ color: 'var(--text-soft)', marginBottom: '20px', fontSize: '0.9rem', textTransform: 'none' }}>
-            Quickly turn recruitment active or closed for specific domains on the public recruitment page.
+            Control whether each team shows as open on the public recruitment page. Application links are set when creating or editing a recruitment record above.
           </p>
           <div className="admin-managed-list">
             {domainsConfig.map((dom) => {
               const isActive = domainStatus[dom.id] === "active";
               return (
-                <div key={dom.id} className="admin-record-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={dom.id} className="admin-record-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
                   <div className="admin-record-copy">
                     <strong>{dom.name}</strong>
                     <span style={{ fontSize: '0.85em', opacity: 0.8, color: isActive ? 'var(--brand-green)' : 'var(--brand-red)' }}>
                       Status: {isActive ? "ACTIVE" : "CLOSED"}
                     </span>
                   </div>
-                  <button 
-                    className="admin-submit" 
-                    type="button" 
+                  <button
+                    className="admin-submit"
+                    type="button"
                     onClick={() => handleToggleDomainStatus(dom.id)}
                     style={{ padding: '8px 16px', fontSize: '0.85em', width: 'auto', background: isActive ? 'var(--navy-900)' : 'var(--brand-red)' }}
                   >

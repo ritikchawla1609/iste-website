@@ -1,12 +1,13 @@
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { loginMember, setSessionCookie } from "@/lib/auth";
-import { HttpError } from "@/lib/http";
+import { jsonError, readJson } from "@/lib/http";
+
+export const runtime = "nodejs";
 
 export async function POST(request) {
   try {
-    const { uid, password } = await request.json();
+    const { uid, password } = await readJson(request);
     const result = await loginMember(uid, password);
 
     const response = NextResponse.json({
@@ -14,13 +15,9 @@ export async function POST(request) {
       uid: result.uid
     });
 
-    await setSessionCookie(response, result.token);
+    setSessionCookie(response, result.token);
     return response;
   } catch (error) {
-    if (error instanceof HttpError) {
-      return NextResponse.json({ error: error.message }, { status: error.statusCode });
-    }
-    console.error("Member login error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return jsonError(error);
   }
 }

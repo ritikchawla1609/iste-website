@@ -240,11 +240,11 @@ export default function AdminEventsClient({ initialEvents }) {
             </div>
             <label>
               Registration Link (Optional)
-              <input type="url" name="registrationLink" placeholder="Enter registration URL" />
+              <input type="text" name="registrationLink" placeholder="Enter registration URL or # for placeholder" />
             </label>
             <label>
               Google Form Link (Optional)
-              <input type="url" name="googleFormLink" placeholder="Enter google form URL" />
+              <input type="text" name="googleFormLink" placeholder="Enter google form URL" />
             </label>
             <label>
               Contact Person
