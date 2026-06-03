@@ -128,6 +128,7 @@ export default function RecruitmentPage() {
             <article className="recruitment-openings-panel" id="team-openings">
               <div className="recruitment-team-heading">
                 <div>
+                  <button onClick={() => setTeamsVisible(false)} className="recruitment-team-back-btn" style={{ background: 'none', border: 'none', color: 'var(--brand-red)', cursor: 'pointer', padding: 0, marginBottom: '12px', fontSize: '0.85rem', fontWeight: 800, textTransform: 'uppercase', alignItems: 'center', gap: '6px' }}>← Back to Registration</button>
                   <span className="hero-kicker">Team Recruitment</span>
                   <h2 className="title-section-premium">Current Openings</h2>
                 </div>

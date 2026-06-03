@@ -934,7 +934,8 @@ body {
 }
 
 .member-photo {
-  width: 100%;
+  width: 75%;
+  max-width: 200px;
   aspect-ratio: 1 / 1;
   border-radius: 8px;
   margin: 0 auto 16px;
@@ -1230,10 +1231,13 @@ body {
 }
 
 @media (max-width: 768px) {
-  .site-header { padding: 16px 0; }
-  .brand-row { flex-direction: column; text-align: center; padding-bottom: 16px; }
-  .brand { flex-direction: column; gap: 12px; }
-  .nav-toggle { display: inline-flex; margin-top: 24px; }
+  .site-header { padding: 12px 0; }
+  .brand-row { flex-direction: row; justify-content: space-between; padding-bottom: 8px; }
+  .brand { flex-direction: row; gap: 10px; text-align: left; }
+  .brand-mark { width: 44px; height: 44px; flex: 0 0 44px; }
+  .brand-copy strong { font-size: 1rem; }
+  .brand-copy small { font-size: 0.7rem; }
+  .nav-toggle { display: inline-flex; margin-top: 0; padding: 8px 16px; }
   .site-nav-row {
       display: none;
       flex-direction: column;
@@ -9458,6 +9462,9 @@ body {
 }
 
 /* Collapsed to single column — sidebar moves above grid */
+.recruitment-team-back-btn {
+  display: none !important;
+}
 @media (max-width: 1120px) {
   .recruitment-drawer-layout,
   .recruitment-drawer-layout.is-team-open {
@@ -9498,6 +9505,14 @@ body {
 
   .recruitment-page .recruitment-openings-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .recruitment-drawer-layout.is-team-open .recruitment-member-drawer {
+    display: none !important;
+  }
+  
+  .recruitment-drawer-layout.is-team-open .recruitment-team-back-btn {
+    display: flex !important;
   }
 }
 
