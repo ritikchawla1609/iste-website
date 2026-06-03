@@ -109,7 +109,7 @@ export default function TeamPage() {
                 <p className="section-kicker">Guidance</p>
                 <h2>Faculty Advisors</h2>
               </div>
-              <div className="team-grid">
+              <div className="team-grid team-grid-featured">
                 {FACULTY_ADVISORS.map((member) => (
                   <TeamCard key={member.name} member={member} isLead={true} />
                 ))}
@@ -122,7 +122,7 @@ export default function TeamPage() {
                 <p className="section-kicker">Leadership</p>
                 <h2>Office Bearers</h2>
               </div>
-              <div className="team-grid">
+              <div className="team-grid team-grid-featured">
                 {OFFICE_BEARERS.map((member) => (
                   <TeamCard key={member.name} member={member} isLead={true} />
                 ))}
