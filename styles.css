@@ -1112,31 +1112,31 @@ body.no-scroll {
   gap: 28px;
 }
 
-/* 1. FACULTY ADVISORS / COORDINATORS (Largest: 330px) */
+/* 1. FACULTY ADVISORS / COORDINATORS (Largest: 365px) */
 .team-member-card.is-faculty {
+  width: 365px !important;
+  max-width: 365px !important;
+  flex-shrink: 0;
+}
+
+/* 2. OFFICE BEARERS (Second Largest: 330px) */
+.team-grid-featured .team-member-card:not(.is-faculty) {
   width: 330px !important;
   max-width: 330px !important;
   flex-shrink: 0;
 }
 
-/* 2. OFFICE BEARERS (Second Largest: 295px) */
-.team-grid-featured .team-member-card:not(.is-faculty) {
+/* 3. DOMAIN LEADS (Third Largest: 295px) */
+.team-domain-lead-col .team-member-card {
   width: 295px !important;
   max-width: 295px !important;
   flex-shrink: 0;
 }
 
-/* 3. DOMAIN LEADS (Third Largest: 245px) */
-.team-domain-lead-col .team-member-card {
+/* 4. DOMAIN MEMBERS (Smallest: 245px) */
+.team-member-card.is-small {
   width: 245px !important;
   max-width: 245px !important;
-  flex-shrink: 0;
-}
-
-/* 4. DOMAIN MEMBERS (Smallest: 205px) */
-.team-member-card.is-small {
-  width: 205px !important;
-  max-width: 205px !important;
   flex-shrink: 0;
 }
 
@@ -1152,20 +1152,22 @@ body.no-scroll {
 
   /* Maintain readable sizing hierarchy on mobile without squishing */
   .team-member-card.is-faculty {
-    width: 250px !important;
-    max-width: 250px !important;
+    width: 275px !important;
+    max-width: 275px !important;
   }
   .team-grid-featured .team-member-card:not(.is-faculty) {
-    width: 220px !important;
-    max-width: 220px !important;
+    width: 245px !important;
+    max-width: 245px !important;
   }
   .team-domain-lead-col .team-member-card {
-    width: 200px !important;
-    max-width: 200px !important;
+    width: 215px !important;
+    max-width: 215px !important;
   }
   .team-member-card.is-small {
-    width: 150px !important;
-    max-width: 150px !important;
+    width: 185px !important;
+    max-width: 185px !important;
+  }
+}
   }
 
   /* Show designation (role) by default on mobile devices and remove hover slide effect */
@@ -4841,7 +4843,7 @@ textarea {
 
 .team-members-subgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
   max-height: 640px;
   overflow-y: auto;
@@ -10419,6 +10421,7 @@ body {
 .stats-logo-circle img {
   object-position: 51.5% 52.5% !important;
 }
+
 
 
 
