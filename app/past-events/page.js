@@ -66,17 +66,6 @@ export default async function PastEventsPage() {
               Celebrating milestones, success stories, and technical breakthroughs from the
               ISTE Student Chapter at Chandigarh University.
             </p>
-          </div>
-          <div className="subpage-hero-stat-stack" aria-label="Past event highlights">
-            <div className="subpage-stat-card">
-              <span>{events.length}</span>
-              <strong>Milestones</strong>
-            </div>
-            <div className="subpage-stat-card">
-              <span>2024+</span>
-              <strong>Chapter Legacy</strong>
-            </div>
-          </div>
         </section>
 
         <PastEventsClient events={events} />

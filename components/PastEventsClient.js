@@ -90,21 +90,6 @@ export default function PastEventsClient({ events }) {
 
   return (
     <>
-      {/* Category Filter Tabs */}
-      <div className="category-filter-container">
-        <div className="category-filter-tabs">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`filter-tab ${activeCategory === cat ? "active" : ""}`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
       <section className="past-events-grid" style={{ marginTop: '24px' }}>
         {filteredEvents.length > 0 ? (
           filteredEvents.map((event, eventIndex) => {
@@ -132,7 +117,7 @@ export default function PastEventsClient({ events }) {
 
                   {event.winners && (
                     <div className="past-event-highlight">
-                      <strong>Winners & Highlights</strong>
+                      <strong>Highlights</strong>
                       <p>{event.winners}</p>
                     </div>
                   )}
@@ -237,7 +222,7 @@ export default function PastEventsClient({ events }) {
                       <div className="trophy-glow" />
                       <div className="trophy-card-header">
                         <span className="trophy-icon">🏆</span>
-                        <h4>Winner Spotlight</h4>
+                        <h4>Highlights</h4>
                       </div>
                       <p>{selectedEvent.winners}</p>
                     </div>
