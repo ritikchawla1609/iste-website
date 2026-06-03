@@ -46,6 +46,8 @@ export default function PublicShell({
     fetchNotice();
   }, []);
 
+
+
   useEffect(() => {
     const shouldSkipMotion =
       window.matchMedia("(max-width: 1100px), (hover: none), (prefers-reduced-motion: reduce)").matches;

@@ -39,6 +39,10 @@ body {
   background: #f8fafc;
 }
 
+body.no-scroll {
+  overflow: hidden !important;
+}
+
 .page-shell { min-height: 100vh; display: flex; flex-direction: column; background: #f8fafc; padding-top: 36px; overflow-x: clip; }
 
 .portal-main, .subpage-main {
@@ -8916,18 +8920,45 @@ body {
 /* Tablet & Mobile Nav Overrides */
 @media (max-width: 1100px) {
   .header-actions { display: flex !important; }
-  .nav-toggle { display: block !important; }
-  
-  .site-nav-row.mobile-only {
+  .nav-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    background: rgba(220, 38, 38, 0.08) !important;
+    border: 1px solid rgba(220, 38, 38, 0.3) !important;
+    color: var(--brand-red) !important;
+    border-radius: 10px !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    min-height: 40px;
+    padding: 0 16px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  .nav-toggle:hover,
+  .nav-toggle:active {
+    background: var(--brand-red) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2) !important;
+  }
+    .site-nav-row.mobile-only {
     display: none;
     flex-direction: column;
-    padding: 20px;
-    background: var(--navy-900);
+    padding: 8px 16px;
+    background: rgba(15, 23, 42, 0.97) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
     z-index: 999;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: none !important;
+    box-shadow: 0 10px 30px rgba(10, 15, 30, 0.25) !important;
   }
   
   .site-nav-row.mobile-only.is-open {
@@ -8937,17 +8968,32 @@ body {
   .site-nav-row.mobile-only .nav-container {
     flex-direction: column;
     align-items: stretch;
-    gap: 15px;
+    gap: 8px;
   }
 
   .site-nav-row.mobile-only .nav-container a {
     text-align: center;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 16px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.72) !important;
+    border-radius: 12px;
+    border-bottom: none !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
-  .site-nav-row.mobile-only .nav-container a:last-child {
-    border-bottom: none;
+
+  .site-nav-row.mobile-only .nav-container a.is-active {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.9) 0%, rgba(153, 27, 27, 0.9) 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25) !important;
+  }
+
+  .site-nav-row.mobile-only .nav-container a:not(.is-active):hover,
+  .site-nav-row.mobile-only .nav-container a:not(.is-active):active {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #ffffff !important;
   }
 }
 
@@ -10111,4 +10157,12 @@ body {
 .home-vision-section {
   padding-bottom: 80px !important; /* Add more bottom spacing inside the section before the footer */
 }
+
+/* Shift the ISTE circular logo slightly bottom-right inside its red border circles */
+.brand-mark img,
+.stats-logo-circle img {
+  object-position: 51.5% 52.5% !important;
+}
+
+
 
