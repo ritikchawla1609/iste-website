@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/lib/auth";
 import { updateRecruitmentLink } from "@/lib/site";
@@ -13,6 +14,10 @@ export async function POST(request, context) {
     const { id } = await context.params;
     const recruitmentId = parseRouteId(id, "Recruitment id");
     const recruitment = await updateRecruitmentLink(recruitmentId, link, admin.id);
+
+    revalidatePath("/recruitment");
+    revalidatePath("/");
+
     return NextResponse.json({ recruitment });
   } catch (error) {
     return jsonError(error);

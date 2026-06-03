@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/lib/auth";
 import { getDb, getSiteContentRecord, setSiteContentRecord, createAuditLog } from "@/lib/db";
@@ -38,6 +39,9 @@ export async function PUT(request) {
     const database = await getDb();
     await setSiteContentRecord(database, "recruitment_status", domainStatus);
     await createAuditLog(database, admin.id, "update", "site_content", "recruitment_status", domainStatus);
+
+    revalidatePath("/recruitment");
+    revalidatePath("/");
 
     return NextResponse.json({ domainStatus });
   } catch (error) {

@@ -9002,3 +9002,351 @@ body {
     padding: 24px 16px !important;
   }
 }
+
+/* Compact dynamic recruitment drawer */
+.recruitment-page.subpage-main {
+  width: min(1360px, calc(100% - 48px));
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.recruitment-drawer-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 680px);
+  gap: 18px;
+  align-items: stretch;
+  justify-content: center;
+  min-height: calc(100vh - 190px);
+}
+
+.recruitment-drawer-layout.is-team-open {
+  grid-template-columns: minmax(290px, 0.78fr) minmax(700px, 1.7fr);
+  justify-content: stretch;
+}
+
+.recruitment-member-drawer,
+.recruitment-page .recruitment-openings-panel {
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+
+.recruitment-member-drawer {
+  position: sticky;
+  top: 18px;
+  align-self: start;
+  min-height: calc(100vh - 190px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 3.4vw, 44px);
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 88% 14%, rgba(239, 43, 47, 0.34), transparent 29%),
+    linear-gradient(145deg, #101827 0%, #172033 58%, #0b1220 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 58px rgba(15, 23, 42, 0.2);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.recruitment-member-drawer::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -2;
+  border-radius: inherit;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.12), transparent 34%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 42px);
+  opacity: 0.7;
+}
+
+.recruitment-drawer-glow {
+  position: absolute;
+  z-index: -1;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  filter: blur(26px);
+  opacity: 0.6;
+  animation: recruitmentGlowFloat 4.8s ease-in-out infinite alternate;
+}
+
+.recruitment-drawer-glow.glow-one {
+  right: -74px;
+  top: -58px;
+  background: rgba(239, 43, 47, 0.62);
+}
+
+.recruitment-drawer-glow.glow-two {
+  left: -86px;
+  bottom: -76px;
+  background: rgba(56, 189, 248, 0.22);
+  animation-delay: -1.8s;
+}
+
+.recruitment-member-drawer .title-hero-premium {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2.1rem, 3.4vw, 3.7rem);
+  line-height: 1.02;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.recruitment-member-drawer .hero-desc {
+  max-width: 560px;
+  margin: 18px 0 0 !important;
+  color: #dbeafe !important;
+  font-size: 0.94rem !important;
+  line-height: 1.52 !important;
+}
+
+.recruitment-member-drawer .recruitment-award-line {
+  margin-top: 16px;
+  color: #fecaca;
+  font-size: 1rem;
+}
+
+.recruitment-signal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.recruitment-signal-row span,
+.team-count-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 11px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recruitment-member-drawer .recruitment-action-row {
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.recruitment-member-drawer .btn-premium-dark,
+.recruitment-member-drawer .btn-premium-primary,
+.recruitment-member-drawer .member-pill {
+  min-height: 46px;
+  padding-inline: 20px;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.recruitment-member-drawer button.btn-premium-dark {
+  border: 0;
+  cursor: pointer;
+  background:
+    linear-gradient(135deg, #ffffff, #ffe4e6) !important;
+  color: #111827 !important;
+  box-shadow: 0 18px 36px rgba(239, 43, 47, 0.28) !important;
+}
+
+.recruitment-member-drawer button.btn-premium-dark:hover {
+  translate: 0 -2px;
+  box-shadow: 0 24px 48px rgba(239, 43, 47, 0.36) !important;
+}
+
+.recruitment-drawer-layout:not(.is-team-open) .recruitment-member-drawer {
+  text-align: center;
+  align-items: center;
+}
+
+.recruitment-drawer-layout:not(.is-team-open) .recruitment-action-row {
+  justify-content: center;
+}
+
+.recruitment-page .recruitment-openings-panel {
+  padding: 18px !important;
+  border-top: 0 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.recruitment-page .recruitment-openings-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(239, 43, 47, 0.12), transparent 28%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 34px);
+}
+
+.recruitment-drawer-layout.is-team-open .recruitment-openings-panel {
+  animation: recruitmentTeamsIn 180ms var(--ease-formal) both;
+}
+
+.recruitment-team-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.recruitment-team-heading .title-section-premium {
+  margin: 4px 0 0;
+  color: #ffffff !important;
+  font-size: clamp(1.65rem, 2.2vw, 2.35rem);
+}
+
+.recruitment-page .recruitment-openings-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.recruitment-page .recruitment-slot-premium {
+  min-height: 0;
+  padding: 12px !important;
+  border-radius: 12px !important;
+  border-color: color-mix(in srgb, var(--team-accent) 44%, rgba(255, 255, 255, 0.1)) !important;
+  animation: teamCardPop 260ms var(--ease-formal) both;
+  animation-delay: calc(var(--card-index) * 45ms);
+}
+
+.recruitment-page .recruitment-slot-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--team-accent) 25%, transparent), transparent 42%),
+    radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--team-accent) 42%, transparent), transparent 34%);
+  opacity: 0.85;
+}
+
+.team-card-number {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  color: rgba(255, 255, 255, 0.12);
+  font-size: 2rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.recruitment-page .recruitment-slot-premium h3 {
+  margin: 7px 0 5px !important;
+  font-size: 0.94rem !important;
+}
+
+.recruitment-page .recruitment-slot-premium p {
+  font-size: 0.7rem !important;
+  line-height: 1.32 !important;
+}
+
+.recruitment-page .recruitment-active-badge {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 8px;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.recruitment-page .recruitment-slot-premium .btn-premium-dark {
+  min-height: 30px;
+  margin-top: 8px !important;
+  padding: 0 8px;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+}
+
+.recruitment-page .recruitment-slot-premium:hover {
+  transform: translateY(-5px) scale(1.015) !important;
+  border-color: color-mix(in srgb, var(--team-accent) 72%, #ffffff) !important;
+}
+
+@media (max-width: 1120px) {
+  .recruitment-drawer-layout,
+  .recruitment-drawer-layout.is-team-open {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .recruitment-member-drawer {
+    position: relative;
+    top: auto;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 1240px) {
+  .recruitment-drawer-layout.is-team-open {
+    grid-template-columns: minmax(280px, 0.8fr) minmax(620px, 1.6fr);
+  }
+
+  .recruitment-page .recruitment-openings-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .recruitment-page.subpage-main {
+    width: calc(100% - 28px);
+    padding-top: 22px;
+  }
+
+  .recruitment-page .recruitment-openings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recruitment-team-heading {
+    display: block;
+  }
+
+  .recruitment-member-drawer .recruitment-action-row a,
+  .recruitment-member-drawer .recruitment-action-row button,
+  .recruitment-member-drawer .member-pill {
+    width: 100%;
+  }
+}
+
+@keyframes recruitmentTeamsIn {
+  from {
+    opacity: 0;
+    translate: 14px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes teamCardPop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes recruitmentGlowFloat {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-16px, 18px, 0) scale(1.12);
+  }
+}
