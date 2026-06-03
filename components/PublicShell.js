@@ -157,7 +157,7 @@ export default function PublicShell({
               )}
             </div>
             <div className="notice-strip-links">
-              <a href="mailto:iste@cumail.in">Email Support</a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=iste@cumail.in" target="_blank" rel="noopener noreferrer">Email Support</a>
               <a href="https://www.instagram.com/iste_cusc?igsh=MWc2cHE2cGc1N3AwOA==" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="https://www.linkedin.com/company/iste-student-chapter-chandigarh-university/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
@@ -222,39 +222,10 @@ export default function PublicShell({
               <div className="footer-brand-header">
                 <img src="/brand/iste-logo.jpg" alt="ISTE Logo" className="footer-logo" />
                 <div className="footer-brand-text">
-                  <strong>ISTE SOCIETY</strong>
+                  <strong>ISTE</strong>
                   <span>STUDENT CHAPTER</span>
                 </div>
               </div>
-              <p className="footer-brand-desc">
-                Leading the way in technical education. Bridging the gap between 
-                curriculum and industry requirements through innovation.
-              </p>
-              <div className="footer-social-icons">
-                <a href="#" className="social-tile">𝕏</a>
-                <a href="mailto:iste@cumail.in" className="social-tile">G</a>
-                <a href="https://www.instagram.com/iste_cusc?igsh=MWc2cHE2cGc1N3AwOA==" target="_blank" rel="noopener noreferrer" className="social-tile">IG</a>
-                <a href="https://www.linkedin.com/company/iste-student-chapter-chandigarh-university/" target="_blank" rel="noopener noreferrer" className="social-tile">in</a>
-              </div>
-            </div>
-            
-            <div className="footer-links-column">
-              <h4 className="footer-heading">Quick Links</h4>
-              <nav className="footer-nav-list">
-                <Link href="/">Home</Link>
-                <Link href="/about">About Us</Link>
-                <Link href="/events">Upcoming Events</Link>
-                <Link href="/recruitment">Join Us</Link>
-              </nav>
-            </div>
-
-            <div className="footer-links-column">
-              <h4 className="footer-heading">More</h4>
-              <nav className="footer-nav-list">
-                <Link href="/past-events">Previous Events</Link>
-                <Link href="#">FAQs</Link>
-                <Link href="/team">Team Members</Link>
-              </nav>
             </div>
 
             <div className="footer-contact-column">
@@ -270,7 +241,7 @@ export default function PublicShell({
                   <span className="contact-icon" style={{ display: 'inline-flex', alignItems: 'center' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                   </span>
-                  <a href="mailto:iste@cumail.in" style={{ color: 'inherit', textDecoration: 'none' }}>iste@cumail.in</a>
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=iste@cumail.in" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>iste@cumail.in</a>
                 </div>
               </div>
             </div>
@@ -279,7 +250,7 @@ export default function PublicShell({
           <div className="footer-bottom">
             <div className="footer-bottom-inner">
               <p className="footer-copyright">
-                © {new Date().getFullYear()} <span>ISTE SOCIETY</span>. All rights reserved.
+                © {new Date().getFullYear()} <span>ISTE Student Chapter</span>. All rights reserved.
               </p>
               {logoClicks >= 3 && (
                 <button className="footer-login-btn" type="button" onClick={handleAuthorLoginClick}>

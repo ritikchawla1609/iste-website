@@ -69,21 +69,12 @@ export default function AdminShell({
                 Professional content management system for the official ISTE Student Chapter website.
               </p>
             </div>
-            
-            <div className="footer-links">
-              <h4 style={{ color: 'var(--brand-red)' }}>Shortcuts</h4>
-              <div className="footer-links-grid">
-                <Link href="/author-dashboard" style={{ color: '#94a3b8' }}>Dashboard</Link>
-                <Link href="/" style={{ color: '#94a3b8' }}>Public Site</Link>
-                <a href="mailto:iste@cuchd.in" style={{ color: '#94a3b8' }}>Support</a>
-              </div>
-            </div>
           </div>
 
           <div className="footer-bottom">
             <div className="footer-bottom-inner">
               <p className="footer-credit" style={{ color: '#64748b' }}>
-                © {new Date().getFullYear()} <span style={{ color: 'var(--brand-red)' }}>ISTE SOCIETY</span> Authorized Access Only.
+                © {new Date().getFullYear()} <span style={{ color: 'var(--brand-red)' }}>ISTE Student Chapter</span>. Authorized Access Only.
               </p>
             </div>
           </div>

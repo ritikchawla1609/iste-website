@@ -46,9 +46,21 @@ export default async function HomePage() {
             {/* Premium CTA Buttons */}
             <div className="hero-cta-group">
               <Link href="/events" className="hero-cta-primary">
+                <svg className="cta-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', verticalAlign: 'middle', display: 'inline-block' }}>
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
                 Explore Events
               </Link>
               <Link href="/recruitment" className="hero-cta-secondary">
+                <svg className="cta-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px', verticalAlign: 'middle', display: 'inline-block' }}>
+                  <path d="M18 17a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2" />
+                  <path d="M22 10a2 2 0 0 0-2-2h-3L13 4 8 9v4l3 3h5a2 2 0 0 0 2-2v-4Z" />
+                  <path d="m3 14 3-3-3-3" />
+                  <path d="M14 13h2" />
+                </svg>
                 Join Chapter
               </Link>
             </div>
@@ -104,6 +116,7 @@ export default async function HomePage() {
             <div className="vision-container">
               {/* Left Column: Impressive Visual Shield */}
               <div className="vision-visual-column">
+                <span className="hero-kicker" style={{ alignSelf: 'center' }}>Achievement</span>
                 <div className="award-photo-card">
                   <img
                     src="/achievements/best-professional-society-award.jpg"
@@ -111,24 +124,40 @@ export default async function HomePage() {
                     className="award-photo"
                   />
                   <div className="award-photo-caption">
-                    <span className="award-photo-kicker">Achievement</span>
                     <h3>Best Professional Society Award</h3>
                     <p>Recognized for engineering and technology education leadership.</p>
                   </div>
                 </div>
+                <p className="award-photo-subtext">
+                  Presented by the Indian Society for Technical Education (ISTE) in recognition of academic excellence, tech innovation, and leadership.
+                </p>
               </div>
 
               {/* Right Column: Why Join List */}
               <div className="vision-content-column">
-                <span className="hero-kicker" style={{ alignSelf: 'flex-start' }}>Opportunities</span>
+                <span className="hero-kicker" style={{ alignSelf: 'center' }}>Opportunities</span>
                 <h2 className="vision-section-title">{about.visionTitle || "Why Join ISTE?"}</h2>
                 <ul className="vision-premium-list">
-                  {about.visionItems.map((item) => (
-                    <li key={item} className="vision-list-item">
-                      <span className="check-mark">✓</span>
-                      <p className="list-item-text">{item}</p>
-                    </li>
-                  ))}
+                  {about.visionItems.map((item, idx) => {
+                    const details = [
+                      "Providing resources, mentorship, and research opportunities to help students think outside the box and push technological boundaries.",
+                      "Hosting regular hands-on sessions in AI/ML, Web Dev, App Dev, and major national hackathons with rewards and recognition.",
+                      "Work in interdisciplinary student teams to build industrial-grade applications, open-source software, and research prototypes.",
+                      "Get direct mentorship from tech leaders, access internship opportunities, and learn from guest lectures by industry professionals.",
+                      "Develop soft skills, manage large-scale events, lead domain-specific subteams, and cultivate executive presence and professionalism."
+                    ];
+                    return (
+                      <li key={item} className="vision-list-item">
+                        <div className="vision-list-item-main">
+                          <span className="check-mark">✓</span>
+                          <p className="list-item-text">{item}</p>
+                        </div>
+                        <p className="vision-list-item-details">
+                          {details[idx] || "Empowering students to achieve their full potential in technical careers."}
+                        </p>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
