@@ -21,10 +21,7 @@ const FACULTY_ADVISORS = [
 const OFFICE_BEARERS = [
   { name: "Sahil Wadhwa", role: "President", image: "/team/sahil-wadia.png" },
   { name: "Yatin Berry", role: "Vice President", image: "/team/yatin-berry.png" },
-  { name: "Srishti", role: "General Secretary", image: "/team/srishti-nautiyal.png" }
-];
-
-const JOINT_SECRETARY = [
+  { name: "Srishti", role: "General Secretary", image: "/team/srishti-nautiyal.png" },
   { name: "Amit Kumar", role: "Joint Secretary" },
   { name: "Krishnam", role: "Joint Secretary", image: "/team/krishnam-gupta.png" },
   { name: "Jatin Mittal", role: "Joint Secretary" },
@@ -144,17 +141,7 @@ export default function TeamPage() {
               </div>
             </div>
 
-            {/* Joint Secretary Section */}
-            <div className="team-group">
-              <div className="team-group-header">
-                <h2>Joint Secretary</h2>
-              </div>
-              <div className="team-grid">
-                {JOINT_SECRETARY.map((member) => (
-                  <TeamCard key={member.name} member={member} isLead={true} />
-                ))}
-              </div>
-            </div>
+
 
             {/* Domain Sections */}
             {DOMAIN_TEAMS.map((group) => (
