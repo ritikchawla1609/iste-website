@@ -10161,7 +10161,7 @@ body {
 /* Shift the ISTE circular logo slightly bottom-right inside its red border circles */
 .brand-mark img,
 .stats-logo-circle img {
-  object-position: 51.5% 52.5% !important;
+  object-position: 54% 55% !important;
 }
 
 
