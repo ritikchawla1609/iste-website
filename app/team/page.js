@@ -83,7 +83,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Operational Team",
     color: "var(--navy-800)",
-    lead: { name: "Ritik Chawla", role: "Operational Lead", image: "/team/member-placeholder.jpg" },
+    lead: { name: "Ritik Chawla", role: "Operational Lead", image: "/team/ritik-chawla.png" },
     members: [
       { name: "Divyans Verma", role: "Team Member" },
       { name: "Varun", role: "Team Member" },
