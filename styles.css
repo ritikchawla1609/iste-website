@@ -904,7 +904,7 @@ body {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 32px;
 }
 
@@ -935,9 +935,9 @@ body {
 
 .member-photo {
   width: 100%;
-  aspect-ratio: 1 / 1.1;
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
-  margin: 0 auto 20px;
+  margin: 0 auto 16px;
   overflow: hidden;
   border: none;
   box-shadow: none;
@@ -4504,13 +4504,31 @@ textarea {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  max-height: 640px;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+
+/* Custom Scrollbar for Subgrid */
+.team-members-subgrid::-webkit-scrollbar {
+  width: 6px;
+}
+.team-members-subgrid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+}
+.team-members-subgrid::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+.team-members-subgrid::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* Team Card Custom Sizing Refinement */
 .team-member-card.is-small .member-photo {
   aspect-ratio: 1 / 1 !important;
   margin-bottom: 12px;
-  height: 190px !important;
 }
 
 /* Recruitment Custom Layout */
