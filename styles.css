@@ -7701,8 +7701,8 @@ body {
 
 .event-modal-close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 24px;
+  right: 24px;
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -7871,7 +7871,7 @@ body {
   font-weight: 850;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .event-modal-title {
