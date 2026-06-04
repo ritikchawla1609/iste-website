@@ -106,27 +106,21 @@ export default function PastEventsClient({ events }) {
                 {hasImages && <div className="card-bg-overlay" />}
                 <div className="past-event-content-wrapper">
                   <div className="past-event-topline">
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <p className="section-kicker">{formatDate(event.eventDate)}</p>
-                      <span className="card-category-badge">{event.category || "Event"}</span>
-                    </div>
-                    <span>{String(eventIndex + 1).padStart(2, "0")}</span>
+                    <h2 className="past-event-name-heading">{event.name}</h2>
+                    <span className="past-event-index">{String(eventIndex + 1).padStart(2, "0")}</span>
                   </div>
-                  <h2>{event.name}</h2>
+                  
+                  <div className="past-event-date-subheading">
+                    <svg className="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px', verticalAlign: 'middle', display: 'inline-block' }}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span>{formatDate(event.eventDate)}</span>
+                  </div>
+
                   <p className="listing-copy">{event.description}</p>
 
-                  {event.winners && (
-                    <div className="past-event-highlight">
-                      <strong>Highlights</strong>
-                      <p>{event.winners}</p>
-                    </div>
-                  )}
-                  
-                  {hasImages && (
-                    <span className="card-view-details-kicker">
-                      Click to view {event.imagePaths.length} event photos & details →
-                    </span>
-                  )}
+                  <div className="past-event-action-link">
+                    <span>{hasImages ? `View Gallery (${event.imagePaths.length} Photos)` : "Explore Highlights"}</span>
+                    <svg className="action-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
                 </div>
               </article>
             );
@@ -194,8 +188,11 @@ export default function PastEventsClient({ events }) {
             <div className="event-modal-body" style={{ paddingTop: (!selectedEvent.imagePaths || selectedEvent.imagePaths.length === 0) ? '48px' : undefined }}>
               <header className="event-modal-header">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-                  <span className="event-modal-date-badge">{formatDate(selectedEvent.eventDate)}</span>
-                  <span style={{ padding: '4px 10px', borderRadius: '50px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: '#cbd5e1', fontSize: '0.72rem', fontWeight: 850, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <span className="event-modal-date-badge">
+                    <svg className="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '5px', verticalAlign: 'middle', display: 'inline-block', marginTop: '-2px' }}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    {formatDate(selectedEvent.eventDate)}
+                  </span>
+                  <span className="event-modal-category-badge">
                     {selectedEvent.category || "Event"}
                   </span>
                 </div>
@@ -204,25 +201,32 @@ export default function PastEventsClient({ events }) {
                 </h1>
               </header>
 
+              {/* Achievements & Highlights Spotlight (Full Width, Placed Upper) */}
+              {selectedEvent.winners && (
+                <div className="event-modal-highlight-hero">
+                  <div className="highlight-glow-bg" />
+                  <div className="highlight-hero-body">
+                    <div className="highlight-left-content">
+                      <div className="highlight-badge">
+                        <span style={{ marginRight: '5px' }}>✨</span>
+                        <span>Achievements & Highlights</span>
+                      </div>
+                      <p>{selectedEvent.winners}</p>
+                    </div>
+                    <div className="highlight-right-trophy">
+                      <div className="trophy-circle-bg">
+                        <span className="floating-trophy-emoji">🏆</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <section className="event-modal-info-section">
                 <div className="event-modal-description">
                   <h3>About the Event</h3>
                   <p>{selectedEvent.description}</p>
                 </div>
-
-                {selectedEvent.winners && (
-                  <div className="event-modal-achievements">
-                    <h3>Achievements & Highlights</h3>
-                    <div className="achievements-trophy-card">
-                      <div className="trophy-glow" />
-                      <div className="trophy-card-header">
-                        <span className="trophy-icon">🏆</span>
-                        <h4>Highlights</h4>
-                      </div>
-                      <p>{selectedEvent.winners}</p>
-                    </div>
-                  </div>
-                )}
               </section>
 
               {/* Gallery Section */}
