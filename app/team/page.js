@@ -3,26 +3,29 @@ import PublicShell from "@/components/PublicShell";
 const FACULTY_ADVISORS = [
   {
     name: "Prof. Dr. Sandeep Singh Kang",
-    role: "Chapter Advisor"
+    role: "Associate Director - CSE 3rd Year",
+    image: "/team/faculty-sandeep.jpg"
   },
   {
     name: "Prof. Dr. Neetu Rani",
-    role: "Associate Director - CSE 3rd Year"
+    role: "Chapter Advisor",
+    image: "/team/faculty-neetu.jpg"
   },
   {
     name: "Prof. Dr. Neha Dutta",
-    role: "Chapter Co-Advisor"
+    role: "Chapter Co-Advisor",
+    image: "/team/faculty-neha.jpg"
   }
 ];
 
 const OFFICE_BEARERS = [
-  { name: "Sahil Wadhwa", role: "President" },
-  { name: "Yatin Berry", role: "Vice President" },
-  { name: "Srishti", role: "General Secretary" },
-  { name: "Amit Kumar", role: "Joint Secretary" },
-  { name: "Krishnam", role: "Joint Secretary" },
+  { name: "Sahil Wadhwa", role: "President", image: "/team/sahil-wadia.png" },
+  { name: "Yatin Berry", role: "Vice President", image: "/team/yatin-berry.png" },
+  { name: "Srishti", role: "General Secretary", image: "/team/srishti-nautiyal.png" },
+  { name: "Amit Kumar", role: "Joint Secretary", image: "/team/amit-kumar.jpg" },
+  { name: "Krishnam", role: "Joint Secretary", image: "/team/krishnam-gupta.png" },
   { name: "Jatin Mittal", role: "Joint Secretary" },
-  { name: "Dinky Khurana", role: "Joint Secretary" }
+  { name: "Dinky Khurana", role: "Joint Secretary", image: "/team/dinky-khurana.jpg" }
 ];
 
 const DOMAIN_TEAMS = [
@@ -100,20 +103,21 @@ export default function TeamPage() {
     <PublicShell activePath="/team">
       <main className="subpage-main">
         <section className="subpage-hero" style={{ padding: '35px 0 15px' }}>
-          <div className="hero-context">
-            <span className="section-kicker">The Faces of ISTE</span>
-          </div>
-          <h1 className="hero-title">Our <span className="brand-text">Dedicated Team</span></h1>
+          <h1 className="team-hero-title">
+            <span className="team-hero-word-our">Our</span>
+            <span className="team-hero-word-dedicated">Dedicated</span>
+            <span className="team-hero-word-team">Team</span>
+          </h1>
           <div className="title-accent-line" style={{ margin: '10px auto 15px' }}></div>
           <p className="hero-description" style={{ marginBottom: '0px' }}>
-            Meet the passionate individuals who work behind the scenes to make the ISTE Student Chapter 
+            Meet the passionate individuals who work behind the scenes to make the ISTE Student Chapter
             at Chandigarh University a beacon of technical excellence.
           </p>
         </section>
 
         <section className="about-team-section">
           <div className="team-container">
-          
+
             {/* Faculty Advisors Section */}
             <div className="team-group">
               <div className="team-group-header">
@@ -146,7 +150,7 @@ export default function TeamPage() {
                 <div className="team-group-header" style={{ borderBottom: `2px solid ${group.color}`, paddingBottom: '16px', marginBottom: '32px' }}>
                   <h2 style={{ color: 'var(--navy-900)' }}>{group.domain}</h2>
                 </div>
-                
+
                 <div className="team-domain-row">
                   {/* Domain Lead */}
                   <div className="team-domain-lead-col">
@@ -155,7 +159,7 @@ export default function TeamPage() {
                     </div>
                     <TeamCard member={group.lead} isLead={true} accentColor={group.color} />
                   </div>
-                  
+
                   {/* Team Members */}
                   <div className="team-domain-members-col">
                     <div style={{ marginBottom: '12px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-soft)', letterSpacing: '0.1em' }}>
