@@ -15,8 +15,6 @@ const FACULTY_ADVISORS = [
     name: "Prof. Dr. Neha Dutta",
     role: "Chapter Co-Advisor",
     image: "/team/faculty-neha.jpg"
-    role: "Chapter Co-Advisor",
-    image: "/team/faculty-neha.jpg"
   }
 ];
 
@@ -26,13 +24,7 @@ const OFFICE_BEARERS = [
   { name: "Srishti", role: "General Secretary", image: "/team/srishti-nautiyal.png" },
   { name: "Amit Kumar", role: "Joint Secretary", image: "/team/amit-kumar.jpg" },
   { name: "Krishnam", role: "Joint Secretary", image: "/team/krishnam-gupta.png" },
-  { name: "Sahil Wadhwa", role: "President", image: "/team/sahil-wadia.png" },
-  { name: "Yatin Berry", role: "Vice President", image: "/team/yatin-berry.png" },
-  { name: "Srishti", role: "General Secretary", image: "/team/srishti-nautiyal.png" },
-  { name: "Amit Kumar", role: "Joint Secretary", image: "/team/amit-kumar.jpg" },
-  { name: "Krishnam", role: "Joint Secretary", image: "/team/krishnam-gupta.png" },
   { name: "Jatin Mittal", role: "Joint Secretary" },
-  { name: "Dinky Khurana", role: "Joint Secretary", image: "/team/dinky-khurana.jpg" }
   { name: "Dinky Khurana", role: "Joint Secretary", image: "/team/dinky-khurana.jpg" }
 ];
 
@@ -40,7 +32,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Tech Team",
     color: "var(--navy-700)",
-    lead: { name: "Tanisha Goyal", role: "Tech Lead", image: "/team/tanisha-goyal.png" },
+    lead: { name: "Tanisha Goyal", role: "Tech Lead" },
     members: [
       { name: "Satvik", role: "Team Member" },
       { name: "Kunal", role: "Team Member" },
@@ -51,7 +43,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Design Team",
     color: "var(--navy-900)",
-    lead: { name: "Ridhima", role: "Design Lead", image: "/team/member-placeholder.jpg" },
+    lead: { name: "Ridhima", role: "Design Lead" },
     members: [
       { name: "Akshat", role: "Team Member" },
       { name: "Garvita", role: "Team Member" },
@@ -61,7 +53,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Media Team",
     color: "var(--green)",
-    lead: { name: "Areeb", role: "Media Lead", image: "/team/member-placeholder.jpg" },
+    lead: { name: "Areeb", role: "Media Lead" },
     members: [
       { name: "Mehul", role: "Team Member" },
       { name: "Swayam", role: "Team Member" },
@@ -74,7 +66,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Event Team",
     color: "var(--maroon)",
-    lead: { name: "Sneha Yadav", role: "Event Lead", image: "/team/sneha-yadav.png" },
+    lead: { name: "Sneha Yadav", role: "Event Lead" },
     members: [
       { name: "Arnav", role: "Team Member" },
       { name: "Dewanshu", role: "Team Member" },
@@ -91,7 +83,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Operational Team",
     color: "var(--navy-800)",
-    lead: { name: "Ritik Chawla", role: "Operational Lead", image: "/team/ritik-chawla.png" },
+    lead: { name: "Ritik Chawla", role: "Operational Lead" },
     members: [
       { name: "Divyans Verma", role: "Team Member" },
       { name: "Varun", role: "Team Member" },
