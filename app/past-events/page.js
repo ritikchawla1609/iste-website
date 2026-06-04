@@ -60,7 +60,6 @@ export default async function PastEventsPage() {
       <main className="subpage-main">
         <section className="subpage-premium-hero past-events-hero-panel">
           <div className="subpage-hero-copy">
-            <h3 className="section-kicker-heading">Our Legacy</h3>
             <h1 className="subpage-premium-title">Previous Events & <span>Achievements</span></h1>
             <p className="subpage-premium-desc">
               Celebrating milestones, success stories, and technical breakthroughs from the

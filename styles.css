@@ -8032,23 +8032,15 @@ body {
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.45) !important;
-  backdrop-filter: blur(20px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
-  box-shadow: 
-    0 24px 60px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .past-event-card:hover {
-  background: rgba(255, 255, 255, 0.65) !important;
   transform: translateY(-8px) scale(1.02);
+  border-color: rgba(239, 43, 47, 0.3);
   box-shadow: 
     0 30px 60px rgba(15, 23, 42, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    0 0 25px rgba(239, 43, 47, 0.08) !important;
+    0 0 25px rgba(239, 43, 47, 0.08);
 }
 
 .past-event-card.has-bg {
