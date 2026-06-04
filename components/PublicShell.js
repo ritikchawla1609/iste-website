@@ -12,7 +12,6 @@ export default function PublicShell({
   activePath,
   children
 }) {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
@@ -45,8 +44,6 @@ export default function PublicShell({
     }
     fetchNotice();
   }, []);
-
-
 
   useEffect(() => {
     const shouldSkipMotion =
@@ -189,35 +186,17 @@ export default function PublicShell({
                   </Link>
                 ))}
               </nav>
-              <button
+              <Link
+                href="/menu"
                 className="nav-toggle"
-                type="button"
-                onClick={() => setMenuOpen(!menuOpen)}
-                aria-expanded={menuOpen}
               >
-                {menuOpen ? "Close" : "Menu"}
-              </button>
+                Menu
+              </Link>
             </div>
           </div>
-
-          <nav className={`site-nav-row mobile-only ${menuOpen ? "is-open" : ""}`.trim()} id="siteNav" aria-label="Mobile navigation">
-            <div className="nav-container">
-              {PUBLIC_NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={activePath === item.href ? "is-active" : ""}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
         </header>
 
         {children}
-
 
         <footer className="site-footer">
           <div className="footer-row-container">
@@ -233,7 +212,6 @@ export default function PublicShell({
                 </button>
               )}
             </div>
-
           </div>
         </footer>
       </div>

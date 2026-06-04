@@ -112,7 +112,6 @@ export default async function HomePage() {
             <div className="vision-container">
               {/* Left Column: Impressive Visual Shield */}
               <div className="vision-visual-column">
-                <h3 className="section-kicker-heading" style={{ alignSelf: 'center' }}>Achievement</h3>
                 <div className="award-photo-card">
                   <img
                     src="/achievements/best-professional-society-award.jpg"
@@ -131,7 +130,6 @@ export default async function HomePage() {
 
               {/* Right Column: Why Join List */}
               <div className="vision-content-column">
-                <h3 className="section-kicker-heading" style={{ alignSelf: 'center' }}>Opportunities</h3>
                 <h2 className="vision-section-title">{about.visionTitle || "Why Join ISTE?"}</h2>
                 <ul className="vision-premium-list">
                   {about.visionItems.map((item, idx) => {

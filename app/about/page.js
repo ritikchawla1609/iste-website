@@ -25,7 +25,9 @@ export default async function AboutPage() {
               href="/team" 
               className="about-visionaries-btn glass-btn"
             >
-              Meet the Visionaries
+              <span className="btn-text-large">Meet the Visionaries</span>
+              <span className="btn-text-medium">Meet Visionaries</span>
+              <span className="btn-text-small">Meet Team</span>
             </Link>
           </div>
 
