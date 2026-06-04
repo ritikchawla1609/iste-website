@@ -893,10 +893,13 @@ body.no-scroll {
 }
 
 .team-group-header h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
   color: var(--navy-900);
   margin-bottom: 0;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 .team-group-header .section-kicker {
