@@ -12,6 +12,7 @@ export default function PublicShell({
   activePath,
   children
 }) {
+
   const [loginOpen, setLoginOpen] = useState(false);
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);

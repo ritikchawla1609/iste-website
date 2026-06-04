@@ -157,34 +157,34 @@ export default function EventsTimeline({ events }) {
                             Apply Now
                           </a>
                         ) : (
-  <div style={{ display: 'flex', gap: '15px', width: '100%' }}>
-    <button
-      className="primary-btn"
-      style={{
-        flex: 1,
-        background: '#9098a5',
-        color: 'white',
-        border: 'none',
-        cursor: 'pointer'
-      }}
-    >
-      Details
-    </button>
+                          <div style={{ display: 'flex', gap: '15px', width: '100%' }}>
+                            <button
+                              className="primary-btn"
+                              style={{
+                                flex: 1,
+                                background: '#9098a5',
+                                color: 'white',
+                                border: 'none',
+                                cursor: 'pointer'
+                              }}
+                            >
+                              Details
+                            </button>
 
-    <button
-      className="primary-btn"
-      style={{
-        flex: 1,
-        background: '#e51c23',
-        color: 'white',
-        border: 'none',
-        cursor: 'pointer'
-      }}
-    >
-      Registration
-    </button>
-  </div>
-)
+                            <button
+                              className="primary-btn"
+                              style={{
+                                flex: 1,
+                                background: '#e51c23',
+                                color: 'white',
+                                border: 'none',
+                                cursor: 'pointer'
+                              }}
+                            >
+                              Registration
+                            </button>
+                          </div>
+                        )
                       )}
 
                       {event.googleFormLink && (

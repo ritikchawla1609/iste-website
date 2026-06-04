@@ -27,7 +27,7 @@ export default function RecruitmentPage() {
         if (session.authenticated && session.role === "member") {
           setCurrentMember(session.uid);
         }
-      } catch (e) { }
+      } catch (e) {}
     }
     async function loadSiteData() {
       try {
@@ -36,7 +36,7 @@ export default function RecruitmentPage() {
         if (response.recruitments) {
           setRecruitments(response.recruitments);
         }
-      } catch (e) { }
+      } catch (e) {}
     }
     checkMember();
     loadSiteData();
@@ -97,6 +97,7 @@ export default function RecruitmentPage() {
             <p className="hero-desc">
               Students can register through the official ISTE Student Chapter process and become part of a community built around technical learning, leadership, and innovation.
             </p>
+
 
             <div className="recruitment-action-row">
               <button

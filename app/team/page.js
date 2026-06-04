@@ -147,6 +147,7 @@ export default function TeamPage() {
             {DOMAIN_TEAMS.map((group) => (
               <div key={group.domain} className="team-group" style={{ marginTop: '60px' }}>
                 <div className="team-group-header" style={{ borderBottom: `2px solid ${group.color}`, paddingBottom: '16px', marginBottom: '32px' }}>
+
                   <h2 style={{ color: 'var(--navy-900)' }}>{group.domain}</h2>
                 </div>
                 
@@ -213,4 +214,3 @@ function TeamCard({ member, isLead = false, isSmall = false, accentColor = 'var(
     </div>
   );
 }
-
