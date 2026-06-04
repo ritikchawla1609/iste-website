@@ -3,12 +3,12 @@ import PublicShell from "@/components/PublicShell";
 const FACULTY_ADVISORS = [
   {
     name: "Prof. Dr. Sandeep Singh Kang",
-    role: "Associate Director - CSE 3rd Year",
+    role: "Chapter Advisor",
     image: "/team/faculty-sandeep.jpg"
   },
   {
     name: "Prof. Dr. Neetu Rani",
-    role: "Chapter Advisor",
+    role: "Associate Director - CSE 3rd Year",
     image: "/team/faculty-neetu.jpg"
   },
   {
@@ -32,7 +32,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Tech Team",
     color: "var(--navy-700)",
-    lead: { name: "Tanisha Goyal", role: "Tech Lead" },
+    lead: { name: "Tanisha Goyal", role: "Tech Lead", image: "/team/tanisha-goyal.png" },
     members: [
       { name: "Satvik", role: "Team Member" },
       { name: "Kunal", role: "Team Member" },
@@ -43,7 +43,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Design Team",
     color: "var(--navy-900)",
-    lead: { name: "Ridhima", role: "Design Lead" },
+    lead: { name: "Ridhima", role: "Design Lead", image: "/team/member-placeholder.jpg" },
     members: [
       { name: "Akshat", role: "Team Member" },
       { name: "Garvita", role: "Team Member" },
@@ -53,7 +53,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Media Team",
     color: "var(--green)",
-    lead: { name: "Areeb", role: "Media Lead" },
+    lead: { name: "Areeb", role: "Media Lead", image: "/team/member-placeholder.jpg" },
     members: [
       { name: "Mehul", role: "Team Member" },
       { name: "Swayam", role: "Team Member" },
@@ -66,7 +66,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Event Team",
     color: "var(--maroon)",
-    lead: { name: "Sneha Yadav", role: "Event Lead" },
+    lead: { name: "Sneha Yadav", role: "Event Lead", image: "/team/sneha-yadav.png" },
     members: [
       { name: "Arnav", role: "Team Member" },
       { name: "Dewanshu", role: "Team Member" },
@@ -83,7 +83,7 @@ const DOMAIN_TEAMS = [
   {
     domain: "Operational Team",
     color: "var(--navy-800)",
-    lead: { name: "Ritik Chawla", role: "Operational Lead" },
+    lead: { name: "Ritik Chawla", role: "Operational Lead", image: "/team/ritik-chawla.png" },
     members: [
       { name: "Divyans Verma", role: "Team Member" },
       { name: "Varun", role: "Team Member" },
@@ -103,25 +103,24 @@ export default function TeamPage() {
     <PublicShell activePath="/team">
       <main className="subpage-main">
         <section className="subpage-hero" style={{ padding: '35px 0 15px' }}>
-          <h1 className="team-hero-title">
-            <span className="team-hero-word-our">Our</span>
-            <span className="team-hero-word-dedicated">Dedicated</span>
-            <span className="team-hero-word-team">Team</span>
-          </h1>
+          <div className="hero-context">
+            <span className="section-kicker">The Faces of ISTE</span>
+          </div>
+          <h1 className="hero-title">Our <span className="brand-text">Dedicated Team</span></h1>
           <div className="title-accent-line" style={{ margin: '10px auto 15px' }}></div>
           <p className="hero-description" style={{ marginBottom: '0px' }}>
-            Meet the passionate individuals who work behind the scenes to make the ISTE Student Chapter
+            Meet the passionate individuals who work behind the scenes to make the ISTE Student Chapter 
             at Chandigarh University a beacon of technical excellence.
           </p>
         </section>
 
         <section className="about-team-section">
           <div className="team-container">
-
+          
             {/* Faculty Advisors Section */}
             <div className="team-group">
-              <div className="team-group-header" style={{ borderBottom: '2px solid', borderImage: 'linear-gradient(90deg, #ef2b2f, #1e3a5f) 1', paddingBottom: '16px', marginBottom: '32px' }}>
-                <h2 style={{ color: 'var(--navy-900)' }}>Faculty Advisors</h2>
+              <div className="team-group-header">
+                <h2>Faculty Advisors</h2>
               </div>
               <div className="team-grid team-grid-featured">
                 {FACULTY_ADVISORS.map((member) => (
@@ -132,8 +131,8 @@ export default function TeamPage() {
 
             {/* Office Bearers Section */}
             <div className="team-group">
-              <div className="team-group-header" style={{ borderBottom: '2px solid', borderImage: 'linear-gradient(90deg, #ef2b2f, #1e3a5f) 1', paddingBottom: '16px', marginBottom: '32px' }}>
-                <h2 style={{ color: 'var(--navy-900)' }}>Office Bearers</h2>
+              <div className="team-group-header">
+                <h2>Office Bearers</h2>
               </div>
               <div className="team-grid team-grid-featured">
                 {OFFICE_BEARERS.map((member) => (
@@ -147,19 +146,19 @@ export default function TeamPage() {
             {/* Domain Sections */}
             {DOMAIN_TEAMS.map((group) => (
               <div key={group.domain} className="team-group" style={{ marginTop: '60px' }}>
-                <div className="team-group-header" style={{ borderBottom: '2px solid', borderImage: 'linear-gradient(90deg, #ef2b2f, #1e3a5f) 1', paddingBottom: '16px', marginBottom: '32px' }}>
+                <div className="team-group-header" style={{ borderBottom: `2px solid ${group.color}`, paddingBottom: '16px', marginBottom: '32px' }}>
                   <h2 style={{ color: 'var(--navy-900)' }}>{group.domain}</h2>
                 </div>
-
+                
                 <div className="team-domain-row">
                   {/* Domain Lead */}
                   <div className="team-domain-lead-col">
-                    <div style={{ marginBottom: '12px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', background: 'linear-gradient(90deg, #ef2b2f, #1e3a5f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                    <div style={{ marginBottom: '12px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: group.color, letterSpacing: '0.1em' }}>
                       Domain Lead
                     </div>
                     <TeamCard member={group.lead} isLead={true} accentColor={group.color} />
                   </div>
-
+                  
                   {/* Team Members */}
                   <div className="team-domain-members-col">
                     <div style={{ marginBottom: '12px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-soft)', letterSpacing: '0.1em' }}>
