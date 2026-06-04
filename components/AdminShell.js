@@ -24,7 +24,10 @@ export default function AdminShell({
           <div className="brand-row">
             <Link className="brand" href="/author-dashboard" aria-label="Author dashboard home">
               <span className="brand-mark">
-                <img src="/brand/iste-logo.jpg" alt="ISTE Logo" />
+                <span className="brand-logo-frame">
+                  <img src="/brand/iste-logo.jpg" alt="ISTE Logo" />
+                  <span className="brand-red-boundary" aria-hidden="true" />
+                </span>
               </span>
               <span className="brand-copy">
                 <strong>ISTE AUTHOR PANEL</strong>
