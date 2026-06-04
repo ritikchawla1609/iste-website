@@ -597,6 +597,72 @@ body.no-scroll {
   color: var(--brand-red);
 }
 
+/* =============================================
+   TEAM HERO TITLE — Outfit font, bold & visible
+   ============================================= */
+.team-hero-title {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 900;
+  color: var(--navy-900);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+  max-width: 1000px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25em;
+  flex-wrap: wrap;
+}
+
+.team-hero-word-our {
+  color: var(--navy-900);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.team-hero-word-dedicated {
+  background: linear-gradient(
+    135deg,
+    var(--brand-red) 0%,
+    #ff4757 40%,
+    #ef2b2f 60%,
+    #c0392b 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  position: relative;
+}
+
+/* subtle underline accent beneath "Dedicated" */
+.team-hero-word-dedicated::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-red), #ff4757);
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+.team-hero-word-team {
+  color: var(--navy-900);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 600px) {
+  .team-hero-title {
+    font-size: clamp(1.8rem, 9vw, 2.6rem);
+    gap: 0.2em;
+  }
+}
+
 .hero-description {
   font-size: 1.25rem;
   color: var(--text-soft);
@@ -1046,16 +1112,16 @@ body.no-scroll {
   display: block;
   font-weight: 600;
   font-size: 0.7em;
-  color: #94a3b8;
+  color: #ef2b2f;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-top: 0;
+  margin-top: 4px;
   
-  /* Hidden by default, slides up on hover */
-  opacity: 0;
-  max-height: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  /* Always visible */
+  opacity: 1;
+  max-height: 24px;
+  transform: translateY(0);
+  transition: color 0.3s ease;
 }
 
 .team-member-card:hover .tmc-name {
@@ -1064,11 +1130,7 @@ body.no-scroll {
 }
 
 .team-member-card:hover .tmc-role {
-  opacity: 1;
-  max-height: 24px;
-  transform: translateY(0);
-  margin-top: 4px;
-  color: #ef2b2f;
+  color: #ff6b6b;
 }
 
 /* Lead card: stronger gradient accent top border */
@@ -1112,31 +1174,31 @@ body.no-scroll {
   gap: 28px;
 }
 
-/* 1. FACULTY ADVISORS / COORDINATORS (Largest: 365px) */
+/* 1. FACULTY ADVISORS / COORDINATORS (Largest: 330px) */
 .team-member-card.is-faculty {
-  width: 365px !important;
-  max-width: 365px !important;
-  flex-shrink: 0;
-}
-
-/* 2. OFFICE BEARERS (Second Largest: 330px) */
-.team-grid-featured .team-member-card:not(.is-faculty) {
   width: 330px !important;
   max-width: 330px !important;
   flex-shrink: 0;
 }
 
-/* 3. DOMAIN LEADS (Third Largest: 295px) */
-.team-domain-lead-col .team-member-card {
+/* 2. OFFICE BEARERS (Second Largest: 295px) */
+.team-grid-featured .team-member-card:not(.is-faculty) {
   width: 295px !important;
   max-width: 295px !important;
   flex-shrink: 0;
 }
 
-/* 4. DOMAIN MEMBERS (Smallest: 245px) */
-.team-member-card.is-small {
+/* 3. DOMAIN LEADS (Third Largest: 245px) */
+.team-domain-lead-col .team-member-card {
   width: 245px !important;
   max-width: 245px !important;
+  flex-shrink: 0;
+}
+
+/* 4. DOMAIN MEMBERS (Smallest: 205px) */
+.team-member-card.is-small {
+  width: 205px !important;
+  max-width: 205px !important;
   flex-shrink: 0;
 }
 
@@ -1152,31 +1214,20 @@ body.no-scroll {
 
   /* Maintain readable sizing hierarchy on mobile without squishing */
   .team-member-card.is-faculty {
-    width: 275px !important;
-    max-width: 275px !important;
+    width: 250px !important;
+    max-width: 250px !important;
   }
   .team-grid-featured .team-member-card:not(.is-faculty) {
-    width: 245px !important;
-    max-width: 245px !important;
+    width: 220px !important;
+    max-width: 220px !important;
   }
   .team-domain-lead-col .team-member-card {
-    width: 215px !important;
-    max-width: 215px !important;
+    width: 200px !important;
+    max-width: 200px !important;
   }
   .team-member-card.is-small {
-    width: 185px !important;
-    max-width: 185px !important;
-  }
-}
-  }
-
-  /* Show designation (role) by default on mobile devices and remove hover slide effect */
-  .team-member-card .tmc-role {
-    opacity: 1 !important;
-    max-height: 24px !important;
-    transform: translateY(0) !important;
-    margin-top: 4px !important;
-    color: #ef2b2f !important;
+    width: 150px !important;
+    max-width: 150px !important;
   }
 
   /* Disable zoom and hover scale effects on mobile */
@@ -4843,7 +4894,7 @@ textarea {
 
 .team-members-subgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   max-height: 640px;
   overflow-y: auto;
@@ -10419,9 +10470,8 @@ body {
 /* Shift the ISTE circular logo slightly bottom-right inside its red border circles */
 .brand-mark img,
 .stats-logo-circle img {
-  object-position: 54% 55% !important;
+  object-position: 51.5% 52.5% !important;
 }
-
 
 
 
