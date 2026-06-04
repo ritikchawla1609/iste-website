@@ -598,6 +598,69 @@ body.no-scroll {
   color: var(--brand-red);
 }
 
+/* =============================================
+   TEAM HERO TITLE — Primary heading, Outfit font
+   ============================================= */
+.team-hero-title {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 900;
+  color: var(--navy-900);
+  line-height: 1.05;
+  margin-bottom: 20px;
+  letter-spacing: -0.04em;
+  max-width: 1000px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25em;
+  flex-wrap: wrap;
+}
+
+.team-hero-word-our {
+  color: var(--navy-900);
+  font-weight: 900;
+}
+
+.team-hero-word-dedicated {
+  background: linear-gradient(
+    135deg,
+    var(--brand-red) 0%,
+    #ff4757 40%,
+    #ef2b2f 60%,
+    #c0392b 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  position: relative;
+}
+
+.team-hero-word-dedicated::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-red), #1e3a5f);
+  border-radius: 2px;
+  opacity: 0.45;
+}
+
+.team-hero-word-team {
+  color: var(--navy-900);
+  font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .team-hero-title {
+    font-size: clamp(2rem, 10vw, 3.2rem);
+    gap: 0.2em;
+  }
+}
+
 .hero-description {
   font-size: 1.25rem;
   color: var(--text-soft);
