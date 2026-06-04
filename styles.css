@@ -1050,16 +1050,16 @@ body.no-scroll {
   display: block;
   font-weight: 600;
   font-size: 0.7em;
-  color: #94a3b8;
+  color: #ef2b2f;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-top: 0;
+  margin-top: 4px;
   
-  /* Hidden by default, slides up on hover */
-  opacity: 0;
-  max-height: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  /* Always visible */
+  opacity: 1;
+  max-height: 24px;
+  transform: translateY(0);
+  transition: color 0.3s ease;
 }
 
 .team-member-card:hover .tmc-name {
@@ -1068,11 +1068,7 @@ body.no-scroll {
 }
 
 .team-member-card:hover .tmc-role {
-  opacity: 1;
-  max-height: 24px;
-  transform: translateY(0);
-  margin-top: 4px;
-  color: #ef2b2f;
+  color: #ff6b6b;
 }
 
 /* Lead card: stronger gradient accent top border */
@@ -1170,15 +1166,6 @@ body.no-scroll {
   .team-member-card.is-small {
     width: 185px !important;
     max-width: 185px !important;
-  }
-
-  /* Show designation (role) by default on mobile devices and remove hover slide effect */
-  .team-member-card .tmc-role {
-    opacity: 1 !important;
-    max-height: 24px !important;
-    transform: translateY(0) !important;
-    margin-top: 4px !important;
-    color: #ef2b2f !important;
   }
 
   /* Disable zoom and hover scale effects on mobile */
