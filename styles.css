@@ -893,10 +893,13 @@ body.no-scroll {
 }
 
 .team-group-header h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
   color: var(--navy-900);
   margin-bottom: 0;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 .team-group-header .section-kicker {
@@ -1047,16 +1050,16 @@ body.no-scroll {
   display: block;
   font-weight: 600;
   font-size: 0.7em;
-  color: #94a3b8;
+  color: #ef2b2f;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-top: 0;
+  margin-top: 4px;
   
-  /* Hidden by default, slides up on hover */
-  opacity: 0;
-  max-height: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  /* Always visible */
+  opacity: 1;
+  max-height: 24px;
+  transform: translateY(0);
+  transition: color 0.3s ease;
 }
 
 .team-member-card:hover .tmc-name {
@@ -1065,11 +1068,7 @@ body.no-scroll {
 }
 
 .team-member-card:hover .tmc-role {
-  opacity: 1;
-  max-height: 24px;
-  transform: translateY(0);
-  margin-top: 4px;
-  color: #ef2b2f;
+  color: #ff6b6b;
 }
 
 /* Lead card: stronger gradient accent top border */
@@ -1167,15 +1166,6 @@ body.no-scroll {
   .team-member-card.is-small {
     width: 185px !important;
     max-width: 185px !important;
-  }
-
-  /* Show designation (role) by default on mobile devices and remove hover slide effect */
-  .team-member-card .tmc-role {
-    opacity: 1 !important;
-    max-height: 24px !important;
-    transform: translateY(0) !important;
-    margin-top: 4px !important;
-    color: #ef2b2f !important;
   }
 
   /* Disable zoom and hover scale effects on mobile */
@@ -9734,12 +9724,6 @@ body {
     font-size: 0.95rem !important;
   }
   
-  .brand-mark {
-    width: 48px !important;
-    height: 48px !important;
-    flex: 0 0 48px !important;
-  }
-  
   .subpage-hero {
     padding: 40px 0 30px !important;
   }
@@ -10703,25 +10687,94 @@ body {
   display: block !important;
 }
 
-/* Ensure the brand-mark (navbar logo) is a perfect circular logo matching the homepage stats circle */
+/* Header navbar logo: square frame (source is 1:1) + red circle evenly outside blue line */
 .brand-mark {
-  border-radius: 50% !important;
-  border: 2px solid #ef2b2f !important;
-  background: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15) !important;
-  overflow: hidden !important;
-  display: flex !important;
+  --brand-logo-size: 85px;
+  --brand-red-offset: 2px;
+  position: relative !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  align-self: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
+.brand-logo-frame {
+  position: relative !important;
+  display: block !important;
+  width: var(--brand-logo-size) !important;
+  height: var(--brand-logo-size) !important;
+  min-width: var(--brand-logo-size) !important;
+  min-height: var(--brand-logo-size) !important;
+  max-width: var(--brand-logo-size) !important;
+  max-height: var(--brand-logo-size) !important;
+  flex-shrink: 0 !important;
+  line-height: 0 !important;
+}
+
+.brand-logo-frame img,
 .brand-mark img {
+  display: block !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  margin: 0 !important;
   padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
   filter: none !important;
+  transform: none !important;
+}
+
+.brand-red-boundary {
+  display: none !important;
+  position: absolute !important;
+  top: calc(-1 * var(--brand-red-offset)) !important;
+  right: calc(-1 * var(--brand-red-offset)) !important;
+  bottom: calc(-1 * var(--brand-red-offset)) !important;
+  left: calc(-1 * var(--brand-red-offset)) !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 50% !important;
+  border: 2px solid #ef2b2f !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+@media (max-width: 1100px) {
+  .brand-mark {
+    --brand-logo-size: 67px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-mark {
+    --brand-logo-size: 53px;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-mark {
+    --brand-logo-size: 59px;
+  }
 }
 
 /* Remove spacing between the vision/achievement section and the footer on the homepage */
@@ -10733,8 +10786,7 @@ body {
   padding-bottom: 80px !important; /* Add more bottom spacing inside the section before the footer */
 }
 
-/* Shift the ISTE circular logo slightly bottom-right inside its red border circles */
-.brand-mark img,
+/* Shift the ISTE logo slightly inside the homepage stats circle only */
 .stats-logo-circle img {
   object-position: 54% 55% !important;
 }

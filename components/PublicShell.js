@@ -167,7 +167,10 @@ export default function PublicShell({
           <div className="brand-row">
             <Link className="brand" href="/" aria-label="ISTE Society home" onClick={handleLogoClick}>
               <span className="brand-mark">
-                <img src="/brand/iste-logo.jpg" alt="ISTE logo" />
+                <span className="brand-logo-frame">
+                  <img src="/brand/iste-logo.jpg" alt="ISTE logo" />
+                  <span className="brand-red-boundary" aria-hidden="true" />
+                </span>
               </span>
               <span className="brand-copy">
                 <strong>ISTE Student Chapter</strong>
