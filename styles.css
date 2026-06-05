@@ -11106,6 +11106,7 @@ html {
 .subpage-premium-hero.has-carousel {
   background: #0f172a;
   border-color: rgba(255, 255, 255, 0.1);
+  height: 520px;
 }
 
 .subpage-premium-hero.has-carousel::before,
@@ -11204,6 +11205,12 @@ html {
   transform: scale(1.25);
   width: 14px;
   border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .subpage-premium-hero.has-carousel {
+    height: 340px;
+  }
 }
 
 @media (max-width: 640px) {
