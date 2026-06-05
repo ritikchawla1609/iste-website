@@ -11107,6 +11107,9 @@ html {
   background: #0f172a;
   border-color: rgba(255, 255, 255, 0.1);
   height: 520px;
+  /* Safari/Chrome hardware acceleration clipping fix */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 
 .subpage-premium-hero.has-carousel::before,
@@ -11120,7 +11123,7 @@ html {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: inherit;
 }
 
 .subpage-premium-hero .hero-slide {
@@ -11133,6 +11136,8 @@ html {
   z-index: 1;
   transform: scale(1.08);
   transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s, transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: inherit;
+  overflow: hidden;
 }
 
 .subpage-premium-hero .hero-slide.active {
