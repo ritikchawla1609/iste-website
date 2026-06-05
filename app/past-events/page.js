@@ -2,6 +2,7 @@ import PublicShell from "@/components/PublicShell";
 import PastEventsClient from "@/components/PastEventsClient";
 import { getPublicPastEvents } from "@/lib/site";
 import { sortByDate } from "@/lib/presentation";
+import Carousel from "@/components/Carousel";
 
 const DECK_PAST_EVENTS = [
   {
@@ -61,15 +62,7 @@ export default async function PastEventsPage() {
   return (
     <PublicShell activePath="/past-events">
       <main className="subpage-main">
-        <section className="subpage-premium-hero past-events-hero-panel">
-          <div className="subpage-hero-copy">
-            <h1 className="subpage-premium-title">Previous Events & <span>Achievements</span></h1>
-            <p className="subpage-premium-desc">
-              Celebrating milestones, success stories, and technical breakthroughs from the
-              ISTE Student Chapter at Chandigarh University.
-            </p>
-          </div>
-        </section>
+        <Carousel />
 
         <PastEventsClient events={events} />
       </main>
