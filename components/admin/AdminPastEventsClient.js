@@ -352,24 +352,37 @@ export default function AdminPastEventsClient() {
         </article>
       )}
 
-      <div className="admin-managed-list">
-        {events.map((event) => (
-          <div key={event.id} className="admin-record-card">
-            <div className="admin-record-copy">
-              <strong>{event.name}</strong>
-              <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: '4px', background: 'rgba(239,43,47,0.1)', border: '1px solid rgba(239,43,47,0.2)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#fca5a5', marginRight: '8px' }}>
-                {event.category}
-              </span>
-              <span>Date: {event.eventDate}</span>
-              <p className="listing-copy">{(event.description || "").slice(0, 100)}...</p>
-            </div>
-            <div className="admin-record-actions">
-              <button className="admin-inline-action" onClick={() => handleEdit(event)}>Edit</button>
-              <button className="admin-inline-action danger-action" onClick={() => handleDelete(event.id)}>Delete</button>
-            </div>
+      <article className="admin-card">
+        <div className="admin-managed-block">
+          <h4 style={{ marginTop: 0, marginBottom: '16px', fontSize: '1.1rem', fontWeight: 850, color: '#f1f5f9' }}>
+            Manage Past Event Records
+          </h4>
+          <div className="admin-managed-list" aria-live="polite">
+            {events.length ? (
+              events.map((event) => (
+                <div key={event.id} className="admin-record-card">
+                  <div className="admin-record-copy">
+                    <strong>{event.name}</strong>
+                    <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: '4px', background: 'rgba(239,43,47,0.1)', border: '1px solid rgba(239,43,47,0.2)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: '#fca5a5', marginRight: '8px' }}>
+                      {event.category}
+                    </span>
+                    <span>Date: {event.eventDate}</span>
+                    <p className="listing-copy" style={{ marginTop: '8px', color: '#94a3b8', fontSize: '0.85rem', lineHeight: 1.5 }}>
+                      {(event.description || "").slice(0, 100)}...
+                    </p>
+                  </div>
+                  <div className="admin-record-actions">
+                    <button className="admin-inline-action" onClick={() => handleEdit(event)}>Edit</button>
+                    <button className="admin-inline-action danger-action" onClick={() => handleDelete(event.id)}>Delete</button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="admin-managed-empty">No historical event records have been created yet.</div>
+            )}
           </div>
-        ))}
-      </div>
+        </div>
+      </article>
     </div>
   );
 }
