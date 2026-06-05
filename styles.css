@@ -2665,7 +2665,7 @@ textarea {
   }
 
   .hero-title {
-    font-size: clamp(1.8rem, 9vw, 2.25rem) !important;
+    font-size: clamp(1.3rem, 7.5vw, 2.25rem) !important;
     line-height: 1.08;
   }
 
@@ -9761,7 +9761,7 @@ body {
   }
   
   .hero-title {
-    font-size: clamp(1.8rem, 6vw, 2.2rem) !important;
+    font-size: clamp(1.4rem, 6vw, 2.2rem) !important;
   }
   
   .hero-description {
@@ -9844,10 +9844,10 @@ body {
     display: none !important;
   }
 
-  /* Allow giant text to wrap instead of cutting off */
+  /* Keep ISTE Student Chapter name on its own line and prevent text wrapping */
   .hero-title .hero-accent {
-    white-space: normal !important;
-    word-break: break-word !important;
+    display: block !important;
+    white-space: nowrap !important;
   }
 
   /* Fix for Calendar Buttons Wrapping */
@@ -10956,19 +10956,40 @@ body {
 
 .menu-page-header {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .menu-page-title {
   font-size: 2.2rem;
   font-weight: 850;
   color: #ffffff;
-  margin-top: 20px;
-  margin-bottom: 24px;
+  margin: 0;
   letter-spacing: -0.03em;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.menu-close-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-close-btn:hover,
+.menu-close-btn:active {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
 }
 
 .menu-page-list {
@@ -11243,6 +11264,9 @@ html {
   main .team-hero-section .hero-description {
     margin-bottom: 0px !important;
   }
+  main .about-team-section {
+    padding-top: 10px !important;
+  }
 }
 
 .recruitment-back-btn-wrapper {
@@ -11255,3 +11279,15 @@ html {
   }
 }
 
+/* Specific overrides to scale down home page hero title on mobile to fit the single-line ISTE accent text */
+@media (max-width: 768px) {
+  .home-hero-grid .hero-title {
+    font-size: clamp(1.4rem, 6.5vw, 2.2rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-hero-grid .hero-title {
+    font-size: clamp(1.1rem, 6.2vw, 1.5rem) !important;
+  }
+}
