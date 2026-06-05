@@ -102,13 +102,12 @@ export default function TeamPage() {
   return (
     <PublicShell activePath="/team">
       <main className="subpage-main">
-        <section className="subpage-hero" style={{ padding: '35px 0 15px' }}>
+        <section className="subpage-hero team-hero-section" style={{ padding: '35px 0 15px' }}>
           <h1 className="team-hero-title">
             <span className="team-hero-word-our">Our</span>
             <span className="team-hero-word-dedicated">Dedicated</span>
             <span className="team-hero-word-team">Team</span>
           </h1>
-          <div className="title-accent-line" style={{ margin: '10px auto 15px' }}></div>
           <p className="hero-description" style={{ marginBottom: '0px' }}>
             Meet the passionate individuals who work behind the scenes to make the ISTE Student Chapter
             at Chandigarh University a beacon of technical excellence.

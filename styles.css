@@ -614,7 +614,7 @@ body.no-scroll {
   align-items: baseline;
   justify-content: center;
   gap: 0.25em;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .team-hero-word-our {
@@ -656,8 +656,9 @@ body.no-scroll {
 
 @media (max-width: 768px) {
   .team-hero-title {
-    font-size: clamp(2rem, 10vw, 3.2rem);
+    font-size: clamp(1.4rem, 7.5vw, 3.2rem);
     gap: 0.2em;
+    flex-wrap: nowrap;
   }
 }
 
@@ -11230,6 +11231,27 @@ html {
   }
 }
 
+/* Custom overrides to reduce extra space above and below the team page hero content on mobile */
+@media (max-width: 768px) {
+  main .subpage-hero.team-hero-section {
+    padding: 16px 0 10px !important;
+    margin-bottom: 0px !important;
+  }
+  main .team-hero-section .team-hero-title {
+    margin-bottom: 8px !important;
+  }
+  main .team-hero-section .hero-description {
+    margin-bottom: 0px !important;
+  }
+}
 
-
+.recruitment-back-btn-wrapper {
+  display: none;
+  margin-bottom: 16px;
+}
+@media (max-width: 1120px) {
+  .recruitment-back-btn-wrapper {
+    display: block;
+  }
+}
 

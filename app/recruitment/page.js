@@ -126,10 +126,32 @@ export default function RecruitmentPage() {
           </aside>
 
           {teamsVisible && (
+            <div className="recruitment-back-btn-wrapper">
+              <button
+                onClick={() => setTeamsVisible(false)}
+                className="recruitment-team-back-btn"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--brand-red)',
+                  cursor: 'pointer',
+                  padding: 0,
+                  fontSize: '0.85rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}
+              >
+                ← Back to Registration
+              </button>
+            </div>
+          )}
+          {teamsVisible && (
             <article className="recruitment-openings-panel" id="team-openings">
               <div className="recruitment-team-heading">
                 <div>
-                  <button onClick={() => setTeamsVisible(false)} className="recruitment-team-back-btn" style={{ background: 'none', border: 'none', color: 'var(--brand-red)', cursor: 'pointer', padding: 0, marginBottom: '12px', fontSize: '0.85rem', fontWeight: 800, textTransform: 'uppercase', alignItems: 'center', gap: '6px' }}>← Back to Registration</button>
                   <h3 className="section-kicker-heading">Team Recruitment</h3>
                   <h2 className="title-section-premium">Current Openings</h2>
                 </div>
