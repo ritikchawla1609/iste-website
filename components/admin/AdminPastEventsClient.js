@@ -17,6 +17,8 @@ export default function AdminPastEventsClient() {
     winners: ""
   });
   const [imagesList, setImagesList] = useState([]); // Array of { type: 'existing'|'new', path?: string, dataUrl?: string, name?: string }
+  const [heroImages, setHeroImages] = useState([]);
+  const [uploadingHero, setUploadingHero] = useState(false);
 
   async function fetchEvents() {
     try {
@@ -29,9 +31,72 @@ export default function AdminPastEventsClient() {
     }
   }
 
+  async function fetchHeroImages() {
+    try {
+      const data = await apiRequest("/api/admin/site-content/past-events-hero");
+      const normalized = (data.imagePaths || []).map(path => ({
+        type: "existing",
+        path
+      }));
+      setHeroImages(normalized);
+    } catch (error) {
+      console.error("Failed to fetch past events hero images:", error);
+    }
+  }
+
   useEffect(() => {
     fetchEvents();
+    fetchHeroImages();
   }, []);
+
+  const handleHeroFileChange = (e) => {
+    const files = Array.from(e.target.files || []);
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setHeroImages(prev => [...prev, {
+          type: "new",
+          dataUrl: reader.result,
+          name: file.name
+        }]);
+      };
+      reader.readAsDataURL(file);
+    });
+    e.target.value = "";
+  };
+
+  const removeHeroImage = (index) => {
+    setHeroImages(prev => prev.filter((_, i) => i !== index));
+  };
+
+  async function handleSaveHero(e) {
+    e.preventDefault();
+    setUploadingHero(true);
+
+    const imagePaths = heroImages
+      .filter(img => img.type === "existing")
+      .map(img => img.path);
+
+    const imagesDataUrls = heroImages
+      .filter(img => img.type === "new")
+      .map(img => img.dataUrl);
+
+    try {
+      await apiRequest("/api/admin/site-content/past-events-hero", {
+        method: "PUT",
+        body: {
+          imagePaths,
+          imagesDataUrls
+        }
+      });
+      alert("Banner slideshow saved successfully!");
+      fetchHeroImages();
+    } catch (error) {
+      alert("Error saving banner slideshow");
+    } finally {
+      setUploadingHero(false);
+    }
+  }
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files || []);
@@ -139,6 +204,61 @@ export default function AdminPastEventsClient() {
 
   return (
     <div style={{ display: 'grid', gap: '32px' }}>
+      {/* Banner Slideshow Manager */}
+      <article className="admin-card">
+        <header style={{ marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '12px' }}>
+          <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 850, color: '#f1f5f9' }}>
+            Previous Events Page Banner Slideshow
+          </h3>
+          <p style={{ margin: '4px 0 0', fontSize: '0.8rem', color: '#94a3b8', lineHeight: 1.4 }}>
+            Upload images to show a sliding carousel instead of the static title banner. If no images are saved, the page falls back to the default static hero banner.
+          </p>
+        </header>
+
+        <form onSubmit={handleSaveHero}>
+          <div className="admin-image-manager" style={{ marginTop: 0, padding: '16px', background: 'rgba(255,255,255,0.01)' }}>
+            <label className="admin-file-picker-trigger" htmlFor="hero-images-input">
+              <span>📷 Select Banner Images</span>
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={handleHeroFileChange}
+                style={{ display: "none" }}
+                id="hero-images-input"
+              />
+            </label>
+
+            {heroImages.length > 0 && (
+              <div className="admin-image-preview-grid">
+                {heroImages.map((img, idx) => (
+                  <div key={idx} className="admin-image-preview-card">
+                    <img
+                      src={img.type === "existing" ? (img.path.startsWith("http") ? img.path : `/${img.path}`) : img.dataUrl}
+                      alt="Preview"
+                    />
+                    <button
+                      type="button"
+                      className="admin-image-remove-btn"
+                      onClick={() => removeHeroImage(idx)}
+                    >
+                      ✕
+                    </button>
+                    <span className="admin-image-badge">
+                      {img.type === "existing" ? "Saved" : "New"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <button className="admin-submit" type="submit" disabled={uploadingHero} style={{ marginTop: '20px' }}>
+            {uploadingHero ? "Saving..." : "Save Banner Slideshow"}
+          </button>
+        </form>
+      </article>
+
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button className="admin-submit" onClick={handleToggleForm}>
           {showForm ? "Cancel" : "Add Historical Event"}

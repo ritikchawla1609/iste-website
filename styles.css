@@ -11102,6 +11102,121 @@ html {
   transform: translateY(-2px);
 }
 
+/* Past Events Hero Slideshow */
+.subpage-premium-hero.has-carousel {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.subpage-premium-hero.has-carousel::before,
+.subpage-premium-hero.has-carousel::after {
+  display: none !important;
+}
+
+.subpage-premium-hero .hero-slideshow-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.subpage-premium-hero .hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  transform: scale(1.08);
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s, transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subpage-premium-hero .hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  transform: scale(1);
+}
+
+/* Ensure foreground text copy is on top of slideshow */
+.subpage-premium-hero .subpage-hero-copy {
+  position: relative;
+  z-index: 5;
+}
+
+/* Controls */
+.subpage-premium-hero .carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1.3rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.subpage-premium-hero .carousel-control:hover {
+  background: #ef2b2f;
+  border-color: #ef2b2f;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.subpage-premium-hero .carousel-control.prev {
+  left: 20px;
+}
+
+.subpage-premium-hero .carousel-control.next {
+  right: 20px;
+}
+
+.subpage-premium-hero .carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  right: 32px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.subpage-premium-hero .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.subpage-premium-hero .dot.active {
+  background: #ef2b2f;
+  transform: scale(1.25);
+  width: 14px;
+  border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+  .subpage-premium-hero .carousel-control {
+    display: none;
+  }
+  .subpage-premium-hero .carousel-dots {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 12px;
+  }
+}
+
 
 
 

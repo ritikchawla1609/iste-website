@@ -1,8 +1,8 @@
 import PublicShell from "@/components/PublicShell";
 import PastEventsClient from "@/components/PastEventsClient";
-import { getPublicPastEvents } from "@/lib/site";
+import { getPublicPastEvents, getPastEventsHero } from "@/lib/site";
 import { sortByDate } from "@/lib/presentation";
-import Carousel from "@/components/Carousel";
+import PastEventsHeroCarousel from "@/components/PastEventsHeroCarousel";
 
 const DECK_PAST_EVENTS = [
   {
@@ -56,13 +56,16 @@ export const revalidate = 60;
 
 export default async function PastEventsPage() {
   const storedEvents = await getPublicPastEvents();
+  const heroRecord = await getPastEventsHero();
   const rawEvents = storedEvents.length ? storedEvents : DECK_PAST_EVENTS;
   const events = sortByDate(rawEvents, "eventDate", null, true);
+
+  const heroImagePaths = heroRecord?.imagePaths || [];
 
   return (
     <PublicShell activePath="/past-events">
       <main className="subpage-main">
-        <Carousel />
+        <PastEventsHeroCarousel imagePaths={heroImagePaths} />
 
         <PastEventsClient events={events} />
       </main>
