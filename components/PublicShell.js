@@ -12,10 +12,13 @@ export default function PublicShell({
   activePath,
   children
 }) {
+
   const [loginOpen, setLoginOpen] = useState(false);
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
   const [latestEventNotice, setLatestEventNotice] = useState(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
 
   useEffect(() => {
     async function fetchNotice() {
@@ -125,6 +128,19 @@ export default function PublicShell({
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollPercentage((window.scrollY / totalHeight) * 100);
+      }
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   function handleLogoClick() {
     setLogoClicks(prev => prev + 1);
   }
@@ -142,6 +158,11 @@ export default function PublicShell({
 
   return (
     <>
+      {/* Scroll Progress Bar */}
+      <div className="scroll-progress-container">
+        <div className="scroll-progress-bar" style={{ width: `${scrollPercentage}%` }} />
+      </div>
+
       <div className="page-shell">
         <header className="site-header" id="home">
           <div className="notice-strip" aria-label="Chapter notice and contact links">
@@ -166,7 +187,10 @@ export default function PublicShell({
           <div className="brand-row">
             <Link className="brand" href="/" aria-label="ISTE Society home" onClick={handleLogoClick}>
               <span className="brand-mark">
-                <img src="/brand/iste-logo.jpg" alt="ISTE logo" />
+                <span className="brand-logo-frame">
+                  <img src="/brand/iste-logo.jpg" alt="ISTE logo" />
+                  <span className="brand-red-boundary" aria-hidden="true" />
+                </span>
               </span>
               <span className="brand-copy">
                 <strong>ISTE Student Chapter</strong>
@@ -215,6 +239,15 @@ export default function PublicShell({
           </div>
         </footer>
       </div>
+
+      {/* Floating Back to Top Button */}
+      <button
+        className={`back-to-top-btn ${showScrollTop ? "is-visible" : ""}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+      </button>
 
       <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
       <MemberLoginModal open={memberLoginOpen} onClose={() => setMemberLoginOpen(false)} />

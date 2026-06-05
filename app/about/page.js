@@ -45,6 +45,6 @@ export default async function AboutPage() {
           </div>
         </section>
       </main>
-            </PublicShell>
-            );
-            }
+    </PublicShell>
+  );
+}

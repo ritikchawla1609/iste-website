@@ -1,6 +1,7 @@
 import PublicShell from "@/components/PublicShell";
 import PastEventsClient from "@/components/PastEventsClient";
 import { getPublicPastEvents } from "@/lib/site";
+import { sortByDate } from "@/lib/presentation";
 
 const DECK_PAST_EVENTS = [
   {
@@ -54,7 +55,9 @@ export const revalidate = 60;
 
 export default async function PastEventsPage() {
   const storedEvents = await getPublicPastEvents();
-  const events = storedEvents.length ? storedEvents : DECK_PAST_EVENTS;
+  const rawEvents = storedEvents.length ? storedEvents : DECK_PAST_EVENTS;
+  const events = sortByDate(rawEvents, "eventDate", null, true);
+
   return (
     <PublicShell activePath="/past-events">
       <main className="subpage-main">
