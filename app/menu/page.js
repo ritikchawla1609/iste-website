@@ -1,7 +1,8 @@
 "use client";
-
+ 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { apiRequest } from "@/lib/client-api";
 
 const HomeIcon = () => (
@@ -53,6 +54,7 @@ const DashboardIcon = () => (
 );
 
 export default function MobileMenuPage() {
+  const router = useRouter();
   const [session, setSession] = useState({ authenticated: false, role: null, uid: null });
   const [loading, setLoading] = useState(true);
 
@@ -91,6 +93,12 @@ export default function MobileMenuPage() {
     <main className="mobile-menu-page">
       <div className="menu-page-header">
         <h1 className="menu-page-title">Menu</h1>
+        <button onClick={() => router.back()} className="menu-close-btn" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
       </div>
 
       <nav className="menu-page-list">

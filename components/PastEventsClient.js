@@ -192,9 +192,6 @@ export default function PastEventsClient({ events }) {
                     <svg className="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '5px', verticalAlign: 'middle', display: 'inline-block', marginTop: '-2px' }}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                     {formatDate(selectedEvent.eventDate)}
                   </span>
-                  <span className="event-modal-category-badge">
-                    {selectedEvent.category || "Event"}
-                  </span>
                 </div>
                 <h1 className="event-modal-title">
                   {selectedEvent.name}

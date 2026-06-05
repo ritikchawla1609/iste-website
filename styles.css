@@ -614,7 +614,7 @@ body.no-scroll {
   align-items: baseline;
   justify-content: center;
   gap: 0.25em;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .team-hero-word-our {
@@ -656,8 +656,9 @@ body.no-scroll {
 
 @media (max-width: 768px) {
   .team-hero-title {
-    font-size: clamp(2rem, 10vw, 3.2rem);
+    font-size: clamp(1.4rem, 7.5vw, 3.2rem);
     gap: 0.2em;
+    flex-wrap: nowrap;
   }
 }
 
@@ -2664,7 +2665,7 @@ textarea {
   }
 
   .hero-title {
-    font-size: clamp(1.8rem, 9vw, 2.25rem) !important;
+    font-size: clamp(1.3rem, 7.5vw, 2.25rem) !important;
     line-height: 1.08;
   }
 
@@ -9760,7 +9761,7 @@ body {
   }
   
   .hero-title {
-    font-size: clamp(1.8rem, 6vw, 2.2rem) !important;
+    font-size: clamp(1.4rem, 6vw, 2.2rem) !important;
   }
   
   .hero-description {
@@ -9843,10 +9844,10 @@ body {
     display: none !important;
   }
 
-  /* Allow giant text to wrap instead of cutting off */
+  /* Keep ISTE Student Chapter name on its own line and prevent text wrapping */
   .hero-title .hero-accent {
-    white-space: normal !important;
-    word-break: break-word !important;
+    display: block !important;
+    white-space: nowrap !important;
   }
 
   /* Fix for Calendar Buttons Wrapping */
@@ -10955,19 +10956,40 @@ body {
 
 .menu-page-header {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .menu-page-title {
   font-size: 2.2rem;
   font-weight: 850;
   color: #ffffff;
-  margin-top: 20px;
-  margin-bottom: 24px;
+  margin: 0;
   letter-spacing: -0.03em;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.menu-close-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-close-btn:hover,
+.menu-close-btn:active {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
 }
 
 .menu-page-list {
@@ -11230,6 +11252,80 @@ html {
   }
 }
 
+/* Custom overrides to reduce extra space above and below the team page hero content on mobile */
+@media (max-width: 768px) {
+  main .subpage-hero.team-hero-section {
+    padding: 16px 0 10px !important;
+    margin-bottom: 0px !important;
+  }
+  main .team-hero-section .team-hero-title {
+    margin-bottom: 8px !important;
+  }
+  main .team-hero-section .hero-description {
+    margin-bottom: 0px !important;
+  }
+  main .about-team-section {
+    padding-top: 10px !important;
+  }
+}
 
+.recruitment-back-btn-wrapper {
+  display: none;
+  margin-bottom: 16px;
+}
+@media (max-width: 1120px) {
+  .recruitment-back-btn-wrapper {
+    display: block;
+  }
+}
 
+/* Specific overrides to scale down home page hero title on mobile to fit the single-line ISTE accent text */
+@media (max-width: 768px) {
+  .home-hero-grid .hero-title {
+    font-size: clamp(1.4rem, 6.5vw, 2.2rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-hero-grid .hero-title {
+    font-size: clamp(1.1rem, 6.2vw, 1.5rem) !important;
+  }
+}
+
+/* Footer social media links row & items */
+.footer-social-links-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-direction: row !important;
+}
+
+.footer-social-link-item {
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none !important;
+}
+
+.footer-social-link-item:hover,
+.footer-social-link-item:active {
+  color: #ffffff;
+  background: rgba(239, 43, 47, 0.16);
+  border-color: #ef2b2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 43, 47, 0.2);
+}
+
+.footer-social-icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
+}
 
