@@ -11105,7 +11105,8 @@ html {
 /* Past Events Hero Slideshow */
 .subpage-premium-hero.has-carousel {
   background: #0f172a;
-  border-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  box-shadow: 0 34px 90px rgba(15, 23, 42, 0.18);
   height: 520px;
   /* Safari/Chrome hardware acceleration clipping fix */
   -webkit-mask-image: -webkit-radial-gradient(white, black);
