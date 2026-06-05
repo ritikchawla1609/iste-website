@@ -9488,32 +9488,111 @@ body {
   /* Timeline Resets for Centered Layout on Mobile */
   .timeline-item, 
   .timeline-item.right {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    margin-bottom: 60px !important;
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+    text-align: left !important;
+    margin-bottom: 48px !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92)) !important;
+    border: 1.5px solid #ef2b2f !important;
+    border-radius: 24px !important;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .timeline-item::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    opacity: 0.8 !important;
+    background:
+      linear-gradient(135deg, rgba(239, 43, 47, 0.08), transparent 34%),
+      repeating-linear-gradient(135deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 22px) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
   }
   
-  .timeline-info, 
+  .timeline-item::after {
+    content: "" !important;
+    position: absolute !important;
+    right: -46px !important;
+    bottom: -46px !important;
+    width: 140px !important;
+    height: 140px !important;
+    border-radius: 28px !important;
+    border: 1px solid rgba(239, 43, 47, 0.12) !important;
+    background: rgba(239, 43, 47, 0.05) !important;
+    transform: rotate(18deg) !important;
+    z-index: 1 !important;
+  }
+  
+  .timeline-info {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 24px 20px 28px 20px !important;
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  .timeline-info::before,
+  .timeline-info::after {
+    display: none !important;
+  }
+  
   .timeline-poster {
     width: 100% !important;
     max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
-  
-  .timeline-poster {
-    margin-top: 24px !important;
+
+  .poster-wrapper {
+    width: 100% !important;
+    padding: 20px 20px 0 20px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .poster-wrapper::before,
+  .poster-wrapper::after {
+    display: none !important;
+  }
+
+  .poster-wrapper img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    object-fit: cover !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06) !important;
   }
   
   .timeline-line,
   .timeline-dot {
     display: none !important;
   }
-  
-  .timeline-info {
-    padding: 32px 24px !important;
-    align-items: center !important;
+
+  @media (max-width: 640px) {
+    .timeline-info {
+      padding: 20px 16px 24px 16px !important;
+    }
+    .poster-wrapper {
+      padding: 16px 16px 0 16px !important;
+    }
   }
   
   /* Hero & Typography Overrides */
