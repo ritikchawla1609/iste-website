@@ -361,7 +361,7 @@ export default function AdminPastEventsClient() {
                 {event.category}
               </span>
               <span>Date: {event.eventDate}</span>
-              <p className="listing-copy">{event.description.slice(0, 100)}...</p>
+              <p className="listing-copy">{(event.description || "").slice(0, 100)}...</p>
             </div>
             <div className="admin-record-actions">
               <button className="admin-inline-action" onClick={() => handleEdit(event)}>Edit</button>
