@@ -625,10 +625,10 @@ body.no-scroll {
 .team-hero-word-dedicated {
   background: linear-gradient(
     135deg,
-    var(--brand-red) 0%,
-    #ff4757 40%,
-    #ef2b2f 60%,
-    #c0392b 100%
+    #e11d48 0%,
+    #be123c 40%,
+    #991b1b 70%,
+    #881337 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -644,7 +644,7 @@ body.no-scroll {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, var(--brand-red), #1e3a5f);
+  background: linear-gradient(90deg, #991b1b, #1e3a5f);
   border-radius: 2px;
   opacity: 0.45;
 }
@@ -1369,7 +1369,7 @@ body.no-scroll {
 }
 .footer-bottom-inner { width: var(--container); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer-copyright { color: #64748b; font-size: 0.85rem; }
-.footer-copyright span { color: var(--brand-red); font-weight: 700; }
+.footer-copyright span { font-weight: 700; }
 
 .footer-badge-pill {
   display: inline-flex;
@@ -3675,7 +3675,7 @@ textarea {
 }
 
 .hero-title .hero-accent {
-  color: var(--brand-red);
+  color: #991b1b;
   position: relative;
   display: inline-block;
   white-space: nowrap;
@@ -3688,7 +3688,7 @@ textarea {
   bottom: 4px;
   width: 100%;
   height: 8px;
-  background: rgba(220, 38, 38, 0.08);
+  background: rgba(153, 27, 27, 0.08);
   z-index: -1;
 }
 
@@ -5446,7 +5446,7 @@ textarea {
 .hero-title .hero-accent::after {
   bottom: -2px;
   height: 11px;
-  background: rgba(239, 43, 47, 0.1);
+  background: rgba(153, 27, 27, 0.1);
 }
 
 .hero-desc {
@@ -6064,7 +6064,7 @@ body {
 }
 
 .hero-title .hero-accent {
-  text-shadow: 0 12px 28px rgba(220, 38, 38, 0.16);
+  text-shadow: 0 12px 28px rgba(153, 27, 27, 0.16);
 }
 
 .hero-title .hero-accent::after {
@@ -6555,8 +6555,8 @@ body {
 }
 
 .home-hero-grid .hero-title .hero-accent {
-  color: #ff3338;
-  text-shadow: 0 18px 34px rgba(239, 43, 47, 0.32);
+  color: #fca5a5;
+  text-shadow: 0 18px 34px rgba(252, 165, 165, 0.32);
 }
 
 .home-hero-grid .hero-title .hero-accent::after {
@@ -7675,8 +7675,8 @@ body {
 
 .subpage-premium-title span,
 .recruitment-hero-card .title-hero-premium span {
-  color: #ff3338;
-  text-shadow: 0 18px 34px rgba(239, 43, 47, 0.32);
+  color: #fb7185;
+  text-shadow: 0 18px 34px rgba(244, 63, 94, 0.32);
 }
 
 .subpage-premium-desc,
