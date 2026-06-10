@@ -119,7 +119,7 @@ export default function TeamPage() {
 
             {/* Faculty Advisors Section */}
             <div className="team-group">
-              <div className="team-group-header" style={{ borderBottom: '2px solid', borderImage: 'linear-gradient(90deg, #ef2b2f, #1e3a5f) 1', paddingBottom: '16px', marginBottom: '32px' }}>
+              <div className="team-group-header" style={{ borderBottom: '2px solid', borderImage: 'linear-gradient(90deg, #991b1b, #1e3a5f) 1', paddingBottom: '16px', marginBottom: '32px' }}>
                 <h2 style={{ color: 'var(--navy-900)' }}>Faculty Advisors</h2>
               </div>
               <div className="team-grid team-grid-featured">
@@ -131,7 +131,7 @@ export default function TeamPage() {
 
             {/* Office Bearers Section */}
             <div className="team-group">
-              <div className="team-group-header" style={{ borderBottom: '2px solid', borderImage: 'linear-gradient(90deg, #ef2b2f, #1e3a5f) 1', paddingBottom: '16px', marginBottom: '32px' }}>
+              <div className="team-group-header" style={{ borderBottom: '2px solid', borderImage: 'linear-gradient(90deg, #991b1b, #1e3a5f) 1', paddingBottom: '16px', marginBottom: '32px' }}>
                 <h2 style={{ color: 'var(--navy-900)' }}>Office Bearers</h2>
               </div>
               <div className="team-grid team-grid-featured">
@@ -153,7 +153,7 @@ export default function TeamPage() {
                 <div className="team-domain-row">
                   {/* Domain Lead */}
                   <div className="team-domain-lead-col">
-                    <div style={{ marginBottom: '12px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', background: 'linear-gradient(90deg, #ef2b2f, #1e3a5f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                    <div style={{ marginBottom: '12px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', background: 'linear-gradient(90deg, #991b1b, #1e3a5f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                       Domain Lead
                     </div>
                     <TeamCard member={group.lead} isLead={true} accentColor={group.color} />

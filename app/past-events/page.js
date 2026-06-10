@@ -48,7 +48,12 @@ const DECK_PAST_EVENTS = [
     description:
       "A national level flagship technical fest featuring hackathons, Capture The Flag challenges, ideathons, and workshops.",
     winners: "Flagship innovation platform, tech showcase, and major project awards.",
-    imagePaths: []
+    imagePaths: [
+      "uploads/events/technicia-25-1.jpg",
+      "uploads/events/technicia-25-2.jpg",
+      "uploads/events/technicia-25-3.jpg",
+      "uploads/events/technicia-25-4.jpg"
+    ]
   }
 ];
 
