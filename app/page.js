@@ -124,7 +124,7 @@ export default async function HomePage() {
                   </div>
                 </div>
                 <p className="award-photo-subtext">
-                  Presented by the Indian Society for Technical Education (ISTE) in recognition of academic excellence, tech innovation, and leadership.
+                  Presented to the Indian Society for Technical Education (ISTE) in recognition of academic excellence, tech innovation, and leadership.
                 </p>
               </div>
 

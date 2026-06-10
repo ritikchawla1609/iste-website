@@ -623,16 +623,7 @@ body.no-scroll {
 }
 
 .team-hero-word-dedicated {
-  background: linear-gradient(
-    135deg,
-    #e11d48 0%,
-    #be123c 40%,
-    #991b1b 70%,
-    #881337 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #991b1b;
   font-weight: 900;
   position: relative;
 }

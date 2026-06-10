@@ -122,7 +122,7 @@ export default function EventsTimeline({ events }) {
                             rel="noopener noreferrer" 
                             className="timeline-venue-link"
                           >
-                            📍 {event.venue}
+                            {event.venue}
                           </a>
                         </div>
                       </div>
