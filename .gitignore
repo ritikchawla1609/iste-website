@@ -1,9 +1,9 @@
 __pycache__/
 *.pyc
 
-data/
-backups/
-uploads/
+/data/
+/backups/
+/uploads/
 node_modules/
 .next/
 out/
