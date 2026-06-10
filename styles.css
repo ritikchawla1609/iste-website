@@ -8112,6 +8112,27 @@ body {
   z-index: 1;
 }
 
+.card-slideshow-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.card-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.card-bg-slide.active {
+  opacity: 0.18;
+}
+
 .past-event-content-wrapper {
   position: relative;
   z-index: 2;
@@ -8657,31 +8678,9 @@ body {
   transform: scale(1.08);
 }
 
-.gallery-thumbnail-hover-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.45);
-  display: grid;
-  place-items: center;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  z-index: 2;
-}
-
-.gallery-thumbnail-card:hover .gallery-thumbnail-hover-overlay {
-  opacity: 1;
-}
-
-.gallery-thumbnail-hover-overlay span {
-  font-size: 0.8rem;
-  font-weight: 850;
-  color: #ffffff;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(239, 43, 47, 0.95);
-  box-shadow: 0 4px 10px rgba(239, 43, 47, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.gallery-thumbnail-card:hover {
+  border-color: rgba(239, 43, 47, 0.65);
+  box-shadow: 0 0 12px rgba(239, 43, 47, 0.3);
 }
 
 .gallery-thumbnail-card.active-thumbnail {

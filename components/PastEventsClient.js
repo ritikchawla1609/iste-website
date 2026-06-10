@@ -3,6 +3,60 @@
 import { useState, useEffect } from "react";
 import { formatDate } from "@/lib/presentation";
 
+function PastEventCard({ event, eventIndex, onOpenModal }) {
+  const [activeBgIndex, setActiveBgIndex] = useState(0);
+  const hasImages = event.imagePaths && event.imagePaths.length > 0;
+
+  useEffect(() => {
+    if (!hasImages || event.imagePaths.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveBgIndex((prev) => (prev + 1) % event.imagePaths.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [hasImages, event.imagePaths]);
+
+  return (
+    <article
+      className={`content-sheet past-event-card ${hasImages ? "has-bg" : ""}`}
+      onClick={() => onOpenModal(event)}
+    >
+      {hasImages && (
+        <div className="card-slideshow-bg">
+          {event.imagePaths.map((path, idx) => {
+            const imgUrl = path.startsWith("http") ? path : `/${path}`;
+            return (
+              <div
+                key={idx}
+                className={`card-bg-slide ${idx === activeBgIndex ? "active" : ""}`}
+                style={{ backgroundImage: `url(${imgUrl})` }}
+              />
+            );
+          })}
+          <div className="card-bg-overlay" />
+        </div>
+      )}
+      <div className="past-event-content-wrapper">
+        <div className="past-event-topline">
+          <h2 className="past-event-name-heading">{event.name}</h2>
+          <span className="past-event-index">{String(eventIndex + 1).padStart(2, "0")}</span>
+        </div>
+        
+        <div className="past-event-date-subheading">
+          <svg className="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px', verticalAlign: 'middle', display: 'inline-block' }}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span>{formatDate(event.eventDate)}</span>
+        </div>
+
+        <p className="listing-copy">{event.description}</p>
+
+        <div className="past-event-action-link">
+          <span>{hasImages ? `View Gallery (${event.imagePaths.length} Photos)` : "Explore Highlights"}</span>
+          <svg className="action-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function PastEventsClient({ events }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -92,39 +146,14 @@ export default function PastEventsClient({ events }) {
     <>
       <section className="past-events-grid" style={{ marginTop: '24px' }}>
         {filteredEvents.length > 0 ? (
-          filteredEvents.map((event, eventIndex) => {
-            const hasImages = event.imagePaths && event.imagePaths.length > 0;
-            const coverImage = hasImages ? (event.imagePaths[0].startsWith("http") ? event.imagePaths[0] : `/${event.imagePaths[0]}`) : null;
-
-            return (
-              <article
-                key={event.id}
-                className={`content-sheet past-event-card ${hasImages ? "has-bg" : ""}`}
-                style={coverImage ? { backgroundImage: `url(${coverImage})` } : undefined}
-                onClick={() => handleOpenModal(event)}
-              >
-                {hasImages && <div className="card-bg-overlay" />}
-                <div className="past-event-content-wrapper">
-                  <div className="past-event-topline">
-                    <h2 className="past-event-name-heading">{event.name}</h2>
-                    <span className="past-event-index">{String(eventIndex + 1).padStart(2, "0")}</span>
-                  </div>
-                  
-                  <div className="past-event-date-subheading">
-                    <svg className="calendar-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px', verticalAlign: 'middle', display: 'inline-block' }}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    <span>{formatDate(event.eventDate)}</span>
-                  </div>
-
-                  <p className="listing-copy">{event.description}</p>
-
-                  <div className="past-event-action-link">
-                    <span>{hasImages ? `View Gallery (${event.imagePaths.length} Photos)` : "Explore Highlights"}</span>
-                    <svg className="action-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                  </div>
-                </div>
-              </article>
-            );
-          })
+          filteredEvents.map((event, eventIndex) => (
+            <PastEventCard
+              key={event.id}
+              event={event}
+              eventIndex={eventIndex}
+              onOpenModal={handleOpenModal}
+            />
+          ))
         ) : (
           <div className="empty-state" style={{ gridColumn: '1 / -1' }}>
             <p>No historical events found under this category.</p>
@@ -244,9 +273,6 @@ export default function PastEventsClient({ events }) {
                             alt={`${selectedEvent.name} thumbnail ${idx + 1}`}
                             loading="lazy"
                           />
-                          <div className="gallery-thumbnail-hover-overlay">
-                            <span>View</span>
-                          </div>
                         </div>
                       );
                     })}
