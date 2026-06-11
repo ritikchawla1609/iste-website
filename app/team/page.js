@@ -19,7 +19,7 @@ const FACULTY_ADVISORS = [
 ];
 
 const OFFICE_BEARERS = [
-  { name: "Sahil Wadhwa", role: "President", image: "/team/sahil-wadia.jpeg" },
+  { name: "Sahil Wadia", role: "President", image: "/team/sahil-wadia.jpeg" },
   { name: "Yatin Berry", role: "Vice President", image: "/team/yatin-berry.png" },
   { name: "Srishti", role: "General Secretary", image: "/team/srishti-nautiyal.png" },
   { name: "Amit Kumar", role: "Joint Secretary", image: "/team/amit-kumar.jpg" },

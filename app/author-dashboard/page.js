@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import AdminDashboardClient from "@/components/admin/AdminDashboardClient";
 import AdminShell from "@/components/AdminShell";
 import { getCurrentAdmin } from "@/lib/auth";
+import { getDb, getSiteContentRecord } from "@/lib/db";
+import { DEFAULT_RECRUITMENT_STATUS } from "@/lib/presentation";
 import { getAdminSummaryData } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -15,6 +17,11 @@ export default async function AuthorDashboardPage() {
   }
 
   const dashboard = await getAdminSummaryData();
+  const database = await getDb();
+  const domainStatus = {
+    ...DEFAULT_RECRUITMENT_STATUS,
+    ...(await getSiteContentRecord(database, "recruitment_status", DEFAULT_RECRUITMENT_STATUS))
+  };
 
   return (
     <AdminShell
@@ -39,6 +46,7 @@ export default async function AuthorDashboardPage() {
           initialSummary={dashboard.summary}
           initialBackups={dashboard.backups}
           initialRecentActivity={dashboard.recentActivity}
+          initialDomainStatus={domainStatus}
         />
       </main>
     </AdminShell>

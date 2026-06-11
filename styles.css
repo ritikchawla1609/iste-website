@@ -11319,3 +11319,259 @@ html {
   stroke-width: 2.2;
 }
 
+.recruitment-form-dialog {
+  width: min(900px, calc(100vw - 32px));
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: clamp(24px, 4vw, 42px);
+  color: #f8fafc;
+  background:
+    radial-gradient(circle at 92% 5%, color-mix(in srgb, var(--team-accent) 28%, transparent), transparent 32%),
+    linear-gradient(135deg, #0b0f19 0%, #1e293b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 6px solid var(--brand-red);
+  border-radius: 18px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55), 0 0 32px color-mix(in srgb, var(--team-accent) 18%, transparent);
+}
+
+.recruitment-form-dialog::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent 34%);
+}
+
+.recruitment-application-modal .modal-backdrop {
+  background: rgba(3, 7, 18, 0.88);
+  backdrop-filter: blur(12px);
+}
+
+.recruitment-application-modal .modal-close {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.recruitment-application-modal .modal-close:hover {
+  color: #fff;
+  background: var(--brand-red);
+}
+
+.recruitment-form-heading {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recruitment-form-heading .team-card-number {
+  color: color-mix(in srgb, var(--team-accent) 72%, #fff);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 950;
+  line-height: 0.9;
+}
+
+.recruitment-form-heading .recruitment-active-badge {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.18);
+}
+
+.recruitment-form-heading .panel-kicker {
+  margin: 12px 0 4px;
+  color: #f87171;
+}
+
+.recruitment-form-heading h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+}
+
+.recruitment-form-heading p:last-child {
+  margin: 8px 0 0;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.recruitment-application-form {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 24px;
+  width: 100%;
+  align-items: start;
+}
+
+.recruitment-application-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.recruitment-application-form input,
+.recruitment-application-form select,
+.recruitment-application-form textarea {
+  display: block;
+  width: 100% !important;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 16px !important;
+  box-sizing: border-box;
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.065);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+}
+
+.recruitment-application-form input,
+.recruitment-application-form select {
+  height: 52px !important;
+  min-height: 52px !important;
+}
+
+.recruitment-application-form textarea {
+  min-height: 132px;
+  padding: 14px 16px !important;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.recruitment-application-form input::placeholder,
+.recruitment-application-form textarea::placeholder {
+  color: #64748b;
+}
+
+.recruitment-application-form input:focus,
+.recruitment-application-form select:focus,
+.recruitment-application-form textarea:focus {
+  border-color: color-mix(in srgb, var(--team-accent) 72%, #fff);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--team-accent) 18%, transparent);
+  outline: none;
+}
+
+.recruitment-application-form select option {
+  color: #111827;
+}
+
+.recruitment-application-form .panel-note {
+  margin: 0;
+  padding: 12px 16px;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.recruitment-application-form .btn-premium-dark {
+  min-height: 52px;
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.recruitment-application-form .btn-premium-dark:hover {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+}
+
+.recruitment-application-form .full-span {
+  grid-column: 1 / -1;
+}
+
+/* Keep venue names clean and readable in both event surfaces. */
+.event-stats-grid .stat-box:last-child {
+  min-width: 0;
+}
+
+.event-stats-grid .stat-box:last-child .stat-copy {
+  min-width: max-content;
+}
+
+.event-stats-grid .timeline-venue-link,
+.event-stats-grid .timeline-venue-link:hover {
+  display: inline-block;
+  white-space: nowrap;
+  word-break: normal;
+  color: #ef2b2f !important;
+  text-decoration: none !important;
+}
+
+.whats-new-section.inquiry-card .featured-event-meta-grid {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr) minmax(190px, 1.45fr);
+}
+
+.whats-new-section.inquiry-card .venue-map-link,
+.whats-new-section.inquiry-card .venue-map-link:hover {
+  display: inline-block;
+  white-space: nowrap;
+  word-break: normal;
+  color: #38bdf8 !important;
+  text-decoration: none !important;
+}
+
+.admin-applications-sections {
+  display: grid;
+  gap: 28px;
+}
+
+.recruitment-domain-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.recruitment-domain-tabs .is-active {
+  color: #fff;
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+}
+
+.recruitment-response-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 20px;
+  margin-top: 12px;
+}
+
+.recruitment-resume-link {
+  display: inline-flex;
+  width: fit-content;
+  margin: 8px 0;
+}
+
+@media (max-width: 680px) {
+  .recruitment-application-form,
+  .recruitment-response-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recruitment-form-heading {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .whats-new-section.inquiry-card .featured-event-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-stats-grid .timeline-venue-link,
+  .whats-new-section.inquiry-card .venue-map-link {
+    font-size: 0.82rem;
+  }
+}
+

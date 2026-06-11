@@ -18,7 +18,10 @@ export default async function AdminRecruitmentPage() {
 
   const recruitments = await getAdminRecruitmentsData();
   const database = await getDb();
-  const domainStatus = await getSiteContentRecord(database, "recruitment_status", DEFAULT_RECRUITMENT_STATUS);
+  const domainStatus = {
+    ...DEFAULT_RECRUITMENT_STATUS,
+    ...(await getSiteContentRecord(database, "recruitment_status", DEFAULT_RECRUITMENT_STATUS))
+  };
 
   return (
     <AdminShell

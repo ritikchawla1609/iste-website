@@ -4,18 +4,41 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { apiRequest } from "@/lib/client-api";
-import { formatAuditTitle, formatBytes, formatTimestamp } from "@/lib/presentation";
+import { formatAuditTitle, formatBytes, formatTimestamp, RECRUITMENT_TEAMS } from "@/lib/presentation";
 
 export default function AdminDashboardClient({
   initialSummary,
   initialBackups,
-  initialRecentActivity
+  initialRecentActivity,
+  initialDomainStatus
 }) {
   const [summary, setSummary] = useState(initialSummary);
   const [backups, setBackups] = useState(initialBackups);
   const [recentActivity, setRecentActivity] = useState(initialRecentActivity);
   const [status, setStatus] = useState({ type: "", message: "" });
   const [busyAction, setBusyAction] = useState("");
+  const [domainStatus, setDomainStatus] = useState(initialDomainStatus);
+
+  async function handleRecruitmentToggle(domainId) {
+    const updatedStatus = {
+      ...domainStatus,
+      [domainId]: domainStatus[domainId] === "active" ? "inactive" : "active"
+    };
+    setBusyAction(`recruitment:${domainId}`);
+
+    try {
+      await apiRequest("/api/admin/site-content/recruitment-status", {
+        method: "PUT",
+        body: { domainStatus: updatedStatus }
+      });
+      setDomainStatus(updatedStatus);
+      setStatus({ type: "status-success", message: "Recruitment form status updated." });
+    } catch (error) {
+      setStatus({ type: "status-error", message: error.message || "Unable to update recruitment status." });
+    } finally {
+      setBusyAction("");
+    }
+  }
 
   async function reloadDashboard() {
     const response = await apiRequest("/api/admin/summary");
@@ -131,6 +154,34 @@ export default function AdminDashboardClient({
                   <strong>About Page</strong>
                   <span>Edit organization info</span>
                 </Link>
+              </div>
+            </div>
+          </article>
+
+          <article className="admin-overview-card" style={{ marginTop: '32px' }}>
+            <div className="card-content">
+              <p className="panel-kicker">Recruitment Forms</p>
+              <h2>Open or close by domain</h2>
+              <div className="admin-managed-list">
+                {RECRUITMENT_TEAMS.map((team) => {
+                  const isActive = domainStatus[team.id] === "active";
+                  return (
+                    <div className="dashboard-list-item" key={team.id}>
+                      <div className="dashboard-list-copy">
+                        <strong>{team.name}</strong>
+                        <span>{isActive ? "Form open" : "Form closed"}</span>
+                      </div>
+                      <button
+                        className="admin-inline-action"
+                        type="button"
+                        onClick={() => handleRecruitmentToggle(team.id)}
+                        disabled={busyAction === `recruitment:${team.id}`}
+                      >
+                        {busyAction === `recruitment:${team.id}` ? "Updating..." : isActive ? "Close" : "Open"}
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </article>

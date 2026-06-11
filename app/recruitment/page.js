@@ -3,22 +3,16 @@
 import { useEffect, useState } from "react";
 import PublicShell from "@/components/PublicShell";
 import MemberLoginModal from "@/components/MemberLoginModal";
+import RecruitmentApplicationModal from "@/components/RecruitmentApplicationModal";
 import { apiRequest } from "@/lib/client-api";
-import { RECRUITMENT_TEAMS, resolveTeamApplyUrl } from "@/lib/presentation";
+import { DEFAULT_RECRUITMENT_STATUS, RECRUITMENT_TEAMS } from "@/lib/presentation";
 
 export default function RecruitmentPage() {
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
   const [teamsVisible, setTeamsVisible] = useState(false);
   const [currentMember, setCurrentMember] = useState(null);
-  const [recruitments, setRecruitments] = useState([]);
-  const [domainStatus, setDomainStatus] = useState({
-    "01": "closed",
-    "02": "closed",
-    "03": "closed",
-    "04": "closed",
-    "05": "closed",
-    "06": "closed"
-  });
+  const [selectedDomain, setSelectedDomain] = useState(null);
+  const [domainStatus, setDomainStatus] = useState(DEFAULT_RECRUITMENT_STATUS);
 
   useEffect(() => {
     async function checkMember() {
@@ -32,9 +26,8 @@ export default function RecruitmentPage() {
     async function loadSiteData() {
       try {
         const response = await apiRequest("/api/public/site-data");
-        // domainStatus is managed locally — not overridden from API
-        if (response.recruitments) {
-          setRecruitments(response.recruitments);
+        if (response.domainStatus) {
+          setDomainStatus({ ...DEFAULT_RECRUITMENT_STATUS, ...response.domainStatus });
         }
       } catch (e) {}
     }
@@ -161,9 +154,6 @@ export default function RecruitmentPage() {
               <div className="recruitment-openings-grid">
                 {domains.map((domain, index) => {
                   const isActive = domainStatus[domain.id] === "active";
-                  const applyUrl = resolveTeamApplyUrl(recruitments, domain);
-                  const canApply = isActive && Boolean(applyUrl);
-
 
                   return (
                     <div
@@ -182,22 +172,21 @@ export default function RecruitmentPage() {
                         <p>{domain.brief}</p>
                       </div>
 
-                      {canApply ? (
-                        <a
-                          href={applyUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                      {isActive ? (
+                        <button
+                          type="button"
                           className="btn-premium-dark"
+                          onClick={() => setSelectedDomain(domain)}
                         >
-                          Apply for {domain.name.split(' ')[0]} Team
-                        </a>
+                          Apply for {domain.name}
+                        </button>
                       ) : (
                         <button
                           disabled
                           className="btn-premium-dark"
                           style={{ opacity: 0.5, cursor: "not-allowed", border: "1px solid rgba(255, 255, 255, 0.05)" }}
                         >
-                          {isActive ? "LINK PENDING" : "CLOSED"}
+                          CLOSED
                         </button>
                       )}
                     </div>
@@ -211,6 +200,11 @@ export default function RecruitmentPage() {
       </main>
 
       <MemberLoginModal open={memberLoginOpen} onClose={() => setMemberLoginOpen(false)} />
+      <RecruitmentApplicationModal
+        open={Boolean(selectedDomain)}
+        domain={selectedDomain}
+        onClose={() => setSelectedDomain(null)}
+      />
     </PublicShell>
   );
 }
