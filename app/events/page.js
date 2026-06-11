@@ -17,8 +17,8 @@ export default async function EventsPage() {
             <h3 className="section-kicker-heading">Professional Excellence</h3>
             <h1 className="subpage-premium-title">Upcoming <span>Chapter Events</span></h1>
             <p className="subpage-premium-desc">
-              Explore high-impact workshops, competitive hackathons, and technical seminars
-              designed to bridge academia and industry.
+              Discover industry-aligned workshops, hackathons, and technical seminars
+              structured to connect academic learning with professional applications.
             </p>
           </div>
           <div className="subpage-hero-stat-stack" aria-label="Event highlights">
