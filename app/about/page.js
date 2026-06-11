@@ -21,8 +21,8 @@ export default async function AboutPage() {
           <Carousel />
 
           <div style={{ marginTop: '24px', marginBottom: '40px', display: 'flex', justifyContent: 'center', width: '100%' }}>
-            <Link 
-              href="/team" 
+            <Link
+              href="/team"
               className="about-visionaries-btn glass-btn"
             >
               <span className="btn-text-large">Meet the Visionaries</span>
@@ -33,13 +33,13 @@ export default async function AboutPage() {
 
           <div className="about-main-card">
             <div className="card-header-accent"></div>
-            
+
             <div className="about-section-block">
               <h2>{about.overviewTitle}</h2>
               <div className="about-content-body">
                 <p>{about.overviewParagraphOne}</p>
                 <p>{about.overviewParagraphTwo}</p>
-                <p>{about.heroText}</p>
+
               </div>
             </div>
           </div>
