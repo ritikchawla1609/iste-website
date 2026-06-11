@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import GoogleFormModal from "./GoogleFormModal";
 import { safeUrl, formatDate } from "@/lib/presentation";
 
 function formatCalendarDates(dateStr) {
@@ -56,16 +55,8 @@ function useCountdown(deadlineStr) {
 }
 
 export default function FeaturedEventSection({ featuredEvent }) {
-  const [showModal, setShowModal] = useState(false);
   const { timeLeft, isExpired } = useCountdown(featuredEvent?.deadline);
   const registrationUrl = safeUrl(featuredEvent?.registrationLink);
-
-  function handleRegisterClick(e) {
-    if (featuredEvent.googleFormLink) {
-      e.preventDefault();
-      setShowModal(true);
-    }
-  }
 
   const mapsUrl = featuredEvent
     ? `https://www.google.com/maps/search/?api=1&query=Chandigarh+University+${encodeURIComponent(featuredEvent.venue)}`
@@ -142,25 +133,15 @@ export default function FeaturedEventSection({ featuredEvent }) {
           {/* Action CTAs inside the spotlight card */}
           <div className="featured-event-actions">
             {featuredEvent && !isExpired && (
-              featuredEvent.googleFormLink ? (
-                <button 
-                  onClick={handleRegisterClick} 
+              registrationUrl && (
+                <a 
+                  href={registrationUrl} 
+                  target="_blank" 
+                  rel="noreferrer" 
                   className="btn-register-primary"
-                  style={{ cursor: 'pointer', border: 'none', font: 'inherit', width: '100%' }}
                 >
                   Register Now
-                </button>
-              ) : (
-                registrationUrl && (
-                  <a 
-                    href={registrationUrl} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="btn-register-primary"
-                  >
-                    Register Now
-                  </a>
-                )
+                </a>
               )
             )}
             
@@ -180,15 +161,6 @@ export default function FeaturedEventSection({ featuredEvent }) {
           </div>
         </div>
       </aside>
-
-      {featuredEvent && (
-        <GoogleFormModal 
-          open={showModal} 
-          onClose={() => setShowModal(false)} 
-          formUrl={featuredEvent.googleFormLink} 
-          eventName={featuredEvent.name} 
-        />
-      )}
     </>
   );
 }
