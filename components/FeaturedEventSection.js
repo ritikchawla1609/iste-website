@@ -109,7 +109,7 @@ export default function FeaturedEventSection({ featuredEvent }) {
                       rel="noopener noreferrer" 
                       className="meta-pill-value venue-map-link"
                     >
-                      {featuredEvent.venue}
+                      <strong>{featuredEvent.venue}</strong>
                     </a>
                   </div>
                 </div>

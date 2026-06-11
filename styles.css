@@ -8660,6 +8660,13 @@ body {
 }
 
 .event-stats-grid .timeline-venue-link {
+  color: #172033 !important;
+  text-decoration: none !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+}
+
+.event-stats-grid .timeline-venue-link:hover {
   color: #ef2b2f !important;
   text-decoration: underline !important;
 }
@@ -12260,13 +12267,19 @@ html {
   min-width: max-content;
 }
 
-.event-stats-grid .timeline-venue-link,
-.event-stats-grid .timeline-venue-link:hover {
+.event-stats-grid .timeline-venue-link {
   display: inline-block;
   white-space: nowrap;
   word-break: normal;
-  color: #ef2b2f !important;
+  color: #172033 !important;
   text-decoration: none !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+}
+
+.event-stats-grid .timeline-venue-link:hover {
+  color: #ef2b2f !important;
+  text-decoration: underline !important;
 }
 
 .whats-new-section.inquiry-card .featured-event-meta-grid {
