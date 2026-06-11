@@ -12270,14 +12270,14 @@ html {
 }
 
 .whats-new-section.inquiry-card .featured-event-meta-grid {
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr) minmax(190px, 1.45fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .whats-new-section.inquiry-card .venue-map-link,
 .whats-new-section.inquiry-card .venue-map-link:hover {
   display: inline-block;
-  white-space: nowrap;
-  word-break: normal;
+  white-space: normal;
+  word-break: break-word;
   color: #38bdf8 !important;
   text-decoration: none !important;
 }
