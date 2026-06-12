@@ -4,37 +4,13 @@ import { useState, useEffect } from "react";
 import { formatDate } from "@/lib/presentation";
 
 function PastEventCard({ event, eventIndex, onOpenModal }) {
-  const [activeBgIndex, setActiveBgIndex] = useState(0);
   const hasImages = event.imagePaths && event.imagePaths.length > 0;
-
-  useEffect(() => {
-    if (!hasImages || event.imagePaths.length <= 1) return;
-    const interval = setInterval(() => {
-      setActiveBgIndex((prev) => (prev + 1) % event.imagePaths.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [hasImages, event.imagePaths]);
 
   return (
     <article
-      className={`content-sheet past-event-card ${hasImages ? "has-bg" : ""}`}
+      className="content-sheet past-event-card"
       onClick={() => onOpenModal(event)}
     >
-      {hasImages && (
-        <div className="card-slideshow-bg">
-          {event.imagePaths.map((path, idx) => {
-            const imgUrl = path.startsWith("http") ? path : `/${path}`;
-            return (
-              <div
-                key={idx}
-                className={`card-bg-slide ${idx === activeBgIndex ? "active" : ""}`}
-                style={{ backgroundImage: `url(${imgUrl})` }}
-              />
-            );
-          })}
-          <div className="card-bg-overlay" />
-        </div>
-      )}
       <div className="past-event-content-wrapper">
         <div className="past-event-topline">
           <h2 className="past-event-name-heading">{event.name}</h2>
@@ -61,6 +37,7 @@ export default function PastEventsClient({ events }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState("All");
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
   // Get all unique categories dynamically
   const categories = ["All", ...Array.from(new Set(events.map(e => e.category || "Event")))];
@@ -87,23 +64,45 @@ export default function PastEventsClient({ events }) {
       if (match) {
         setSelectedEvent(match);
         setActiveSlideIndex(0);
-        document.body.style.overflow = "hidden";
       }
     }
   }, [events]);
 
-  // Clean up body overflow when unmounting
+  // Handle body scroll locking when modal or lightbox is active
   useEffect(() => {
+    if (selectedEvent || lightboxIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
     return () => {
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [selectedEvent, lightboxIndex]);
+
+  // Handle keyboard navigation for the lightbox
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (lightboxIndex === null || !selectedEvent || !selectedEvent.imagePaths) return;
+      if (e.key === "Escape") {
+        setLightboxIndex(null);
+      } else if (e.key === "ArrowLeft") {
+        setLightboxIndex((prev) => 
+          prev === 0 ? selectedEvent.imagePaths.length - 1 : prev - 1
+        );
+      } else if (e.key === "ArrowRight") {
+        setLightboxIndex((prev) => 
+          (prev + 1) % selectedEvent.imagePaths.length
+        );
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex, selectedEvent]);
 
   const handleOpenModal = (event) => {
     setSelectedEvent(event);
     setActiveSlideIndex(0);
-    // Prevent background scrolling when modal is open
-    document.body.style.overflow = "hidden";
     // Update URL path parameters for deep-linking
     const newUrl = `${window.location.pathname}?eventId=${event.id}`;
     window.history.pushState(null, "", newUrl);
@@ -111,7 +110,7 @@ export default function PastEventsClient({ events }) {
 
   const handleCloseModal = () => {
     setSelectedEvent(null);
-    document.body.style.overflow = "";
+    setLightboxIndex(null);
     // Reset URL search parameters
     window.history.pushState(null, "", window.location.pathname);
   };
@@ -170,7 +169,11 @@ export default function PastEventsClient({ events }) {
 
             {/* Top Carousel Slideshow */}
             {selectedEvent.imagePaths && selectedEvent.imagePaths.length > 0 ? (
-              <div className="modal-slideshow-container">
+              <div 
+                className="modal-slideshow-container"
+                onClick={() => setLightboxIndex(activeSlideIndex)}
+                style={{ cursor: "zoom-in" }}
+              >
                 <div className="modal-slideshow-wrapper">
                   {selectedEvent.imagePaths.map((path, idx) => {
                     const imgUrl = path.startsWith("http") ? path : `/${path}`;
@@ -188,6 +191,14 @@ export default function PastEventsClient({ events }) {
                       </div>
                     );
                   })}
+                </div>
+
+                {/* Zoom Hover Overlay */}
+                <div className="slideshow-zoom-overlay">
+                  <div className="zoom-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#ffffff' }}><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                  </div>
+                  <span>Click to expand</span>
                 </div>
 
                 {selectedEvent.imagePaths.length > 1 && (
@@ -266,7 +277,13 @@ export default function PastEventsClient({ events }) {
                         <div 
                           key={idx} 
                           className={`gallery-thumbnail-card ${idx === activeSlideIndex ? "active-thumbnail" : ""}`}
-                          onClick={() => setActiveSlideIndex(idx)}
+                          onClick={() => {
+                            if (idx === activeSlideIndex) {
+                              setLightboxIndex(idx);
+                            } else {
+                              setActiveSlideIndex(idx);
+                            }
+                          }}
                         >
                           <img
                             src={imgUrl}
@@ -280,6 +297,49 @@ export default function PastEventsClient({ events }) {
                 </section>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox Fullscreen Overlay */}
+      {lightboxIndex !== null && selectedEvent && selectedEvent.imagePaths && (
+        <div className="lightbox-overlay" onClick={() => setLightboxIndex(null)}>
+          <button 
+            className="lightbox-close-btn" 
+            onClick={() => setLightboxIndex(null)}
+            aria-label="Close fullscreen view"
+          >
+            ✕
+          </button>
+          
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={selectedEvent.imagePaths[lightboxIndex].startsWith("http") 
+                ? selectedEvent.imagePaths[lightboxIndex] 
+                : `/${selectedEvent.imagePaths[lightboxIndex]}`} 
+              alt={`${selectedEvent.name} fullscreen photo ${lightboxIndex + 1}`} 
+              className="lightbox-img"
+            />
+            
+            {selectedEvent.imagePaths.length > 1 && (
+              <>
+                <button 
+                  className="lightbox-arrow prev" 
+                  onClick={() => setLightboxIndex((prev) => (prev === 0 ? selectedEvent.imagePaths.length - 1 : prev - 1))}
+                >
+                  ‹
+                </button>
+                <button 
+                  className="lightbox-arrow next" 
+                  onClick={() => setLightboxIndex((prev) => (prev + 1) % selectedEvent.imagePaths.length)}
+                >
+                  ›
+                </button>
+                <div className="lightbox-counter">
+                  {lightboxIndex + 1} / {selectedEvent.imagePaths.length}
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
