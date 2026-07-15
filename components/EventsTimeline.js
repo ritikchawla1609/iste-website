@@ -109,7 +109,7 @@ export default function EventsTimeline({ events }) {
                         <span className="stat-icon">03</span>
                         <div className="stat-copy">
                           <small>Registration Fees</small>
-                          <strong>Free</strong>
+                          <strong>{event.registrationFee || "Free"}</strong>
                         </div>
                       </div>
                       <div className="stat-box">
@@ -146,47 +146,20 @@ export default function EventsTimeline({ events }) {
                           Registration Closed
                         </button>
                       ) : (
-                        registrationUrl ? (
-                          <a 
-                            href={registrationUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="primary-btn"
-                            style={{ flex: 1 }}
-                          >
-                            Apply Now
-                          </a>
-                        ) : (
-                          <div style={{ display: 'flex', gap: '15px', width: '100%' }}>
-                            <button
-                              className="primary-btn details-btn"
-                              style={{
-                                flex: 1,
-                                cursor: 'pointer'
-                              }}
-                            >
-                              Details
-                            </button>
-
-                            <button
-                              className="primary-btn"
-                              style={{
-                                flex: 1,
-                                background: '#e51c23',
-                                color: 'white',
-                                border: 'none',
-                                cursor: 'pointer'
-                              }}
-                            >
-                              Registration
-                            </button>
-                          </div>
-                        )
+                        <a 
+                          href={registrationUrl || "#"} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="primary-btn"
+                          style={{ flex: 1 }}
+                        >
+                          Apply Now
+                        </a>
                       )}
 
                       {event.googleFormLink && (
                         <a 
-                          href={safeUrl(event.googleFormLink)}
+                          href={safeUrl(event.googleFormLink) || "#"}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="secondary-btn"

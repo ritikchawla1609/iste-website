@@ -18,6 +18,7 @@ function setFormValues(form, values) {
   form.elements.maxTeamSize.value = values.maxTeamSize || 1;
   form.elements.registrationLink.value = values.registrationLink || "";
   form.elements.googleFormLink.value = values.googleFormLink || "";
+  form.elements.registrationFee.value = values.registrationFee || "Free";
   form.elements.contactName.value = values.contactName || "";
   form.elements.contactEmail.value = values.contactEmail || "";
   form.elements.prizes.value = values.prizes || "";
@@ -78,8 +79,9 @@ export default function AdminEventsClient({ initialEvents }) {
       endTime: String(formData.get("endTime") || ""),
       venue: String(formData.get("venue") || ""),
       deadline: String(formData.get("deadline") || ""),
-      registrationLink: String(formData.get("registrationLink") || ""),
+      registrationLink: String(formData.get("registrationLink") || "").trim() || "#",
       googleFormLink: String(formData.get("googleFormLink") || ""),
+      registrationFee: String(formData.get("registrationFee") || "Free").trim(),
       prizes: String(formData.get("prizes") || ""),
       description: String(formData.get("description") || ""),
       contactName: String(formData.get("contactName") || ""),
@@ -247,6 +249,10 @@ export default function AdminEventsClient({ initialEvents }) {
               <input type="text" name="googleFormLink" placeholder="Enter google form URL" />
             </label>
             <label>
+              Registration Fee
+              <input type="text" name="registrationFee" placeholder="e.g. Free, Rs. 250" required defaultValue="Free" />
+            </label>
+            <label>
               Contact Person
               <input type="text" name="contactName" placeholder="Enter contact person name" required />
             </label>
@@ -334,7 +340,7 @@ export default function AdminEventsClient({ initialEvents }) {
                         {eventRecord.googleFormLink && " | Google Form Linked"}
                       </span>
                       <span>
-                        {eventRecord.category} | Deadline: {formatDate(eventRecord.deadline)}
+                        {eventRecord.category} | Deadline: {formatDate(eventRecord.deadline)} | Fee: {eventRecord.registrationFee || "Free"}
                       </span>
                       <span>
                         Contact: {eventRecord.contactName} | {eventRecord.contactEmail}
