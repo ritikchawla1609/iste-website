@@ -12553,3 +12553,20 @@ html {
   }
 }
 
+.timeline-info .details-btn {
+  background: #64748b !important;
+  color: #ffffff !important;
+  border-radius: 14px !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 14px rgba(100, 116, 139, 0.15) !important;
+}
+
+.timeline-info .details-btn:hover {
+  background: #475569 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 24px rgba(71, 85, 105, 0.3) !important;
+}
+
+

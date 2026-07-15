@@ -159,12 +159,9 @@ export default function EventsTimeline({ events }) {
                         ) : (
                           <div style={{ display: 'flex', gap: '15px', width: '100%' }}>
                             <button
-                              className="primary-btn"
+                              className="primary-btn details-btn"
                               style={{
                                 flex: 1,
-                                background: '#9098a5',
-                                color: 'white',
-                                border: 'none',
                                 cursor: 'pointer'
                               }}
                             >
