@@ -74,6 +74,16 @@ export default function EventsTimeline({ events }) {
               const outlookCalUrl = `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=${encodeURIComponent(event.name)}&body=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.venue)}&startdt=${event.eventDate}T09:00:00Z&enddt=${event.eventDate}T17:00:00Z`;
               const isEventClosed = event.deadline ? new Date(`${event.deadline}T23:59:59`) < new Date() : false;
               const registrationUrl = safeUrl(event.registrationLink);
+              const googleFormUrl = safeUrl(event.googleFormLink);
+
+              let applyUrl = "#";
+              if (registrationUrl) {
+                applyUrl = registrationUrl;
+              } else if (googleFormUrl) {
+                applyUrl = googleFormUrl;
+              }
+
+              const showFeedbackButton = googleFormUrl && (applyUrl !== googleFormUrl);
 
               return (
                 <div key={event.id} className="timeline-item left">
@@ -147,7 +157,7 @@ export default function EventsTimeline({ events }) {
                         </button>
                       ) : (
                         <a 
-                          href={registrationUrl || "#"} 
+                          href={applyUrl} 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="primary-btn"
@@ -157,9 +167,9 @@ export default function EventsTimeline({ events }) {
                         </a>
                       )}
 
-                      {event.googleFormLink && (
+                      {showFeedbackButton && (
                         <a 
-                          href={safeUrl(event.googleFormLink) || "#"}
+                          href={googleFormUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="secondary-btn"
