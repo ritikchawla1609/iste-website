@@ -245,8 +245,8 @@ export default function AdminEventsClient({ initialEvents }) {
               <input type="text" name="registrationLink" placeholder="Enter registration URL or # for placeholder" />
             </label>
             <label>
-              Google Form Link (Optional)
-              <input type="text" name="googleFormLink" placeholder="Enter google form URL" />
+              Feedback Form Link (Optional)
+              <input type="text" name="googleFormLink" placeholder="Enter feedback form URL" />
             </label>
             <label>
               Registration Fee
@@ -337,7 +337,7 @@ export default function AdminEventsClient({ initialEvents }) {
                       </div>
                       <span>
                         {formatDate(eventRecord.eventDate)} | {eventRecord.timing} | {eventRecord.venue}
-                        {eventRecord.googleFormLink && " | Google Form Linked"}
+                        {eventRecord.googleFormLink && " | Feedback Link Linked"}
                       </span>
                       <span>
                         {eventRecord.category} | Deadline: {formatDate(eventRecord.deadline)} | Fee: {eventRecord.registrationFee || "Free"}
