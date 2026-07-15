@@ -76,7 +76,7 @@ export default function EventsTimeline({ events }) {
               const registrationUrl = safeUrl(event.registrationLink);
 
               return (
-                <div key={event.id} className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`}>
+                <div key={event.id} className="timeline-item left">
                   <div className="timeline-dot"></div>
                   
                   <div className="timeline-info">
