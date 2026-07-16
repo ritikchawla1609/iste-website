@@ -95,6 +95,15 @@ export default function AdminEventsClient({ initialEvents }) {
 
     try {
       if (posterFile) {
+        // Validate image size (4 MB limit)
+        if (posterFile.size > 4 * 1024 * 1024) {
+          throw new Error("The selected image is too large. Maximum allowed size is 4 MB.");
+        }
+        // Validate image format
+        const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+        if (!allowedTypes.includes(posterFile.type)) {
+          throw new Error("Only JPG, PNG, and WEBP image formats are supported.");
+        }
         payload.posterDataUrl = await readFileAsDataUrl(posterFile);
       }
 

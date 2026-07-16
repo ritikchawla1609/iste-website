@@ -51,6 +51,20 @@ export default function AdminPastEventsClient() {
 
   const handleHeroFileChange = (e) => {
     const files = Array.from(e.target.files || []);
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    for (const file of files) {
+      if (file.size > 4 * 1024 * 1024) {
+        alert(`The file "${file.name}" is too large. Maximum allowed size is 4 MB.`);
+        e.target.value = "";
+        return;
+      }
+      if (!allowedTypes.includes(file.type)) {
+        alert(`The file "${file.name}" has an unsupported format. Only JPG, PNG, and WEBP are allowed.`);
+        e.target.value = "";
+        return;
+      }
+    }
+
     files.forEach(file => {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -100,6 +114,20 @@ export default function AdminPastEventsClient() {
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files || []);
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    for (const file of files) {
+      if (file.size > 4 * 1024 * 1024) {
+        alert(`The file "${file.name}" is too large. Maximum allowed size is 4 MB.`);
+        e.target.value = "";
+        return;
+      }
+      if (!allowedTypes.includes(file.type)) {
+        alert(`The file "${file.name}" has an unsupported format. Only JPG, PNG, and WEBP are allowed.`);
+        e.target.value = "";
+        return;
+      }
+    }
+
     files.forEach(file => {
       const reader = new FileReader();
       reader.onloadend = () => {
