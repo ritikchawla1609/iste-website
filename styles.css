@@ -12569,4 +12569,42 @@ html {
   box-shadow: 0 10px 24px rgba(71, 85, 105, 0.3) !important;
 }
 
+/* Make timeline card and poster equal height on desktop screens */
+@media (min-width: 1025px) {
+  .timeline-item {
+    align-items: stretch !important;
+  }
+  
+  .timeline-info {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+  
+  .timeline-info .event-actions {
+    margin-top: auto !important;
+  }
+  
+  .timeline-poster {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .poster-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    height: 100% !important;
+    justify-content: center !important;
+  }
+  
+  .poster-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+}
+
+
 
