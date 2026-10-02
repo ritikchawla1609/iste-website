@@ -10,7 +10,7 @@ export const runtime = "nodejs";
 
 export async function GET(request) {
   try {
-    await requireAdmin(request.cookies);
+    await requireAdmin(request);
     const database = await getDb();
     const domainStatus = {
       ...DEFAULT_RECRUITMENT_STATUS,
@@ -24,7 +24,7 @@ export async function GET(request) {
 
 export async function PUT(request) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const payload = await readJson(request);
     const { domainStatus } = payload;
 

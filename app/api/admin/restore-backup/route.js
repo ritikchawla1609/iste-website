@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 export async function POST(request) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const payload = await readJson(request);
     const result = await restoreBackup(payload.backupName, admin.uid, admin.token);
     return NextResponse.json(result);

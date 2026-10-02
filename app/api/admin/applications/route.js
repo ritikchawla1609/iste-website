@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 export async function GET(request) {
   try {
-    await requireAdmin(request.cookies);
+    await requireAdmin(request);
     const database = await getDb();
     
     const applications = await database.many(`
@@ -32,7 +32,7 @@ export async function GET(request) {
 
 export async function DELETE(request) {
   try {
-    await requireAdmin(request.cookies);
+    await requireAdmin(request);
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 

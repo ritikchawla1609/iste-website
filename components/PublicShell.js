@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-import LoginModal from "@/components/LoginModal";
 import MemberLoginModal from "@/components/MemberLoginModal";
 import { FIXED_NOTICE_BANNER, PUBLIC_NAV } from "@/lib/ui-constants";
 import { apiRequest } from "@/lib/client-api";
@@ -13,7 +12,6 @@ export default function PublicShell({
   children
 }) {
 
-  const [loginOpen, setLoginOpen] = useState(false);
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
   const [latestEventNotice, setLatestEventNotice] = useState(null);
@@ -145,15 +143,9 @@ export default function PublicShell({
     setLogoClicks(prev => prev + 1);
   }
 
-  async function handleAuthorLoginClick() {
-    try {
-      const session = await apiRequest("/api/auth/session", { allowUnauthorized: true });
-      if (session.authenticated) {
-        window.location.href = "/author-dashboard";
-        return;
-      }
-    } catch (error) {}
-    setLoginOpen(true);
+  function handleAuthorLoginClick() {
+    const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3001";
+    window.open(adminUrl, "_blank");
   }
 
   return (
@@ -274,7 +266,6 @@ export default function PublicShell({
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
       </button>
 
-      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
       <MemberLoginModal open={memberLoginOpen} onClose={() => setMemberLoginOpen(false)} />
     </>
   );

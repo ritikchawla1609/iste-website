@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 export async function GET(request) {
   try {
-    await requireAdmin(request.cookies);
+    await requireAdmin(request);
     return NextResponse.json(await getAdminSummaryData());
   } catch (error) {
     return jsonError(error);

@@ -4,10 +4,18 @@
   "engines": {
     "node": "24.x"
   },
+  "workspaces": [
+    "admin"
+  ],
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "next dev --webpack -p 3000",
+    "dev:admin": "npm run dev --prefix admin",
     "build": "next build --webpack",
-    "start": "next start",
+    "build:admin": "npm run build --prefix admin",
+    "build:all": "npm run build && npm run build:admin",
+    "start": "next start -p 3000",
+    "start:admin": "npm run start --prefix admin",
+    "test:integration": "node scripts/test-admin-integration.mjs",
     "migrate:vercel": "node --env-file=.env.local scripts/migrate-sqlite-to-vercel.mjs"
   },
   "dependencies": {

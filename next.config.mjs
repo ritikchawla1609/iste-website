@@ -14,6 +14,11 @@ const securityHeaders = [
   }
 ];
 
+const ADMIN_PORTAL_URL =
+  process.env.ADMIN_PORTAL_URL ||
+  process.env.NEXT_PUBLIC_ADMIN_URL ||
+  "http://localhost:3001";
+
 const nextConfig = {
   devIndicators: false,
   async redirects() {
@@ -28,40 +33,91 @@ const nextConfig = {
         destination: "/about",
         permanent: true
       },
+      // Admin Portal Redirections to standalone application
+      {
+        source: "/author-dashboard",
+        destination: `${ADMIN_PORTAL_URL}/dashboard`,
+        permanent: false
+      },
       {
         source: "/author-dashboard.html",
-        destination: "/author-dashboard",
-        permanent: true
+        destination: `${ADMIN_PORTAL_URL}/dashboard`,
+        permanent: false
+      },
+      {
+        source: "/admin",
+        destination: `${ADMIN_PORTAL_URL}/dashboard`,
+        permanent: false
+      },
+      {
+        source: "/admin-events",
+        destination: `${ADMIN_PORTAL_URL}/events`,
+        permanent: false
       },
       {
         source: "/admin-events.html",
-        destination: "/admin-events",
-        permanent: true
+        destination: `${ADMIN_PORTAL_URL}/events`,
+        permanent: false
+      },
+      {
+        source: "/admin-past-events",
+        destination: `${ADMIN_PORTAL_URL}/past-events`,
+        permanent: false
+      },
+      {
+        source: "/admin-past-events.html",
+        destination: `${ADMIN_PORTAL_URL}/past-events`,
+        permanent: false
+      },
+      {
+        source: "/admin-recruitment",
+        destination: `${ADMIN_PORTAL_URL}/recruitment`,
+        permanent: false
       },
       {
         source: "/admin-recruitment.html",
-        destination: "/admin-recruitment",
-        permanent: true
+        destination: `${ADMIN_PORTAL_URL}/recruitment`,
+        permanent: false
+      },
+      {
+        source: "/admin-applications",
+        destination: `${ADMIN_PORTAL_URL}/applications`,
+        permanent: false
+      },
+      {
+        source: "/admin-applications.html",
+        destination: `${ADMIN_PORTAL_URL}/applications`,
+        permanent: false
       },
       {
         source: "/admin-links",
-        destination: "/admin-recruitment",
-        permanent: true
+        destination: `${ADMIN_PORTAL_URL}/recruitment`,
+        permanent: false
       },
       {
         source: "/admin-links.html",
-        destination: "/admin-recruitment",
-        permanent: true
+        destination: `${ADMIN_PORTAL_URL}/recruitment`,
+        permanent: false
+      },
+      {
+        source: "/admin-notice",
+        destination: `${ADMIN_PORTAL_URL}/content/notice`,
+        permanent: false
       },
       {
         source: "/admin-notice.html",
-        destination: "/admin-notice",
-        permanent: true
+        destination: `${ADMIN_PORTAL_URL}/content/notice`,
+        permanent: false
+      },
+      {
+        source: "/admin-about",
+        destination: `${ADMIN_PORTAL_URL}/content/about`,
+        permanent: false
       },
       {
         source: "/admin-about.html",
-        destination: "/admin-about",
-        permanent: true
+        destination: `${ADMIN_PORTAL_URL}/content/about`,
+        permanent: false
       }
     ];
   },

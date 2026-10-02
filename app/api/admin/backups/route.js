@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 export async function POST(request) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const backup = await createBackup(admin.id);
     return NextResponse.json({ backup }, { status: 201 });
   } catch (error) {

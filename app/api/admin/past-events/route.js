@@ -12,7 +12,7 @@ export const runtime = "nodejs";
 
 export async function GET(request) {
   try {
-    await requireAdmin(request.cookies);
+    await requireAdmin(request);
     const data = await getAdminPastEventsData();
     return NextResponse.json(data);
   } catch (error) {
@@ -22,7 +22,7 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const payload = await readJson(request);
     const data = await createPastEvent(payload, admin.id);
     return NextResponse.json(data);
@@ -33,7 +33,7 @@ export async function POST(request) {
 
 export async function PUT(request) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const { searchParams } = new URL(request.url);
     const id = parseRouteId(searchParams.get("id"), "Past event id");
     const payload = await readJson(request);
@@ -46,7 +46,7 @@ export async function PUT(request) {
 
 export async function DELETE(request) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const { searchParams } = new URL(request.url);
     const id = parseRouteId(searchParams.get("id"), "Past event id");
     await deletePastEvent(id, admin.id);

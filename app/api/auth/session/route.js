@@ -5,7 +5,7 @@ import { getCurrentAdmin, getCurrentMember } from "@/lib/auth";
 export const runtime = "nodejs";
 
 export async function GET(request) {
-  const admin = await getCurrentAdmin(request.cookies);
+  const admin = await getCurrentAdmin(request);
   if (admin) {
     return NextResponse.json({
       authenticated: true,
@@ -14,7 +14,7 @@ export async function GET(request) {
     });
   }
 
-  const member = await getCurrentMember(request.cookies);
+  const member = await getCurrentMember(request);
   if (member) {
     return NextResponse.json({
       authenticated: true,

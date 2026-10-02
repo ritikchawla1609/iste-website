@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 
 export async function GET(request) {
   try {
-    await requireAdmin(request.cookies);
+    await requireAdmin(request);
     return NextResponse.json({ events: await getAdminEventsData() });
   } catch (error) {
     return jsonError(error);
@@ -18,7 +18,7 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const payload = await readJson(request);
     const event = await createEvent(payload, admin.id);
 

@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 
 export async function PUT(request, context) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const payload = await readJson(request);
     const { id } = await context.params;
     const eventId = parseRouteId(id, "Event id");
@@ -26,7 +26,7 @@ export async function PUT(request, context) {
 
 export async function DELETE(request, context) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const { id } = await context.params;
     const eventId = parseRouteId(id, "Event id");
     await deleteEvent(eventId, admin.id);

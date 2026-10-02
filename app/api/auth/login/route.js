@@ -11,7 +11,8 @@ export async function POST(request) {
     const result = await loginAdmin(payload.uid, payload.password);
     const response = NextResponse.json({
       authenticated: true,
-      uid: result.uid
+      uid: result.uid,
+      token: result.token
     });
     setSessionCookie(response, result.token);
     return response;

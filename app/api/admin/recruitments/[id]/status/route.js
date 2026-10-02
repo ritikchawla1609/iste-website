@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 
 export async function POST(request, context) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const payload = await readJson(request);
     const { id } = await context.params;
     const recruitmentId = parseRouteId(id, "Recruitment id");

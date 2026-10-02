@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 
 export async function GET(request) {
   try {
-    await requireAdmin(request.cookies);
+    await requireAdmin(request);
     const data = await getPastEventsHero();
     return NextResponse.json(data);
   } catch (error) {
@@ -19,7 +19,7 @@ export async function GET(request) {
 
 export async function PUT(request) {
   try {
-    const admin = await requireAdmin(request.cookies);
+    const admin = await requireAdmin(request);
     const payload = await readJson(request);
     const data = await updatePastEventsHero(payload, admin.id);
 
