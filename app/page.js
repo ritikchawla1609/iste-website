@@ -19,11 +19,11 @@ function getFeaturedEvent(events) {
 }
 
 export default async function HomePage() {
-  const { about, events } = await getPublicSiteData();
+  const { about, events, notice } = await getPublicSiteData();
   const featuredEvent = getFeaturedEvent(events);
 
   return (
-    <PublicShell activePath="/">
+    <PublicShell activePath="/" notice={notice?.detailText}>
       <main className="portal-main">
         {/* SECTION 1: HERO GRID */}
         <section className="portal-notice-banner home-hero-grid">

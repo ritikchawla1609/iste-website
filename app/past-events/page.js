@@ -63,13 +63,14 @@ export const revalidate = 0;
 export default async function PastEventsPage() {
   const storedEvents = await getPublicPastEvents();
   const heroRecord = await getPastEventsHero();
+  const siteData = await getPublicSiteData();
   const rawEvents = storedEvents.length > 0 ? storedEvents : DECK_PAST_EVENTS;
   const events = sortByDate(rawEvents, "eventDate", null, true);
 
   const heroImagePaths = heroRecord?.imagePaths || [];
 
   return (
-    <PublicShell activePath="/past-events">
+    <PublicShell activePath="/past-events" notice={siteData.notice?.detailText}>
       <main className="subpage-main">
         <PastEventsHeroCarousel imagePaths={heroImagePaths} />
 

@@ -11,7 +11,7 @@ export default async function EventsPage() {
   const events = sortByDate(siteData.events, "eventDate", "startTime");
 
   return (
-    <PublicShell activePath="/events">
+    <PublicShell activePath="/events" notice={siteData.notice?.detailText}>
       <main className="subpage-main">
         <section className="subpage-premium-hero events-hero-panel">
           <div className="subpage-hero-copy">

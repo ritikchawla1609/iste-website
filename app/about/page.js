@@ -13,10 +13,10 @@ export const metadata = {
 };
 
 export default async function AboutPage() {
-  const { about } = await getPublicSiteData();
+  const { about, notice } = await getPublicSiteData();
 
   return (
-    <PublicShell activePath="/about" noticeHref="/" noticeLabel="Return Home">
+    <PublicShell activePath="/about" notice={notice?.detailText}>
       <main className="portal-main subpage-main">
         <section className="about-consolidated-section">
           <Carousel />

@@ -9,12 +9,13 @@ import { apiRequest } from "@/lib/client-api";
 
 export default function PublicShell({
   activePath,
+  notice = null,
   children
 }) {
 
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
-  const [customNotice, setCustomNotice] = useState(null);
+  const [customNotice, setCustomNotice] = useState(notice);
   const [latestEventNotice, setLatestEventNotice] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
