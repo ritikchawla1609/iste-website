@@ -57,12 +57,13 @@ const DECK_PAST_EVENTS = [
   }
 ];
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function PastEventsPage() {
   const storedEvents = await getPublicPastEvents();
   const heroRecord = await getPastEventsHero();
-  const rawEvents = storedEvents.length ? storedEvents : DECK_PAST_EVENTS;
+  const rawEvents = storedEvents.length > 0 ? storedEvents : DECK_PAST_EVENTS;
   const events = sortByDate(rawEvents, "eventDate", null, true);
 
   const heroImagePaths = heroRecord?.imagePaths || [];

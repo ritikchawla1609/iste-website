@@ -5,7 +5,8 @@ import FeaturedEventSection from "@/components/FeaturedEventSection";
 import { sortByDate, toComparableDate } from "@/lib/presentation";
 import { getPublicSiteData } from "@/lib/site";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 function getFeaturedEvent(events) {
   const now = new Date();

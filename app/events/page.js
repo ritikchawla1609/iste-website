@@ -3,7 +3,8 @@ import EventsTimeline from "@/components/EventsTimeline";
 import { sortByDate } from "@/lib/presentation";
 import { getPublicSiteData } from "@/lib/site";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function EventsPage() {
   const siteData = await getPublicSiteData();

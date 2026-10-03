@@ -14,6 +14,7 @@ export default function PublicShell({
 
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
+  const [customNotice, setCustomNotice] = useState(null);
   const [latestEventNotice, setLatestEventNotice] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrollPercentage, setScrollPercentage] = useState(0);
@@ -21,8 +22,11 @@ export default function PublicShell({
   useEffect(() => {
     async function fetchNotice() {
       try {
-        const res = await fetch("/api/public/site-data");
+        const res = await fetch("/api/public/site-data", { cache: "no-store" });
         const data = await res.json();
+        if (data && data.notice && data.notice.detailText) {
+          setCustomNotice(data.notice.detailText);
+        }
         if (data && data.events && data.events.length > 0) {
           const now = new Date();
           const upcoming = data.events.find(e => {
@@ -159,7 +163,13 @@ export default function PublicShell({
         <header className="site-header" id="home">
           <div className="notice-strip" aria-label="Chapter notice and contact links">
             <div className="notice-strip-track">
-              {latestEventNotice ? (
+              {customNotice ? (
+                <div className="notice-flow-container">
+                  <span className="notice-flow-link">
+                    <strong>{customNotice}</strong>
+                  </span>
+                </div>
+              ) : latestEventNotice ? (
                 <div className="notice-flow-container">
                   <Link href="/events" className="notice-flow-link">
                     <strong>{latestEventNotice}</strong>
