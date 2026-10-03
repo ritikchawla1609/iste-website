@@ -14,7 +14,6 @@ export default function PublicShell({
 }) {
 
   const [memberLoginOpen, setMemberLoginOpen] = useState(false);
-  const [logoClicks, setLogoClicks] = useState(0);
   const [customNotice, setCustomNotice] = useState(notice);
   const [latestEventNotice, setLatestEventNotice] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -144,15 +143,6 @@ export default function PublicShell({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  function handleLogoClick() {
-    setLogoClicks(prev => prev + 1);
-  }
-
-  function handleAuthorLoginClick() {
-    const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3001";
-    window.open(adminUrl, "_blank");
-  }
-
   return (
     <>
       {/* Scroll Progress Bar */}
@@ -188,7 +178,7 @@ export default function PublicShell({
           </div>
 
           <div className="brand-row">
-            <Link className="brand" href="/" aria-label="ISTE Society home" onClick={handleLogoClick}>
+            <Link className="brand" href="/" aria-label="ISTE Society home">
               <span className="brand-mark">
                 <span className="brand-logo-frame">
                   <img src="/brand/iste-logo.jpg" alt="ISTE logo" />
@@ -231,13 +221,6 @@ export default function PublicShell({
               <p className="footer-copyright">
                 © 2026 <span>ISTE Student Chapter</span>. All rights reserved.
               </p>
-            </div>
-            <div className="footer-author-slot">
-              {logoClicks >= 3 && (
-                <button className="footer-login-btn" type="button" onClick={handleAuthorLoginClick}>
-                  Author Access
-                </button>
-              )}
             </div>
             <div className="footer-contact-inline">
               <span className="contact-label">Get in Touch:</span>

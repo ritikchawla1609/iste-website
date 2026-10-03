@@ -80,13 +80,9 @@ export default function MobileMenuPage() {
     { href: "/recruitment", label: "Recruitment", icon: <RecruitmentIcon /> },
   ];
 
-  // If authenticated, add a link to the dashboard
-  if (session.authenticated) {
-    if (session.role === "member") {
-      menuItems.push({ href: "/recruitment", label: "Member Portal", icon: <DashboardIcon /> });
-    } else {
-      menuItems.push({ href: "/author-dashboard", label: "Author Dashboard", icon: <DashboardIcon /> });
-    }
+  // If authenticated as member, add a link to member portal
+  if (session.authenticated && session.role === "member") {
+    menuItems.push({ href: "/recruitment", label: "Member Portal", icon: <DashboardIcon /> });
   }
 
   return (
